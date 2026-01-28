@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Cart from '@/components/react/Cart';
+---
+
+<BaseLayout title="Your Cart - Manna Kitchen">
+  <section class="cart-page">
+    <div class="cart-page__header">
+      <nav class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__separator">›</span>
+        <span class="breadcrumb__current">Cart</span>
+      </nav>
+      <h1>Your Cart</h1>
+    </div>
+    <Cart client:load />
+  </section>
+</BaseLayout>
+
+<style>
+  .cart-page {
+    max-width: 1200px;
+    padding: 2rem 1.5rem;
+    margin: 0 auto;
+  }
+
+  .cart-page__header {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary, #8b5a3c);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-text-dark, #6b4423);
+    text-decoration: underline;
+  }
+
+  .breadcrumb__separator {
+    color: var(--color-text-light, #999);
+  }
+
+  .breadcrumb__current {
+    color: var(--color-text-light, #666);
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary, #8b5a3c);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .cart-page {
+      padding: 1.5rem 1rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+</style>
