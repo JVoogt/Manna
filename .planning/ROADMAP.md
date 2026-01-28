@@ -59,12 +59,13 @@ Plans:
   4. System enforces 48-hour lead time for platters (excluding weekends) and validates pickup date
   5. Order is sent to +27825795210 via WhatsApp with complete details and customer sees confirmation
 
-**Plans**: TBD
+**Plans:** 4 plans
 
 Plans:
-- [ ] 02-01: TBD during planning
-- [ ] 02-02: TBD during planning
-- [ ] 02-03: TBD during planning
+- [ ] 02-01-PLAN.md — React integration and cart context infrastructure
+- [ ] 02-02-PLAN.md — Product and meal display with Add to Cart
+- [ ] 02-03-PLAN.md — Cart page and validation utilities
+- [ ] 02-04-PLAN.md — Checkout form and WhatsApp submission
 
 ---
 
@@ -120,7 +121,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content | 6/6 | Complete | 2026-01-28 |
-| 2. Core Ordering Flow | 0/TBD | Not started | - |
+| 2. Core Ordering Flow | 0/4 | Ready | - |
 | 3. Custom Platter Builder | 0/TBD | Not started | - |
 | 4. Polish & Launch | 0/TBD | Not started | - |
 
