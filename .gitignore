@@ -23,3 +23,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# uploaded images (keep .gitkeep to preserve directory)
+images-to-upload/*.jpg
+images-to-upload/*.jpeg
+images-to-upload/*.png
+images-to-upload/*.webp
