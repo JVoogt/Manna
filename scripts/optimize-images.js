@@ -15,7 +15,7 @@
 
 import sharp from 'sharp';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-import { readdir, readFile } from 'fs/promises';
+import { readdir } from 'fs/promises';
 import { join, basename, extname } from 'path';
 
 // Configuration
