@@ -135,13 +135,85 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| *(To be filled during roadmap creation)* | | |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Pending |
+| CONTENT-01 | Phase 1 | Pending |
+| CONTENT-02 | Phase 1 | Pending |
+| CONTENT-03 | Phase 1 | Pending |
+| CONTENT-04 | Phase 1 | Pending |
+| CONTENT-05 | Phase 1 | Pending |
+| CONTENT-06 | Phase 1 | Pending |
+| CONTENT-07 | Phase 1 | Pending |
+| INFO-01 | Phase 1 | Pending |
+| INFO-02 | Phase 1 | Pending |
+| INFO-03 | Phase 1 | Pending |
+| INFO-04 | Phase 1 | Pending |
+| INFO-05 | Phase 1 | Pending |
+| INFO-06 | Phase 1 | Pending |
+| DISPLAY-01 | Phase 2 | Pending |
+| DISPLAY-02 | Phase 2 | Pending |
+| DISPLAY-03 | Phase 2 | Pending |
+| DISPLAY-04 | Phase 2 | Pending |
+| DISPLAY-05 | Phase 2 | Pending |
+| DISPLAY-06 | Phase 2 | Pending |
+| CART-01 | Phase 2 | Pending |
+| CART-02 | Phase 2 | Pending |
+| CART-03 | Phase 2 | Pending |
+| CART-04 | Phase 2 | Pending |
+| CART-05 | Phase 2 | Pending |
+| CART-06 | Phase 2 | Pending |
+| CART-07 | Phase 2 | Pending |
+| CART-08 | Phase 2 | Pending |
+| CART-09 | Phase 2 | Pending |
+| CHECKOUT-01 | Phase 2 | Pending |
+| CHECKOUT-02 | Phase 2 | Pending |
+| CHECKOUT-03 | Phase 2 | Pending |
+| CHECKOUT-04 | Phase 2 | Pending |
+| CHECKOUT-05 | Phase 2 | Pending |
+| CHECKOUT-06 | Phase 2 | Pending |
+| CHECKOUT-07 | Phase 2 | Pending |
+| CHECKOUT-08 | Phase 2 | Pending |
+| CHECKOUT-09 | Phase 2 | Pending |
+| CHECKOUT-10 | Phase 2 | Pending |
+| CHECKOUT-11 | Phase 2 | Pending |
+| CHECKOUT-12 | Phase 2 | Pending |
+| CHECKOUT-13 | Phase 2 | Pending |
+| CHECKOUT-14 | Phase 2 | Pending |
+| PLATTER-01 | Phase 3 | Pending |
+| PLATTER-02 | Phase 3 | Pending |
+| PLATTER-03 | Phase 3 | Pending |
+| PLATTER-04 | Phase 3 | Pending |
+| PLATTER-05 | Phase 3 | Pending |
+| PLATTER-06 | Phase 3 | Pending |
+| PLATTER-07 | Phase 3 | Pending |
+| PLATTER-08 | Phase 3 | Pending |
+| PLATTER-09 | Phase 3 | Pending |
+| PLATTER-10 | Phase 3 | Pending |
+| DESIGN-01 | Phase 4 | Pending |
+| DESIGN-02 | Phase 4 | Pending |
+| DESIGN-03 | Phase 4 | Pending |
+| DESIGN-04 | Phase 4 | Pending |
+| DESIGN-05 | Phase 4 | Pending |
+| DESIGN-06 | Phase 4 | Pending |
+| DESIGN-07 | Phase 4 | Pending |
+| DESIGN-08 | Phase 4 | Pending |
+| SEO-01 | Phase 4 | Pending |
+| SEO-02 | Phase 4 | Pending |
+| SEO-03 | Phase 4 | Pending |
+| SEO-04 | Phase 4 | Pending |
+| SEO-05 | Phase 4 | Pending |
+| SEO-06 | Phase 4 | Pending |
+| SEO-07 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 64 total
-- Mapped to phases: (pending)
-- Unmapped: (pending)
+- v1 requirements: 73 total
+- Mapped to phases: 73/73 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-28*
-*Last updated: 2026-01-28 after initial definition*
+*Last updated: 2026-01-28 after roadmap creation with 100% coverage*
