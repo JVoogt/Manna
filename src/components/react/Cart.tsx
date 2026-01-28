@@ -92,12 +92,12 @@ export function Cart() {
             </span>
           </div>
 
-          <button className="cart__checkout-button" onClick={() => window.location.href = '/checkout'}>
+          <a href="/checkout" className="cart__checkout-button">
             Proceed to Checkout
-          </button>
+          </a>
 
           <p className="cart__summary-note">
-            Final price will be confirmed via WhatsApp
+            Having trouble? Contact us: +27 82 579 5210
           </p>
         </div>
       </div>
@@ -167,6 +167,7 @@ export function Cart() {
         }
 
         .cart__checkout-button {
+          display: block;
           width: 100%;
           padding: 1rem;
           background: var(--color-primary, #8b5a3c);
@@ -175,10 +176,13 @@ export function Cart() {
           border-radius: 8px;
           font-size: 1rem;
           font-weight: 600;
+          text-align: center;
+          text-decoration: none;
           cursor: pointer;
-          transition: background 0.2s;
+          transition: background 0.2s, transform 0.1s;
           margin-top: 1.5rem;
           min-height: 44px;
+          line-height: 1.5;
         }
 
         .cart__checkout-button:hover {
