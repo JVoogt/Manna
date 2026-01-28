@@ -11,28 +11,28 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Content)
-Plan: 4 of 6 complete
+Plan: 5 of 6 complete
 Status: In progress
-Last activity: 2026-01-28 — Completed 01-04-PLAN.md (About & Contact Pages)
+Last activity: 2026-01-28 — Completed 01-05-PLAN.md (Image Optimization & R2 Upload)
 
-Progress: [████░░░░░░] 67%
+Progress: [████░░░░░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 3.8 minutes
-- Total execution time: 0.25 hours
+- Total plans completed: 5
+- Average duration: 3.4 minutes
+- Total execution time: 0.28 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 4 | 15 min | 3.8 min |
+| 01 | 5 | 17 min | 3.4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-03 (4min), 01-02 (5min), 01-04 (2min)
-- Trend: Fast execution, 01-04 completed in 2min (static content)
+- Last 5 plans: 01-03 (4min), 01-02 (5min), 01-04 (2min), 01-05 (2min), 01-01 (4min)
+- Trend: Consistent fast execution, automation scripts quick to implement
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 
 | Phase-Plan | Decision | Impact |
 |------------|----------|--------|
+| 01-05 | Three size variants (320/640/1024px) | Responsive images for mobile/tablet/desktop |
+| 01-05 | WebP primary (80%) + JPEG fallback (85%) | Modern format with broad compatibility |
+| 01-05 | S3-compatible API for R2 | Standard AWS SDK works with Cloudflare R2 |
+| 01-05 | Admin workflow: npm run images | Non-technical admin can process images |
 | 01-04 | WhatsApp wa.me link as primary contact | Mobile-friendly one-tap chat initiation |
 | 01-04 | No operating hours on Contact page | Supports flexible appointment-based service model |
 | 01-04 | Contact form UI without backend | Page complete, backend integration deferred |
@@ -74,10 +78,12 @@ None yet.
 ### Blockers/Concerns
 
 **Phase 1:**
+- **[NEEDS SETUP - 01-05]** Cloudflare R2 bucket and credentials required for image upload (see plan 01-05 frontmatter)
 - **[NEEDS SETUP - 01-02]** Cloudflare CF_DNS_API_TOKEN required for SSL automation (see 01-USER-SETUP.md)
 - **[NEEDS SETUP - 01-02]** DNS A record manna.voogt.co.za → Pi IP required
 - Pi performance under load needs validation (20+ concurrent users)
 - JSON editing workflow for non-technical admin needs testing
+- ✅ Image optimization and R2 upload script ready (01-05)
 - ✅ Docker infrastructure ready for Pi deployment
 - ✅ Image optimization pipeline established (Sharp configured)
 - ✅ Content validation system established (Zod at build time)
@@ -91,8 +97,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-28 08:31:33 UTC
-Stopped at: Completed 01-04-PLAN.md - About and Contact pages with WhatsApp integration
+Last session: 2026-01-28 11:25:54 UTC
+Stopped at: Completed 01-05-PLAN.md - Image optimization script with R2 upload
 Resume file: None
 
 ---
