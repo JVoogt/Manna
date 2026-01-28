@@ -33,12 +33,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Product and meal images load quickly on mobile (<3 seconds on 4G)
   5. About page tells the sisters' story and Contact page shows location, hours, and WhatsApp
 
-**Plans**: TBD
+**Plans:** 6 plans
 
 Plans:
-- [ ] 01-01: TBD during planning
-- [ ] 01-02: TBD during planning
-- [ ] 01-03: TBD during planning
+- [ ] 01-01-PLAN.md — Astro project foundation
+- [ ] 01-02-PLAN.md — Docker infrastructure with Traefik
+- [ ] 01-03-PLAN.md — JSON content system with Zod validation
+- [ ] 01-04-PLAN.md — About and Contact static pages
+- [ ] 01-05-PLAN.md — Image optimization script for R2
+- [ ] 01-06-PLAN.md — Site shell (header/footer) and verification
 
 ---
 
@@ -116,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Content | 0/TBD | Not started | - |
+| 1. Foundation & Content | 0/6 | Planned | - |
 | 2. Core Ordering Flow | 0/TBD | Not started | - |
 | 3. Custom Platter Builder | 0/TBD | Not started | - |
 | 4. Polish & Launch | 0/TBD | Not started | - |
