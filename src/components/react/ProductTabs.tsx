@@ -7,24 +7,53 @@ import { MealCard } from './MealCard';
 interface ProductTabsProps {
   products: Product[];
   meals: Meal[];
+  onSelectItem?: (product: Product) => void;
+  selectedItems?: Product[];
+  isPlatterMode?: boolean;
+  defaultTab?: 'products' | 'meals';
+  showProductsTab?: boolean;
 }
 
-export function ProductTabs({ products, meals }: ProductTabsProps) {
+export function ProductTabs({
+  products,
+  meals,
+  onSelectItem,
+  selectedItems = [],
+  isPlatterMode = false,
+  defaultTab = 'products',
+  showProductsTab = true
+}: ProductTabsProps) {
+  const defaultIndex = defaultTab === 'meals' ? 1 : 0;
+
+  const isItemSelected = (productId: string) => {
+    return selectedItems.some(item => item.id === productId);
+  };
+
+  const canSelectMore = selectedItems.length < 6;
+
   return (
-    <TabGroup>
+    <TabGroup defaultIndex={defaultIndex}>
       <TabList className="tab-list">
-        <Tab className="tab">Products</Tab>
+        {showProductsTab && <Tab className="tab">Platter Items</Tab>}
         <Tab className="tab">Weekly Meals</Tab>
       </TabList>
 
       <TabPanels className="tab-panels">
-        <TabPanel className="tab-panel">
-          <div className="product-grid">
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </TabPanel>
+        {showProductsTab && (
+          <TabPanel className="tab-panel">
+            <div className="product-grid">
+              {products.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onSelect={isPlatterMode ? onSelectItem : undefined}
+                  isSelected={isPlatterMode ? isItemSelected(product.id) : false}
+                  isDisabled={isPlatterMode ? !canSelectMore && !isItemSelected(product.id) : false}
+                />
+              ))}
+            </div>
+          </TabPanel>
+        )}
 
         <TabPanel className="tab-panel">
           <div className="product-grid">

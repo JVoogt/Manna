@@ -7,276 +7,108 @@ const products = getProducts();
 const meals = getMeals();
 ---
 
-<BaseLayout title="Manna Kitchen - Home Cooking in Pretoria North">
+<BaseLayout title="Manna Kitchen - Build Your Perfect Platter">
   <AppProvider page="home" products={products} meals={meals} client:only="react" />
 </BaseLayout>
 
-<style>
-  :global(.hero) {
-    padding: 3rem 1.5rem;
-    text-align: center;
-    background: linear-gradient(135deg, #8b5a3c 0%, #d4a574 100%);
-    color: white;
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Karla:wght@400;500;600;700&display=swap');
+
+  /* Tab Styling */
+  .tab-list {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+    border-bottom: 3px solid rgba(139, 90, 60, 0.15);
+    padding-bottom: 1rem;
   }
 
-  :global(.hero h1) {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  .tab {
+    font-family: 'Karla', sans-serif;
+    padding: 0.875rem 2.5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    border-bottom: 4px solid transparent;
+    color: #8b7355;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 48px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .tab::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b5a3c 0%, #d4a574 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+  }
+
+  .tab:hover {
+    color: #8b5a3c;
+  }
+
+  .tab:hover::after {
+    width: 100%;
+  }
+
+  .tab[data-headlessui-state="selected"] {
+    color: #4a3728;
     font-weight: 700;
   }
 
-  :global(.hero p) {
-    font-size: 1.25rem;
-    opacity: 0.95;
+  .tab[data-headlessui-state="selected"]::after {
+    width: 100%;
   }
 
-  :global(section:not(.hero)) {
-    padding: 2rem 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  :global(.menu-section) {
-    padding: 3rem 1.5rem;
-  }
-
-  :global(.menu-section h2) {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-    text-align: center;
-  }
-
-  :global(.platter-builder-note) {
-    background: var(--color-bg-warm);
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  :global(.coming-soon-note) {
-    color: var(--color-text-light);
-    font-size: 1rem;
-  }
-
-  :global(.coming-soon-note strong) {
-    color: var(--color-primary);
-  }
-
-  /* Tab Styling */
-  :global(.tab-list) {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #e0e0e0;
-    justify-content: center;
-  }
-
-  :global(.tab) {
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    background: transparent;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--color-text-light);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 44px;
-  }
-
-  :global(.tab:hover) {
-    color: var(--color-primary);
-  }
-
-  :global(.tab[data-selected]) {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
-  }
-
-  :global(.tab-panels) {
+  .tab-panels {
     margin-top: 2rem;
   }
 
   /* Product Grid */
-  :global(.product-grid) {
+  .product-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   @media (min-width: 640px) {
-    :global(.product-grid) {
+    .product-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: 1024px) {
-    :global(.product-grid) {
+  @media (min-width: 968px) {
+    .product-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  /* Product Card Styling */
-  :global(.product-card),
-  :global(.meal-card) {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-  }
-
-  :global(.product-card:hover),
-  :global(.meal-card:hover) {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  }
-
-  :global(.product-image),
-  :global(.meal-image) {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: var(--color-bg-warm);
-    position: relative;
-  }
-
-  :global(.product-image img),
-  :global(.meal-image img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  :global(.image-placeholder) {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-light);
-    font-size: 0.875rem;
-  }
-
-  :global(.week-badge) {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    background: var(--color-primary);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-  }
-
-  :global(.product-info),
-  :global(.meal-info) {
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    flex:1;
-  }
-
-  :global(.product-name),
-  :global(.meal-name) {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-  }
-
-  :global(.product-price),
-  :global(.meal-price) {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-  }
-
-  :global(.meal-meta) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-  }
-
-  :global(.meal-servings) {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    font-weight: 500;
-  }
-
-  :global(.product-description),
-  :global(.meal-description) {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  :global(.dietary-badges) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  :global(.dietary-badge) {
-    background: var(--color-accent);
-    color: var(--color-primary-dark);
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-
-  :global(.add-to-cart-btn) {
-    width: 100%;
-    min-height: 44px;
-    padding: 0.75rem 1.5rem;
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    margin-top: auto;
-  }
-
-  :global(.add-to-cart-btn:hover) {
-    background: var(--color-primary-dark);
-  }
-
-  :global(.add-to-cart-btn:active) {
-    transform: scale(0.98);
+  @media (min-width: 1280px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   @media (max-width: 640px) {
-    :global(.hero h1) {
-      font-size: 2rem;
-    }
-
-    :global(.hero p) {
-      font-size: 1rem;
-    }
-
-    :global(.menu-section h2) {
-      font-size: 1.75rem;
-    }
-
-    :global(.tab) {
+    .tab {
       padding: 0.75rem 1.5rem;
       font-size: 0.9rem;
+    }
+
+    .product-grid {
+      gap: 1.5rem;
     }
   }
 </style>

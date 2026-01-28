@@ -28,7 +28,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Product Display
 
-- [ ] **DISPLAY-01**: Homepage shows platter builder and weekly meals prominently
+- [ ] **DISPLAY-01a**: Homepage shows weekly meals prominently
+- [ ] **DISPLAY-01b**: Homepage shows platter builder prominently
 - [ ] **DISPLAY-02**: Product menu displays all available snack items with photos
 - [ ] **DISPLAY-03**: Each product shows name, description, and individual price
 - [ ] **DISPLAY-04**: Weekly meals section displays 1-3 meals with image, name, description, and price
@@ -154,7 +155,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFO-04 | Phase 1 | Complete |
 | INFO-05 | Phase 1 | Complete |
 | INFO-06 | Phase 1 | Complete |
-| DISPLAY-01 | Phase 2 | Pending |
+| DISPLAY-01a | Phase 2 | Pending |
+| DISPLAY-01b | Phase 3 | Pending |
 | DISPLAY-02 | Phase 2 | Pending |
 | DISPLAY-03 | Phase 2 | Pending |
 | DISPLAY-04 | Phase 2 | Pending |
@@ -210,8 +212,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEO-07 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 73 total
-- Mapped to phases: 73/73 (100%)
+- v1 requirements: 74 total
+- Mapped to phases: 74/74 (100%)
 - Unmapped: 0
 
 ---
