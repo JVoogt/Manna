@@ -1,0 +1,202 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Us - Manna Kitchen">
+  <article class="about-page">
+    <section class="hero">
+      <h1>Our Story</h1>
+    </section>
+
+    <section class="story">
+      <h2>From Hardship to Hope</h2>
+      <p>
+        Manna Kitchen was born from both love and necessity. Two sisters, bound by family and
+        faith, found themselves facing an unexpected challenge when one was diagnosed with
+        Guillain-Barré syndrome—a rare neurological condition that required extensive medical
+        treatment and ongoing care.
+      </p>
+      <p>
+        What started as a way to generate revenue for medical expenses has blossomed into
+        something far greater. From their home kitchen in Pretoria North, these sisters began
+        creating the wholesome, homemade foods they grew up with—dishes made with love,
+        patience, and the finest ingredients they could find.
+      </p>
+      <p>
+        Word spread quickly among neighbors and friends. People didn't just come back for the
+        food; they came back for the care woven into every dish, the personal touch in every
+        interaction, and the knowledge that their purchase was helping a family in need.
+      </p>
+      <p>
+        Today, Manna Kitchen is a thriving family business, but we haven't forgotten our roots.
+        Every platter we prepare, every meal we pack, carries that same dedication and personal
+        attention that started it all.
+      </p>
+    </section>
+
+    <section class="what-makes-us-special">
+      <h2>What Makes Manna Special</h2>
+      <div class="special-points">
+        <div class="point">
+          <h3>Made with Love</h3>
+          <p>
+            Every item is prepared by hand, with the same care we'd give to feeding our own
+            family. No shortcuts, no compromises.
+          </p>
+        </div>
+        <div class="point">
+          <h3>Fresh & Pure</h3>
+          <p>
+            We use only fresh ingredients with no preservatives or artificial additives. What
+            you taste is real food, made the old-fashioned way.
+          </p>
+        </div>
+        <div class="point">
+          <h3>Supporting Family</h3>
+          <p>
+            When you order from Manna Kitchen, you're not just getting great food—you're
+            supporting a family business with a heartfelt story.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How Ordering Works</h2>
+      <ol class="steps">
+        <li>
+          <strong>Browse our menu</strong> of products and ready-made meals
+        </li>
+        <li>
+          <strong>Build your custom platter</strong> or select a weekly meal
+        </li>
+        <li>
+          <strong>Order via WhatsApp</strong> for personal service and quick response
+        </li>
+        <li>
+          <strong>Pick up fresh and ready</strong> at our Pretoria North location
+        </li>
+      </ol>
+      <p class="cta">
+        We love chatting with our customers! Reach out anytime on WhatsApp.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .about-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3rem;
+    border-bottom: 3px solid #8b5a3c;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    color: #6b4423;
+    font-weight: 700;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    color: #8b5a3c;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: #6b4423;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #4a3728;
+    margin-bottom: 1rem;
+  }
+
+  .special-points {
+    display: grid;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .point {
+    background: #fdf8f3;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #d4a574;
+  }
+
+  .point p {
+    margin-bottom: 0;
+  }
+
+  .steps {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #4a3728;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .steps li {
+    margin-bottom: 1rem;
+  }
+
+  .steps strong {
+    color: #8b5a3c;
+  }
+
+  .cta {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #8b5a3c;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+
+  /* Mobile-first responsive design */
+  @media (max-width: 640px) {
+    .about-page {
+      padding: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p,
+    .steps {
+      font-size: 1rem;
+    }
+
+    .point {
+      padding: 1rem;
+    }
+  }
+
+  @media (min-width: 641px) {
+    .special-points {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+</style>
