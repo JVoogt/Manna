@@ -1,4 +1,6 @@
 ---
+import { CartIcon } from '../components/react/CartIcon';
+
 // Get current path for active link highlighting
 const currentPath = Astro.url.pathname;
 ---
@@ -11,37 +13,40 @@ const currentPath = Astro.url.pathname;
       </a>
     </div>
 
-    <nav class="nav">
-      <ul class="nav-list">
-        <li>
-          <a
-            href="/"
-            class:list={["nav-link", { active: currentPath === "/" }]}
-            aria-current={currentPath === "/" ? "page" : undefined}
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <a
-            href="/about"
-            class:list={["nav-link", { active: currentPath === "/about" || currentPath === "/about/" }]}
-            aria-current={currentPath === "/about" || currentPath === "/about/" ? "page" : undefined}
-          >
-            About
-          </a>
-        </li>
-        <li>
-          <a
-            href="/contact"
-            class:list={["nav-link", { active: currentPath === "/contact" || currentPath === "/contact/" }]}
-            aria-current={currentPath === "/contact" || currentPath === "/contact/" ? "page" : undefined}
-          >
-            Contact
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="header-right">
+      <nav class="nav">
+        <ul class="nav-list">
+          <li>
+            <a
+              href="/"
+              class:list={["nav-link", { active: currentPath === "/" }]}
+              aria-current={currentPath === "/" ? "page" : undefined}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/about"
+              class:list={["nav-link", { active: currentPath === "/about" || currentPath === "/about/" }]}
+              aria-current={currentPath === "/about" || currentPath === "/about/" ? "page" : undefined}
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="/contact"
+              class:list={["nav-link", { active: currentPath === "/contact" || currentPath === "/contact/" }]}
+              aria-current={currentPath === "/contact" || currentPath === "/contact/" ? "page" : undefined}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <CartIcon client:load />
+    </div>
   </div>
 </header>
 
@@ -78,6 +83,12 @@ const currentPath = Astro.url.pathname;
 
   .brand-link:hover .brand-name {
     opacity: 0.9;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .nav-list {
