@@ -11,28 +11,28 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Content)
-Plan: 2 of 6 complete
+Plan: 3 of 6 complete
 Status: In progress
-Last activity: 2026-01-28 — Completed 01-03-PLAN.md (JSON Content System)
+Last activity: 2026-01-28 — Completed 01-02-PLAN.md (Docker Infrastructure)
 
-Progress: [██░░░░░░░░] 33%
+Progress: [███░░░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 4 minutes
-- Total execution time: 0.13 hours
+- Total plans completed: 3
+- Average duration: 4.3 minutes
+- Total execution time: 0.22 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 2 | 8 min | 4 min |
+| 01 | 3 | 13 min | 4.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-03 (4min)
-- Trend: Consistent 4min average
+- Last 5 plans: 01-01 (4min), 01-03 (4min), 01-02 (5min)
+- Trend: Consistent ~4-5min average
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 
 | Phase-Plan | Decision | Impact |
 |------------|----------|--------|
+| 01-02 | Traefik DNS-01 challenge with Cloudflare | SSL automation without exposing HTTP challenge port |
+| 01-02 | Multi-stage Docker build (Node + NGINX) | Minimal 79.9MB production image for Pi |
+| 01-02 | Zero-downtime deployment pattern | Admin can update content without service interruption |
+| 01-02 | 1-year static asset caching | Aggressive cache for content-hashed assets |
 | 01-03 | String IDs for products (slug-style) | Admin-friendly, no UUID generation needed |
 | 01-03 | Optional imageUrl field | Products can be added before images ready |
 | 01-03 | Module-level validation | Build fails on invalid JSON, catches errors early |
@@ -66,9 +70,11 @@ None yet.
 ### Blockers/Concerns
 
 **Phase 1:**
-- **[BLOCKING - 01-01]** Node.js v18.19.1 → v18.20.8+ upgrade required before npm scripts work
+- **[NEEDS SETUP - 01-02]** Cloudflare CF_DNS_API_TOKEN required for SSL automation (see 01-USER-SETUP.md)
+- **[NEEDS SETUP - 01-02]** DNS A record manna.voogt.co.za → Pi IP required
 - Pi performance under load needs validation (20+ concurrent users)
 - JSON editing workflow for non-technical admin needs testing
+- ✅ Docker infrastructure ready for Pi deployment
 - ✅ Image optimization pipeline established (Sharp configured)
 - ✅ Content validation system established (Zod at build time)
 
@@ -81,8 +87,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-28
-Stopped at: Completed 01-03-PLAN.md - JSON content system with validation ready
+Last session: 2026-01-28 10:26:16 UTC
+Stopped at: Completed 01-02-PLAN.md - Docker infrastructure ready
 Resume file: None
 
 ---
