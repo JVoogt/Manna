@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://manna.voogt.co.za',
   output: 'static',
+  integrations: [react()],
   build: {
     inlineStylesheets: 'auto',
   },
@@ -20,6 +22,11 @@ export default defineConfig({
     ]
   },
   vite: {
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    },
     build: {
       cssCodeSplit: true,
       minify: 'esbuild'
