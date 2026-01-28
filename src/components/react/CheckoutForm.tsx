@@ -7,7 +7,7 @@ import { useCartState, useCartActions } from '../../lib/cart-context';
 import { generateWhatsAppLink, WHATSAPP_NUMBER } from '../../lib/whatsapp';
 import { DatePicker } from './DatePicker';
 
-export function CheckoutForm() {
+export default function CheckoutForm() {
   const items = useCartState();
   const { clearCart } = useCartActions();
 

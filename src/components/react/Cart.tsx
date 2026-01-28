@@ -2,7 +2,7 @@ import React from 'react';
 import { useCartState } from '../../lib/cart-context';
 import { CartItem } from './CartItem';
 
-export function Cart() {
+export default function Cart() {
   const items = useCartState();
 
   // Calculate totals
