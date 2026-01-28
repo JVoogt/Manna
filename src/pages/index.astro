@@ -1,78 +1,64 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getProducts, getMeals } from '@/lib/content';
-import { ProductTabs } from '@/components/react/ProductTabs';
+import AppProvider from '@/components/react/AppProvider';
 
 const products = getProducts();
 const meals = getMeals();
 ---
 
 <BaseLayout title="Manna Kitchen - Home Cooking in Pretoria North">
-  <section class="hero">
-    <h1>Manna Kitchen</h1>
-    <p>Fresh homemade platters and weekly meals</p>
-  </section>
-
-  <section class="menu-section">
-    <h2>Browse Our Menu</h2>
-    <ProductTabs products={products} meals={meals} client:only="react" />
-  </section>
-
-  <section class="platter-builder-note">
-    <p class="coming-soon-note">
-      <strong>Custom Platters:</strong> Build your perfect platter with your favorite items. Coming in Phase 3!
-    </p>
-  </section>
+  <AppProvider page="home" products={products} meals={meals} client:only="react" />
 </BaseLayout>
 
 <style>
-  .hero {
+  :global(.hero) {
     padding: 3rem 1.5rem;
     text-align: center;
     background: linear-gradient(135deg, #8b5a3c 0%, #d4a574 100%);
     color: white;
   }
 
-  .hero h1 {
+  :global(.hero h1) {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
   }
 
-  .hero p {
+  :global(.hero p) {
     font-size: 1.25rem;
     opacity: 0.95;
   }
 
-  section:not(.hero) {
+  :global(section:not(.hero)) {
     padding: 2rem 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
   }
 
-  .menu-section {
+  :global(.menu-section) {
     padding: 3rem 1.5rem;
   }
 
-  .menu-section h2 {
+  :global(.menu-section h2) {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--color-primary);
     text-align: center;
   }
 
-  .platter-builder-note {
+  :global(.platter-builder-note) {
     background: var(--color-bg-warm);
     padding: 1.5rem;
     text-align: center;
   }
 
-  .coming-soon-note {
+  :global(.coming-soon-note) {
     color: var(--color-text-light);
     font-size: 1rem;
   }
 
-  .coming-soon-note strong {
+  :global(.coming-soon-note strong) {
     color: var(--color-primary);
   }
 
@@ -191,7 +177,7 @@ const meals = getMeals();
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex:1;
   }
 
   :global(.product-name),
@@ -276,15 +262,15 @@ const meals = getMeals();
   }
 
   @media (max-width: 640px) {
-    .hero h1 {
+    :global(.hero h1) {
       font-size: 2rem;
     }
 
-    .hero p {
+    :global(.hero p) {
       font-size: 1rem;
     }
 
-    .menu-section h2 {
+    :global(.menu-section h2) {
       font-size: 1.75rem;
     }
 

@@ -38,14 +38,14 @@ const currentPath = Astro.url.pathname;
             <a
               href="/contact"
               class:list={["nav-link", { active: currentPath === "/contact" || currentPath === "/contact/" }]}
-              aria-current={currentPath === "/contact" || currentPath === "/contact/" ? "page" : undefined}
+              aria-current={currentPath === "/about" || currentPath === "/contact/" ? "page" : undefined}
             >
               Contact
             </a>
           </li>
         </ul>
       </nav>
-      <CartIcon client:only="react" />
+      <div id="cart-icon-root"></div>
     </div>
   </div>
 </header>
