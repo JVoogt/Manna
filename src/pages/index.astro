@@ -15,7 +15,7 @@ const meals = getMeals();
 
   <section class="menu-section">
     <h2>Browse Our Menu</h2>
-    <ProductTabs products={products} meals={meals} client:load />
+    <ProductTabs products={products} meals={meals} client:only="react" />
   </section>
 
   <section class="platter-builder-note">
