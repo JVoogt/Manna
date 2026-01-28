@@ -4,7 +4,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 const SA_TIMEZONE = 'Africa/Johannesburg';
 
 // South Africa public holidays 2026 (10 working days)
-const SA_HOLIDAYS_2026 = [
+export const SA_HOLIDAYS_2026 = [
   new Date('2026-01-01'), // New Year's Day
   new Date('2026-04-03'), // Good Friday
   new Date('2026-04-06'), // Family Day
