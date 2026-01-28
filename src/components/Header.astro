@@ -45,7 +45,7 @@ const currentPath = Astro.url.pathname;
           </li>
         </ul>
       </nav>
-      <CartIcon client:load />
+      <CartIcon client:only="react" />
     </div>
   </div>
 </header>
