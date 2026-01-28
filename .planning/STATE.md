@@ -11,28 +11,28 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Content)
-Plan: 1 of 6 complete
+Plan: 2 of 6 complete
 Status: In progress
-Last activity: 2026-01-28 — Completed 01-01-PLAN.md (Astro Project Foundation)
+Last activity: 2026-01-28 — Completed 01-03-PLAN.md (JSON Content System)
 
-Progress: [█░░░░░░░░░] 17%
+Progress: [██░░░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
+- Total plans completed: 2
 - Average duration: 4 minutes
-- Total execution time: 0.07 hours
+- Total execution time: 0.13 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 1 | 4 min | 4 min |
+| 01 | 2 | 8 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min)
-- Trend: N/A (first plan)
+- Last 5 plans: 01-01 (4min), 01-03 (4min)
+- Trend: Consistent 4min average
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 
 | Phase-Plan | Decision | Impact |
 |------------|----------|--------|
+| 01-03 | String IDs for products (slug-style) | Admin-friendly, no UUID generation needed |
+| 01-03 | Optional imageUrl field | Products can be added before images ready |
+| 01-03 | Module-level validation | Build fails on invalid JSON, catches errors early |
+| 01-03 | Available flag pattern | Hide items without deleting, supports seasonal products |
 | 01-01 | Warm color scheme (#8b5a3c, #d4a574, #6b4423) | Establishes visual identity for all future design |
 | 01-01 | TypeScript path aliases (@/* → src/*) | All future code uses @/ for src/ imports |
 | 01-01 | Sharp image service | All images use optimized Sharp processing |
@@ -62,10 +66,11 @@ None yet.
 ### Blockers/Concerns
 
 **Phase 1:**
-- **[NEW - 01-01]** Node.js v18.19.1 → v18.20.8+ upgrade required before npm scripts work
+- **[BLOCKING - 01-01]** Node.js v18.19.1 → v18.20.8+ upgrade required before npm scripts work
 - Pi performance under load needs validation (20+ concurrent users)
 - JSON editing workflow for non-technical admin needs testing
 - ✅ Image optimization pipeline established (Sharp configured)
+- ✅ Content validation system established (Zod at build time)
 
 **Phase 2:**
 - WhatsApp Click-to-Chat reliability with SA phone number formats needs validation
@@ -77,7 +82,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-28
-Stopped at: Completed 01-01-PLAN.md - Astro project foundation ready
+Stopped at: Completed 01-03-PLAN.md - JSON content system with validation ready
 Resume file: None
 
 ---
