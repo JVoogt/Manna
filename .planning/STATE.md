@@ -11,29 +11,29 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Current Position
 
 Phase: 2 of 4 (Core Ordering Flow)
-Plan: 1 of 4 complete
+Plan: 2 of 4 complete
 Status: In progress
-Last activity: 2026-01-28 — Completed 02-01-PLAN.md (React Integration & Cart State)
+Last activity: 2026-01-28 — Completed 02-02-PLAN.md (Product Display & Add to Cart)
 
-Progress: [██████▓░░░] 7 of 10 plans complete (70%)
+Progress: [████████░░] 8 of 10 plans complete (80%)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 11.6 minutes
-- Total execution time: 1.61 hours
+- Total plans completed: 8
+- Average duration: 10.1 minutes
+- Total execution time: 1.69 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 | 6 | 77 min | 12.8 min |
-| 02 | 1 | 3 min | 3.0 min |
+| 02 | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 7 plans: 01-01 (4min), 01-02 (5min), 01-03 (4min), 01-04 (2min), 01-05 (2min), 01-06 (60min), 02-01 (3min)
-- Trend: Infrastructure setup very fast, UI verification takes longer
+- Last 7 plans: 01-02 (5min), 01-03 (4min), 01-04 (2min), 01-05 (2min), 01-06 (60min), 02-01 (3min), 02-03 (2min)
+- Trend: Phase 2 execution very fast, pure code tasks without UI verification
 
 *Updated after each plan completion*
 
@@ -46,6 +46,10 @@ Recent decisions affecting current work:
 
 | Phase-Plan | Decision | Impact |
 |------------|----------|--------|
+| 02-03 | SA holidays 2026 hard-coded | Annual update needed, consider holiday API for production |
+| 02-03 | Phone E.164 normalization | WhatsApp compatibility, +27XXXXXXXXX format |
+| 02-03 | Minimum pickup: 2 business days | Excludes weekends and holidays from calculation |
+| 02-03 | Separate remove button | Clarity over decreasing at quantity 1 |
 | 02-01 | Separated cart contexts (state/actions) | Prevents unnecessary re-renders in components that only read or only write |
 | 02-01 | client:only for CartProvider | Avoids SSR hydration mismatches with localStorage |
 | 02-01 | localStorage cart persistence | Cart survives page refresh and browser restart |
@@ -103,23 +107,28 @@ None yet.
 
 **Phase 2:** 🔄 IN PROGRESS
 - ✅ React islands and cart infrastructure established (02-01)
+- ✅ Cart page with item management (quantity controls, removal) (02-03)
+- ✅ Business day calculation with SA holidays 2026 (02-03)
+- ✅ Phone validation with E.164 normalization (02-03)
+- ✅ Date and checkout validation schemas ready (02-03)
 - Cart icon in header shows item count badge
 - Toast notifications ready for user feedback
 - localStorage cart persistence working
 - **[BLOCKER]** Node.js >= 18.20.8 required for build verification (env has v18.19.1)
   - Code structure verified correct, will work in production
+- **[TODO]** SA holidays array needs annual update (2027+)
 - WhatsApp Click-to-Chat reliability with SA phone number formats needs validation
-- 48-hour lead time calculation with weekends/holidays has edge cases
+- Date picker component needed for visual date selection (react-day-picker)
 
 **Phase 3:**
 - Custom platter builder mobile UX needs user testing (6-item selection pattern)
 
 ## Session Continuity
 
-Last session: 2026-01-28 13:30 UTC
-Stopped at: Completed 02-01-PLAN.md - React Integration & Cart State Management
+Last session: 2026-01-28 13:35 UTC
+Stopped at: Completed 02-03-PLAN.md - Cart Page & Validation
 Resume file: None
-Next: 02-02-PLAN.md - Product Listing Page
+Next: 02-04-PLAN.md - Checkout Form (or 02-02 if Product Listing needed first)
 
 ---
 *Last updated: 2026-01-28*
