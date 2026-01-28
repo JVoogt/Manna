@@ -12,7 +12,7 @@ A 4-phase journey from infrastructure to launch, building a mobile-first orderin
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Content** - Infrastructure, content management, and static pages
+- [x] **Phase 1: Foundation & Content** - Infrastructure, content management, and static pages
 - [ ] **Phase 2: Core Ordering Flow** - Product display, shopping cart, and checkout
 - [ ] **Phase 3: Custom Platter Builder** - 6-item platter builder with validation
 - [ ] **Phase 4: Polish & Launch** - Mobile optimization, SEO, and production launch
@@ -36,12 +36,12 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 6 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Astro project foundation
-- [ ] 01-02-PLAN.md — Docker infrastructure with Traefik
-- [ ] 01-03-PLAN.md — JSON content system with Zod validation
-- [ ] 01-04-PLAN.md — About and Contact static pages
-- [ ] 01-05-PLAN.md — Image optimization script for R2
-- [ ] 01-06-PLAN.md — Site shell (header/footer) and verification
+- [x] 01-01-PLAN.md — Astro project foundation
+- [x] 01-02-PLAN.md — Docker infrastructure with Traefik
+- [x] 01-03-PLAN.md — JSON content system with Zod validation
+- [x] 01-04-PLAN.md — About and Contact static pages
+- [x] 01-05-PLAN.md — Image optimization script for R2
+- [x] 01-06-PLAN.md — Site shell (header/footer) and verification
 
 ---
 
@@ -119,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Content | 0/6 | Planned | - |
+| 1. Foundation & Content | 6/6 | Complete | 2026-01-28 |
 | 2. Core Ordering Flow | 0/TBD | Not started | - |
 | 3. Custom Platter Builder | 0/TBD | Not started | - |
 | 4. Polish & Launch | 0/TBD | Not started | - |

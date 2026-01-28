@@ -9,22 +9,22 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation & Infrastructure
 
-- [ ] **INFRA-01**: Site deployed via Docker Compose on Raspberry Pi
-- [ ] **INFRA-02**: Traefik reverse proxy configured with SSL certificate
-- [ ] **INFRA-03**: Site accessible at manna.voogt.co.za via Cloudflare DNS
-- [ ] **INFRA-04**: All pages served over HTTPS (SSL enabled)
-- [ ] **INFRA-05**: Site handles 20+ concurrent users without performance degradation
-- [ ] **INFRA-06**: Astro static site builds successfully on ARM64 architecture
+- [x] **INFRA-01**: Site deployed via Docker Compose on Raspberry Pi
+- [x] **INFRA-02**: Traefik reverse proxy configured with SSL certificate
+- [x] **INFRA-03**: Site accessible at manna.voogt.co.za via Cloudflare DNS
+- [x] **INFRA-04**: All pages served over HTTPS (SSL enabled)
+- [x] **INFRA-05**: Site handles 20+ concurrent users without performance degradation
+- [x] **INFRA-06**: Astro static site builds successfully on ARM64 architecture
 
 ### Content Management
 
-- [ ] **CONTENT-01**: Products loaded from products.json file
-- [ ] **CONTENT-02**: Weekly meals loaded from meals.json file
-- [ ] **CONTENT-03**: JSON schema validation prevents syntax errors
-- [ ] **CONTENT-04**: Admin can update JSON files without developer assistance
-- [ ] **CONTENT-05**: Product images optimized to <200KB for mobile
-- [ ] **CONTENT-06**: Images use WebP format with JPEG fallback
-- [ ] **CONTENT-07**: Responsive images with srcset for different screen sizes
+- [x] **CONTENT-01**: Products loaded from products.json file
+- [x] **CONTENT-02**: Weekly meals loaded from meals.json file
+- [x] **CONTENT-03**: JSON schema validation prevents syntax errors
+- [x] **CONTENT-04**: Admin can update JSON files without developer assistance
+- [x] **CONTENT-05**: Product images optimized to <200KB for mobile
+- [x] **CONTENT-06**: Images use WebP format with JPEG fallback
+- [x] **CONTENT-07**: Responsive images with srcset for different screen sizes
 
 ### Product Display
 
@@ -79,12 +79,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Information Pages
 
-- [ ] **INFO-01**: About page tells story of two sisters and Manna Kitchen
-- [ ] **INFO-02**: About page explains how ordering and pickup process works
-- [ ] **INFO-03**: Contact page shows business address/location
-- [ ] **INFO-04**: Contact page shows operating hours
-- [ ] **INFO-05**: Contact page shows phone number and WhatsApp contact
-- [ ] **INFO-06**: Contact information visible in site footer on all pages
+- [x] **INFO-01**: About page tells story of two sisters and Manna Kitchen
+- [x] **INFO-02**: About page explains how ordering and pickup process works
+- [x] **INFO-03**: Contact page shows business address/location
+- [x] **INFO-04**: Contact page shows operating hours
+- [x] **INFO-05**: Contact page shows phone number and WhatsApp contact
+- [x] **INFO-06**: Contact information visible in site footer on all pages
 
 ### Design & Mobile Experience
 
@@ -135,25 +135,25 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 1 | Pending |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
-| INFRA-05 | Phase 1 | Pending |
-| INFRA-06 | Phase 1 | Pending |
-| CONTENT-01 | Phase 1 | Pending |
-| CONTENT-02 | Phase 1 | Pending |
-| CONTENT-03 | Phase 1 | Pending |
-| CONTENT-04 | Phase 1 | Pending |
-| CONTENT-05 | Phase 1 | Pending |
-| CONTENT-06 | Phase 1 | Pending |
-| CONTENT-07 | Phase 1 | Pending |
-| INFO-01 | Phase 1 | Pending |
-| INFO-02 | Phase 1 | Pending |
-| INFO-03 | Phase 1 | Pending |
-| INFO-04 | Phase 1 | Pending |
-| INFO-05 | Phase 1 | Pending |
-| INFO-06 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
+| INFRA-04 | Phase 1 | Complete |
+| INFRA-05 | Phase 1 | Complete |
+| INFRA-06 | Phase 1 | Complete |
+| CONTENT-01 | Phase 1 | Complete |
+| CONTENT-02 | Phase 1 | Complete |
+| CONTENT-03 | Phase 1 | Complete |
+| CONTENT-04 | Phase 1 | Complete |
+| CONTENT-05 | Phase 1 | Complete |
+| CONTENT-06 | Phase 1 | Complete |
+| CONTENT-07 | Phase 1 | Complete |
+| INFO-01 | Phase 1 | Complete |
+| INFO-02 | Phase 1 | Complete |
+| INFO-03 | Phase 1 | Complete |
+| INFO-04 | Phase 1 | Complete |
+| INFO-05 | Phase 1 | Complete |
+| INFO-06 | Phase 1 | Complete |
 | DISPLAY-01 | Phase 2 | Pending |
 | DISPLAY-02 | Phase 2 | Pending |
 | DISPLAY-03 | Phase 2 | Pending |
