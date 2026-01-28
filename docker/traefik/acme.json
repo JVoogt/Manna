@@ -1,0 +1,3 @@
+{
+  "_comment": "This file stores Let's Encrypt SSL certificates. IMPORTANT: Set permissions to 600 before starting Traefik: chmod 600 docker/traefik/acme.json"
+}
