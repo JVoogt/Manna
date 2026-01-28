@@ -1,17 +1,68 @@
 ---
-
+import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Manna Kitchen - Home Cooking in Pretoria North">
+  <section class="hero">
+    <h1>Manna Kitchen</h1>
+    <p>Fresh homemade platters and weekly meals</p>
+  </section>
+
+  <section class="platter-builder">
+    <h2>Custom Platters</h2>
+    <p>Build your perfect platter - coming soon</p>
+    <!-- Platter builder interface will be added in Phase 3 -->
+  </section>
+
+  <section class="weekly-meals">
+    <h2>Weekly Meals</h2>
+    <p>This week's homemade specials - coming soon</p>
+    <!-- Weekly meals grid will be added in Phase 2 -->
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #8b5a3c 0%, #d4a574 100%);
+    color: white;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+  }
+
+  section:not(.hero) {
+    padding: 2rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #8b5a3c;
+  }
+
+  p {
+    color: #555;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+</style>
