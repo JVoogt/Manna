@@ -50,6 +50,10 @@ Recent decisions affecting current work:
 | 02-03 | Phone E.164 normalization | WhatsApp compatibility, +27XXXXXXXXX format |
 | 02-03 | Minimum pickup: 2 business days | Excludes weekends and holidays from calculation |
 | 02-03 | Separate remove button | Clarity over decreasing at quantity 1 |
+| 02-02 | Separate ProductCard/MealCard components | Different data shapes, MealCard needs servings/week badge |
+| 02-02 | Headless UI Tab for navigation | Accessibility with keyboard support and ARIA built-in |
+| 02-02 | Toast on every Add to Cart | Immediate feedback even when incrementing existing item |
+| 02-02 | Responsive grid breakpoints (1/2/3 cols) | Balances density with readability across devices |
 | 02-01 | Separated cart contexts (state/actions) | Prevents unnecessary re-renders in components that only read or only write |
 | 02-01 | client:only for CartProvider | Avoids SSR hydration mismatches with localStorage |
 | 02-01 | localStorage cart persistence | Cart survives page refresh and browser restart |
@@ -107,12 +111,15 @@ None yet.
 
 **Phase 2:** 🔄 IN PROGRESS
 - ✅ React islands and cart infrastructure established (02-01)
+- ✅ Product and meal display with tabbed navigation (02-02)
+- ✅ Add to Cart functionality with toast notifications (02-02)
+- ✅ Responsive grid layout (1/2/3 columns) (02-02)
 - ✅ Cart page with item management (quantity controls, removal) (02-03)
 - ✅ Business day calculation with SA holidays 2026 (02-03)
 - ✅ Phone validation with E.164 normalization (02-03)
 - ✅ Date and checkout validation schemas ready (02-03)
-- Cart icon in header shows item count badge
-- Toast notifications ready for user feedback
+- Cart icon badge updates with item count
+- Toast notifications integrated with cart actions
 - localStorage cart persistence working
 - **[BLOCKER]** Node.js >= 18.20.8 required for build verification (env has v18.19.1)
   - Code structure verified correct, will work in production
@@ -126,9 +133,9 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-28 13:35 UTC
-Stopped at: Completed 02-03-PLAN.md - Cart Page & Validation
+Stopped at: Completed 02-02-PLAN.md - Product Display & Add to Cart
 Resume file: None
-Next: 02-04-PLAN.md - Checkout Form (or 02-02 if Product Listing needed first)
+Next: 02-04-PLAN.md - Checkout Form
 
 ---
 *Last updated: 2026-01-28*
