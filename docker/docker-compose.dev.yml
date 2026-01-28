@@ -1,0 +1,14 @@
+version: '3.8'
+
+# Development docker-compose for local testing
+# Usage: docker-compose -f docker-compose.dev.yml up --build
+# Access at: http://localhost:8080
+
+services:
+  manna:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
