@@ -1,0 +1,112 @@
+[
+  {
+    "id": "biltong-sticks",
+    "name": "Biltong Sticks",
+    "description": "Traditional South African dried cured meat, perfectly spiced and air-dried to tender perfection",
+    "price": 35,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/biltong-sticks.webp",
+    "dietary": ["gluten-free", "dairy-free"],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "droewors",
+    "name": "Droewors",
+    "description": "Thin dried sausage with traditional spices, a beloved South African snack",
+    "price": 28,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/droewors.webp",
+    "dietary": ["gluten-free", "dairy-free"],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "cheese-cubes",
+    "name": "Artisan Cheese Cubes",
+    "description": "Selection of local South African cheeses, cubed for easy snacking",
+    "price": 32,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/cheese-cubes.webp",
+    "dietary": ["vegetarian", "gluten-free"],
+    "allergens": ["dairy"],
+    "available": true
+  },
+  {
+    "id": "mini-quiches",
+    "name": "Mini Quiches",
+    "description": "Buttery pastry filled with egg, cheese, and vegetables - a party favorite",
+    "price": 25,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/mini-quiches.webp",
+    "dietary": ["vegetarian"],
+    "allergens": ["eggs", "dairy", "gluten"],
+    "available": true
+  },
+  {
+    "id": "koeksisters",
+    "name": "Koeksisters",
+    "description": "Traditional Cape Malay syrup-soaked plaited doughnuts, sweet and delicious",
+    "price": 22,
+    "category": "sweet",
+    "imageUrl": "https://images.manna.voogt.co.za/koeksisters.webp",
+    "dietary": ["vegetarian"],
+    "allergens": ["gluten", "eggs"],
+    "available": true
+  },
+  {
+    "id": "melktert-bites",
+    "name": "Melktert Bites",
+    "description": "Mini milk tarts with cinnamon, a sweet taste of South African heritage",
+    "price": 24,
+    "category": "sweet",
+    "imageUrl": "https://images.manna.voogt.co.za/melktert-bites.webp",
+    "dietary": ["vegetarian"],
+    "allergens": ["dairy", "gluten", "eggs"],
+    "available": true
+  },
+  {
+    "id": "samoosas",
+    "name": "Vegetable Samoosas",
+    "description": "Crispy triangular pastries filled with spiced potato and peas",
+    "price": 20,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/samoosas.webp",
+    "dietary": ["vegan"],
+    "allergens": ["gluten"],
+    "available": true
+  },
+  {
+    "id": "spring-rolls",
+    "name": "Spring Rolls",
+    "description": "Golden fried rolls with vegetable filling, served with sweet chili sauce",
+    "price": 22,
+    "category": "savory",
+    "imageUrl": "https://images.manna.voogt.co.za/spring-rolls.webp",
+    "dietary": ["vegetarian"],
+    "allergens": ["gluten", "soy"],
+    "available": true
+  },
+  {
+    "id": "fruit-skewers",
+    "name": "Fresh Fruit Skewers",
+    "description": "Colorful seasonal fruit on bamboo skewers, naturally sweet and refreshing",
+    "price": 18,
+    "category": "sweet",
+    "imageUrl": "https://images.manna.voogt.co.za/fruit-skewers.webp",
+    "dietary": ["vegan", "gluten-free", "dairy-free", "nut-free"],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "chocolate-truffles",
+    "name": "Chocolate Truffles",
+    "description": "Handmade chocolate truffles with rich ganache centers, dusted with cocoa",
+    "price": 30,
+    "category": "sweet",
+    "imageUrl": "https://images.manna.voogt.co.za/chocolate-truffles.webp",
+    "dietary": ["vegetarian", "gluten-free"],
+    "allergens": ["dairy"],
+    "available": true
+  }
+]

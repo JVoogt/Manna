@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bobotie-with-rice",
+    "name": "Traditional Bobotie with Yellow Rice",
+    "description": "Cape Malay spiced mince with egg topping, served with fragrant yellow rice, chutney, and sambals. A true South African comfort meal.",
+    "price": 180,
+    "imageUrl": "https://images.manna.voogt.co.za/bobotie.webp",
+    "servings": "Serves 4",
+    "dietary": ["gluten-free"],
+    "allergens": ["eggs", "dairy"],
+    "available": true,
+    "weekOf": "2026-01-27"
+  },
+  {
+    "id": "chicken-pie-salad",
+    "name": "Chicken Pie with Fresh Garden Salad",
+    "description": "Flaky pastry filled with tender chicken in creamy sauce, accompanied by crisp seasonal salad with homemade dressing.",
+    "price": 120,
+    "imageUrl": "https://images.manna.voogt.co.za/chicken-pie.webp",
+    "servings": "Serves 2-3",
+    "dietary": [],
+    "allergens": ["gluten", "dairy", "eggs"],
+    "available": true,
+    "weekOf": "2026-01-27"
+  }
+]
