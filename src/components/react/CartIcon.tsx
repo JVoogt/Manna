@@ -6,7 +6,7 @@ export function CartIcon() {
 
   return (
     <a
-      href="/cart"
+      href="/cart/"
       className="cart-icon-link"
       aria-label={`Shopping cart with ${totalItems} items`}
     >

@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
           </li>
           <li>
             <a
-              href="/about"
+              href="/about/"
               class:list={["nav-link", { active: currentPath === "/about" || currentPath === "/about/" }]}
               aria-current={currentPath === "/about" || currentPath === "/about/" ? "page" : undefined}
             >
@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname;
           </li>
           <li>
             <a
-              href="/contact"
+              href="/contact/"
               class:list={["nav-link", { active: currentPath === "/contact" || currentPath === "/contact/" }]}
               aria-current={currentPath === "/about" || currentPath === "/contact/" ? "page" : undefined}
             >
