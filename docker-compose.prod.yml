@@ -1,0 +1,37 @@
+services:
+  # Production static file server
+  manna-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: manna-prod
+    ports:
+      - "8230:80"
+    restart: unless-stopped
+    networks:
+      - default
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      # HTTP router for ACME challenge and redirect
+      - "traefik.http.routers.manna-http.rule=Host(`manna.voogt.co.za`)"
+      - "traefik.http.routers.manna-http.entrypoints=web"
+      - "traefik.http.routers.manna-http.middlewares=manna-https-redirect"
+      # HTTP to HTTPS redirect middleware
+      - "traefik.http.middlewares.manna-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.manna-https-redirect.redirectscheme.permanent=true"
+      # HTTPS router with TLS
+      - "traefik.http.routers.manna.rule=Host(`manna.voogt.co.za`)"
+      - "traefik.http.routers.manna.entrypoints=websecure"
+      - "traefik.http.routers.manna.tls=true"
+      - "traefik.http.routers.manna.tls.certresolver=letsencrypt"
+      # Service configuration
+      - "traefik.http.services.manna.loadbalancer.server.port=80"
+      - "traefik.docker.network=homeassistant_default"
+
+networks:
+  default:
+    driver: bridge
+  traefik-network:
+    external: true
+    name: homeassistant_default
