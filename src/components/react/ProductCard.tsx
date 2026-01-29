@@ -19,7 +19,9 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
         return;
       }
       onSelect(product);
-      if (!isSelected) {
+      if (isSelected) {
+        toast.success(`${product.name} removed from platter`);
+      } else {
         toast.success(`${product.name} added to platter`);
       }
     } else {
@@ -76,9 +78,9 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
             className="add-to-cart-btn"
             onClick={handleClick}
             disabled={isDisabled && !isSelected}
-            aria-label={onSelect ? `Select ${product.name} for platter` : `Add ${product.name} to cart`}
+            aria-label={onSelect ? (isSelected ? `Remove ${product.name} from platter` : `Select ${product.name} for platter`) : `Add ${product.name} to cart`}
           >
-            {isSelected ? '✓ Selected' : onSelect ? 'Select for Platter' : 'Add to Cart'}
+            {isSelected ? '✓ Selected (Click to Remove)' : onSelect ? 'Select for Platter' : 'Add to Cart'}
           </button>
         </div>
       </div>

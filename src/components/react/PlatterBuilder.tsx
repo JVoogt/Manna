@@ -17,19 +17,23 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
       return;
     }
 
-    // Add platter as a bundle to cart
+    // Calculate total platter price
+    const totalPlatterPrice = selectedItems.reduce((sum, item) => sum + item.price, 0);
+    const pricePerItem = totalPlatterPrice / 6;
+
+    // Add platter as a bundle to cart with proportional pricing
     selectedItems.forEach(item => {
       addItem({
         id: item.id,
         name: item.name,
-        price: 30, // 180 / 6 = R30 per item in platter
+        price: pricePerItem, // Divide total platter price equally
         quantity: 1,
         type: 'product',
         imageUrl: item.imageUrl
       });
     });
 
-    toast.success('Platter added to cart!');
+    toast.success(`Platter added to cart! Total: R${totalPlatterPrice.toFixed(2)}`);
     onClearPlatter();
   };
 

@@ -13,7 +13,14 @@ export default function HomePage({ products, meals }: HomePageProps) {
   const [selectedItems, setSelectedItems] = useState<Product[]>([]);
 
   const handleSelectItem = (product: Product) => {
-    if (selectedItems.length < 6) {
+    // Check if item is already selected
+    const existingIndex = selectedItems.findIndex(item => item.id === product.id);
+
+    if (existingIndex !== -1) {
+      // Item is already selected - remove it (deselect)
+      setSelectedItems(selectedItems.filter((_, i) => i !== existingIndex));
+    } else if (selectedItems.length < 6) {
+      // Item not selected and platter not full - add it
       setSelectedItems([...selectedItems, product]);
     }
   };
@@ -42,11 +49,17 @@ export default function HomePage({ products, meals }: HomePageProps) {
             </p>
             <div className="platter-pricing">
               <div className="pricing-card">
-                <span className="pricing-label">Base Platter (6 items)</span>
-                <span className="pricing-amount">R180</span>
+                <span className="pricing-label">
+                  {selectedItems.length === 6 ? 'Complete Platter' : `Platter (${selectedItems.length}/6 items)`}
+                </span>
+                <span className="pricing-amount">
+                  R{selectedItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
+                </span>
               </div>
               <div className="pricing-note">
-                Mix & match from our selection below
+                {selectedItems.length === 6
+                  ? 'Your custom platter is ready!'
+                  : 'Mix & match from our selection below'}
               </div>
             </div>
           </div>
