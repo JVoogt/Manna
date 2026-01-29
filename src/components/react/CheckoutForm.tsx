@@ -143,6 +143,53 @@ export default function CheckoutForm() {
           <p className="checkout-form__summary-note">
             Final price will be confirmed via WhatsApp
           </p>
+
+          {/* Payment Information */}
+          <div className="checkout-form__payment">
+            <h3 className="checkout-form__payment-title">Payment Options</h3>
+
+            <div className="checkout-form__payment-methods">
+              <div className="checkout-form__payment-option">
+                <span className="checkout-form__payment-badge">💵</span>
+                <span className="checkout-form__payment-text">Cash on Delivery</span>
+              </div>
+              <div className="checkout-form__payment-option">
+                <span className="checkout-form__payment-badge">🏦</span>
+                <span className="checkout-form__payment-text">EFT (funds must clear)</span>
+              </div>
+            </div>
+
+            <div className="checkout-form__banking">
+              <h4 className="checkout-form__banking-title">Banking Details</h4>
+              <div className="checkout-form__banking-details">
+                <div className="checkout-form__banking-row">
+                  <span className="checkout-form__banking-label">Account Name:</span>
+                  <span className="checkout-form__banking-value">CM VOOGT</span>
+                </div>
+                <div className="checkout-form__banking-row">
+                  <span className="checkout-form__banking-label">Bank:</span>
+                  <span className="checkout-form__banking-value">CAPITEC</span>
+                </div>
+                <div className="checkout-form__banking-row">
+                  <span className="checkout-form__banking-label">Account Type:</span>
+                  <span className="checkout-form__banking-value">SAVINGS</span>
+                </div>
+                <div className="checkout-form__banking-row">
+                  <span className="checkout-form__banking-label">Account Number:</span>
+                  <span className="checkout-form__banking-value checkout-form__banking-account">2421599047</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="checkout-form__payment-policy">
+              <p className="checkout-form__policy-text">
+                <strong>⚠️ Important:</strong> Orders above R200 require proof of payment before we start preparing your order.
+              </p>
+              <p className="checkout-form__policy-note">
+                Please WhatsApp your proof of payment to <strong>{WHATSAPP_NUMBER}</strong>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -315,6 +362,123 @@ export default function CheckoutForm() {
           color: var(--color-text-light, #666);
           text-align: center;
           margin: 1rem 0 0 0;
+        }
+
+        /* Payment Information */
+        .checkout-form__payment {
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 2px solid var(--color-border, #e5e5e5);
+        }
+
+        .checkout-form__payment-title {
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--color-text-dark, #333);
+          margin: 0 0 1rem 0;
+        }
+
+        .checkout-form__payment-methods {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .checkout-form__payment-option {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          background: var(--color-bg-warm, #fdf8f3);
+          border-radius: 6px;
+          border: 1px solid var(--color-accent, #d4a574);
+        }
+
+        .checkout-form__payment-badge {
+          font-size: 1.25rem;
+        }
+
+        .checkout-form__payment-text {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: var(--color-text-dark, #333);
+        }
+
+        .checkout-form__banking {
+          background: linear-gradient(135deg, #f8f4ef 0%, #e8ddd0 100%);
+          border-radius: 8px;
+          padding: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .checkout-form__banking-title {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--color-text-dark, #333);
+          margin: 0 0 0.75rem 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .checkout-form__banking-details {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .checkout-form__banking-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .checkout-form__banking-label {
+          font-size: 0.8125rem;
+          color: var(--color-text-light, #666);
+        }
+
+        .checkout-form__banking-value {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--color-text-dark, #333);
+        }
+
+        .checkout-form__banking-account {
+          font-family: 'Courier New', monospace;
+          font-size: 1rem;
+          color: var(--color-primary, #8b5a3c);
+          letter-spacing: 0.05em;
+        }
+
+        .checkout-form__payment-policy {
+          background: #fff3cd;
+          border: 1px solid #ffc107;
+          border-radius: 6px;
+          padding: 1rem;
+        }
+
+        .checkout-form__policy-text {
+          font-size: 0.875rem;
+          color: #333;
+          margin: 0 0 0.5rem 0;
+          line-height: 1.5;
+        }
+
+        .checkout-form__policy-text strong {
+          color: #856404;
+        }
+
+        .checkout-form__policy-note {
+          font-size: 0.8125rem;
+          color: #666;
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .checkout-form__policy-note strong {
+          color: var(--color-primary, #8b5a3c);
+          font-weight: 600;
         }
 
         /* Form */
