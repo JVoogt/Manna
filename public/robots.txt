@@ -1,0 +1,17 @@
+# Manna Kitchen - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://manna.voogt.co.za/sitemap.xml
+
+# Disallow crawling of administrative or unnecessary paths
+Disallow: /api/
+Disallow: /_astro/
+
+# Allow crawling of images and assets
+Allow: /images/
+Allow: /favicon.svg
+Allow: /favicon.ico

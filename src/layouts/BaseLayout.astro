@@ -4,19 +4,108 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
 }
 
-const { title = "Manna Kitchen" } = Astro.props;
+const {
+  title = "Manna Kitchen - Homemade Food with Love | Theresapark, Pretoria",
+  description = "Fresh homemade platters and weekly meals made with love in Theresapark, Pretoria. Custom 6-item platters, traditional South African treats, and wholesome family meals. Order via WhatsApp for pickup.",
+  image = "/images/og-image.jpg",
+  type = "website"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = "https://manna.voogt.co.za";
+
+// Structured Data for LocalBusiness
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Manna Kitchen",
+  "image": `${siteUrl}/images/og-image.jpg`,
+  "description": description,
+  "@id": siteUrl,
+  "url": siteUrl,
+  "telephone": "+27825795210",
+  "priceRange": "R",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "71 Springbok St",
+    "addressLocality": "Theresapark",
+    "addressRegion": "Gauteng",
+    "postalCode": "0182",
+    "addressCountry": "ZA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -25.6583,
+    "longitude": 28.1556
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "17:00"
+  },
+  "servesCuisine": "South African",
+  "menu": `${siteUrl}/`,
+  "acceptsReservations": "False",
+  "priceRange": "R30-R180"
+};
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="homemade food, platters, South African food, weekly meals, catering, Pretoria, Theresapark, food delivery, custom platters, traditional food, baked goods" />
+    <meta name="author" content="Manna Kitchen" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${image}`} />
+    <meta property="og:site_name" content="Manna Kitchen" />
+    <meta property="og:locale" content="en_ZA" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`${siteUrl}${image}`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#8b5a3c" />
+    <meta name="msapplication-TileColor" content="#8b5a3c" />
   </head>
   <body>
     <Header />

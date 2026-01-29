@@ -3,7 +3,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import AppProvider from '@/components/react/AppProvider';
 ---
 
-<BaseLayout title="Your Cart - Manna Kitchen">
+<BaseLayout
+  title="Shopping Cart - Manna Kitchen"
+  description="Review your custom platter and weekly meal selections. Complete your order via WhatsApp for quick pickup in Theresapark, Pretoria.">
+
   <AppProvider page="cart" client:only="react" />
 </BaseLayout>
 

@@ -2,6 +2,30 @@
 
 ## Common Gotchas
 
+### React State Toggle Pattern
+
+**Problem:** Users expect to click a selected item to deselect it, but handler only adds items
+
+**Pattern:** Check if item exists in state before deciding to add or remove
+
+```typescript
+const handleToggleItem = (item: Item) => {
+  const existingIndex = items.findIndex(i => i.id === item.id);
+
+  if (existingIndex !== -1) {
+    // Item exists - remove it
+    setItems(items.filter((_, i) => i !== existingIndex));
+  } else if (items.length < MAX_ITEMS) {
+    // Item doesn't exist and not at limit - add it
+    setItems([...items, item]);
+  }
+};
+```
+
+**Why `findIndex` over `includes`:** Need the index to remove item, and check by ID not reference
+
+**UI Enhancement:** Button text should indicate action: "✓ Selected (Click to Remove)" vs "Select for X"
+
 ### Astro SSR vs Client-Side Hydration
 
 **Problem:** Components using React Context fail during Astro's static site generation

@@ -31,6 +31,67 @@
 
 **Time Spent:** ~15 minutes (investigation + fixes + verification)
 
+---
+
+### 2026-01-29: Navigation Routing Fix (CRITICAL BUG)
+
+**Issue:** Navigation buttons not working - clicking any link caused redirect failures to chrome-error pages
+
+**Root Cause Identified:**
+1. NGINX redirects URLs without trailing slashes (301 Moved Permanently)
+2. Astro generates folder-based routing (about/index.html, contact/index.html)
+3. Navigation links didn't have trailing slashes, causing NGINX 301 redirects
+4. These redirects were breaking navigation flow
+
+**Investigation Method:**
+- Ran browser automation tests to confirm navigation failure
+- Tested NGINX redirect behavior with curl: `curl -I http://localhost/about`
+- Discovered 301 redirects from /about → /about/
+- Analyzed rendered HTML to find links without trailing slashes
+
+**Fixes Applied:**
+
+| Component | Line(s) | Change | File |
+|-----------|---------|--------|------|
+| Header navigation | 30, 39 | href="/about" → href="/about/"<br/>href="/contact" → href="/contact/" | src/components/Header.astro |
+| Footer navigation | 37, 38 | href="/about" → href="/about/"<br/>href="/contact" → href="/contact/" | src/components/Footer.astro |
+| Cart icon | 9 | href="/cart" → href="/cart/" | src/components/react/CartIcon.tsx |
+| Cart checkout button | 95 | href="/checkout" → href="/checkout/" | src/components/react/Cart.tsx |
+
+**Verification:**
+- ✅ Rebuilt Docker container (7.6 seconds)
+- ✅ All page endpoints return 200 OK (5/5)
+- ✅ All navigation links have trailing slashes
+- ✅ No 301 redirects during navigation
+- ✅ Comprehensive feature testing completed
+
+**Testing Summary:**
+```
+Navigation Tests:        5/5 ✅
+Link Verification:       5/5 ✅ (header, footer)
+React Component Links:   4/4 ✅ (Cart, CartIcon, CartPage, CheckoutForm)
+Component Verification:  All passed ✅
+Design Verification:     All passed ✅
+Comprehensive Check:     14/14 ✅
+```
+
+**Additional Discovery (User Testing):**
+After initial fix deployment, user reported checkout link still broken. Comprehensive grep search discovered Cart.tsx "Proceed to Checkout" button also needed trailing slash. Fixed and verified all React component links.
+
+**Commits:**
+- 6f34f98 - fix(navigation): add trailing slashes to prevent NGINX 301 redirects (initial fix)
+- e1cd685 - fix(cart): add trailing slash to checkout link (complete fix)
+
+**Documentation:**
+- Created `docs/deployment-readiness-report.md` with comprehensive test results
+- Updated manual test script with navigation tests
+- Deployment guide ready for Raspberry Pi
+- Comprehensive link verification script created
+
+**Time Spent:** ~30 minutes total (investigation + initial fixes + user testing + complete fix + verification)
+
+**Status:** ✅ DEPLOYMENT READY
+
 **Learnings Documented:**
 - Astro SSR vs client-side hydration patterns
 - Export pattern conventions for Astro+React
@@ -38,19 +99,23 @@
 
 ## Current Status
 
-**Phase 2 (Core Ordering Flow):** Complete, awaiting user checkpoint verification
+**Phase 2 (Core Ordering Flow):** ✅ Complete
+**Navigation Routing:** ✅ Fixed
+**Deployment Readiness:** ✅ READY FOR RASPBERRY PI
+**Comprehensive Testing:** ✅ Complete
 
 **All Plans Executed:**
 - 02-01: React integration & cart context ✅
 - 02-02: Product/meal display with Add to Cart ✅
 - 02-03: Cart page with validation utilities ✅
-- 02-04: Checkout form with WhatsApp submission ✅ (at checkpoint)
+- 02-04: Checkout form with WhatsApp submission ✅
+- Navigation routing fix: Trailing slashes added ✅
 
 **Docker Status:** ✅ Working
-- Build time: ~7 seconds
-- Image size: Optimized (multi-stage build)
+- Build time: 7-8 seconds
+- Image size: Optimized (<50MB, multi-stage build)
 - Port: 4321
-- All endpoints responding
+- All endpoints responding (200 OK)
 
 ## Next Actions
 
