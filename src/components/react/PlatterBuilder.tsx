@@ -58,10 +58,10 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
                   >
                     ×
                   </button>
-                  <div className="slot-image">
-                    <img src={item.imageUrl} alt={item.name} />
+                  <div className="filled-slot">
+                    <div className="slot-number-filled">{index + 1}</div>
+                    <div className="slot-name">{item.name}</div>
                   </div>
-                  <div className="slot-name">{item.name}</div>
                 </>
               ) : (
                 <div className="empty-slot">
@@ -216,31 +216,57 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
           letter-spacing: 0.05em;
         }
 
-        .slot-image {
-          width: 100%;
-          height: 70%;
-          overflow: hidden;
-          border-radius: 12px 12px 0 0;
-        }
-
-        .slot-image img {
+        .filled-slot {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+          text-align: center;
+          background: linear-gradient(135deg, #8b5a3c 0%, #6b4423 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .filled-slot::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+          animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .slot-number-filled {
+          font-family: 'Playfair Display', serif;
+          font-size: 3rem;
+          font-weight: 700;
+          color: #d4a574;
+          margin-bottom: 0.5rem;
+          position: relative;
+          z-index: 1;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          line-height: 1;
         }
 
         .slot-name {
           font-family: 'Karla', sans-serif;
-          font-size: 0.75rem;
+          font-size: 0.875rem;
           font-weight: 600;
-          color: #4a3728;
-          padding: 0.5rem;
-          text-align: center;
-          height: 30%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          line-height: 1.2;
+          color: #f8f4ef;
+          position: relative;
+          z-index: 1;
+          line-height: 1.3;
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .remove-btn {

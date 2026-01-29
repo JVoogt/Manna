@@ -44,8 +44,9 @@ export default function HomePage({ products, meals }: HomePageProps) {
               <span className="hero-title-accent"> Perfect Platter</span>
             </h1>
             <p className="hero-subtitle">
-              Choose 6 delicious South African treats to create your custom homemade platter.
-              Each platter is lovingly prepared in Pretoria North.
+              Traditional platters come with items nobody wants. Not ours.
+              You choose exactly what you love. Every item. Every time.
+              Six handpicked South African treats, lovingly prepared in Pretoria North.
             </p>
             <div className="platter-pricing">
               <div className="pricing-card">
@@ -58,8 +59,8 @@ export default function HomePage({ products, meals }: HomePageProps) {
               </div>
               <div className="pricing-note">
                 {selectedItems.length === 6
-                  ? 'Your custom platter is ready!'
-                  : 'Mix & match from our selection below'}
+                  ? 'Your perfect platter awaits. Only what you want.'
+                  : 'Your platter, your rules. Scroll to choose what you love.'}
               </div>
             </div>
           </div>
@@ -70,14 +71,28 @@ export default function HomePage({ products, meals }: HomePageProps) {
             onClearPlatter={handleClearPlatter}
           />
         </div>
+
+        {/* Scroll Indicator */}
+        <div className="scroll-indicator">
+          <div className="scroll-text">Scroll to explore treats</div>
+          <div className="scroll-arrow">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0L12 35M12 35L6 29M12 35L18 29" stroke="#8b5a3c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
       </section>
 
       {/* Platter Items Selection */}
       <section className="platter-selection">
         <div className="section-header">
-          <h2 className="section-title">Select Your Platter Items</h2>
+          <h2 className="section-title">Curate Your Perfect Selection</h2>
           <p className="section-subtitle">
-            Choose {6 - selectedItems.length} {selectedItems.length === 5 ? 'more item' : 'more items'} to complete your platter
+            {selectedItems.length === 0
+              ? 'No fillers. No extras you won\'t eat. Just 6 treats you\'ll actually enjoy.'
+              : selectedItems.length === 6
+              ? 'Your custom platter is complete. This is how it should be.'
+              : `Pick ${6 - selectedItems.length} more ${selectedItems.length === 5 ? 'treat' : 'treats'}. Make every slot count.`}
           </p>
           <div className="selection-progress">
             <div className="progress-bar">
@@ -124,7 +139,7 @@ export default function HomePage({ products, meals }: HomePageProps) {
           background: linear-gradient(135deg, #e8d5c4 0%, #f4e9dd 50%, #d4b5a0 100%);
           position: relative;
           overflow: hidden;
-          padding: 4rem 1.5rem 6rem;
+          padding: 4rem 1.5rem 8rem;
         }
 
         .hero-platter::before {
@@ -143,13 +158,29 @@ export default function HomePage({ products, meals }: HomePageProps) {
         .hero-platter::after {
           content: '';
           position: absolute;
-          top: 0;
+          bottom: 0;
           left: 0;
           right: 0;
-          bottom: 0;
-          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5a3c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          opacity: 0.4;
+          height: 140px;
+          background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(232, 213, 196, 0.3) 40%,
+            rgba(232, 213, 196, 0.8) 100%
+          );
           pointer-events: none;
+          z-index: 2;
+        }
+
+        .hero-platter::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 120px;
+          background: linear-gradient(to bottom, transparent 0%, rgba(232, 213, 196, 0.95) 100%);
+          pointer-events: none;
+          z-index: 2;
         }
 
         .hero-content {
@@ -245,6 +276,64 @@ export default function HomePage({ products, meals }: HomePageProps) {
           font-style: italic;
           padding-top: 0.75rem;
           border-top: 1px solid rgba(139, 90, 60, 0.2);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+          position: absolute;
+          bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem;
+          z-index: 10;
+          animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+          }
+        }
+
+        .scroll-text {
+          font-family: 'Karla', sans-serif;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #8b5a3c;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          opacity: 0.9;
+        }
+
+        .scroll-arrow {
+          animation: bounce 2s ease-in-out infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .scroll-arrow svg {
+          filter: drop-shadow(0 2px 4px rgba(139, 90, 60, 0.2));
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-10px);
+          }
+          60% {
+            transform: translateY(-5px);
+          }
         }
 
         /* Selection Section */
@@ -363,6 +452,10 @@ export default function HomePage({ products, meals }: HomePageProps) {
           .platter-selection,
           .meals-section {
             padding: 3rem 1.5rem;
+          }
+
+          .scroll-indicator {
+            display: none;
           }
         }
       `}</style>
