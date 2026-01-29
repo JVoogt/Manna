@@ -6,9 +6,10 @@ interface PlatterBuilderProps {
   selectedItems: Product[];
   onRemoveItem: (index: number) => void;
   onClearPlatter: () => void;
+  onEmptySlotClick?: () => void;
 }
 
-export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: PlatterBuilderProps) {
+export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter, onEmptySlotClick }: PlatterBuilderProps) {
   const { addItem } = useCartActions();
 
   const handleAddToCart = () => {
@@ -47,6 +48,10 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
             <div
               key={index}
               className={`platter-slot ${item ? 'filled' : 'empty'} ${isComplete && item ? 'complete' : ''}`}
+              onClick={!item && onEmptySlotClick ? onEmptySlotClick : undefined}
+              role={!item ? 'button' : undefined}
+              tabIndex={!item ? 0 : undefined}
+              aria-label={!item ? 'Click to browse items' : undefined}
             >
               {item ? (
                 <>
@@ -65,7 +70,7 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
               ) : (
                 <div className="empty-slot">
                   <div className="slot-number">{index + 1}</div>
-                  <div className="slot-placeholder">Empty</div>
+                  <div className="slot-placeholder">Tap to browse</div>
                 </div>
               )}
             </div>
@@ -153,6 +158,20 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
           align-items: center;
           justify-content: center;
           animation: pulse 2s ease-in-out infinite;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .platter-slot.empty:hover {
+          background: linear-gradient(135deg, #e8ddd0 0%, #d4b5a0 100%);
+          border-color: #8b5a3c;
+          transform: scale(1.03);
+          animation: none;
+          opacity: 1;
+        }
+
+        .platter-slot.empty:active {
+          transform: scale(0.98);
         }
 
         @keyframes pulse {
@@ -210,9 +229,14 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
         .slot-placeholder {
           font-family: 'Karla', sans-serif;
           font-size: 0.75rem;
-          font-weight: 500;
+          font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          color: #8b5a3c;
+        }
+
+        .platter-slot.empty:hover .slot-placeholder {
+          color: #6b4423;
         }
 
         .filled-slot {

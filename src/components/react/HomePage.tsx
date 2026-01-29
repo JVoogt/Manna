@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ProductTabs } from './ProductTabs';
 import { PlatterBuilder } from './PlatterBuilder';
 import type { Product } from '@/schemas/product.schema';
@@ -11,6 +11,7 @@ interface HomePageProps {
 
 export default function HomePage({ products, meals }: HomePageProps) {
   const [selectedItems, setSelectedItems] = useState<Product[]>([]);
+  const selectionSectionRef = useRef<HTMLElement>(null);
 
   const handleSelectItem = (product: Product) => {
     // Check if item is already selected
@@ -31,6 +32,16 @@ export default function HomePage({ products, meals }: HomePageProps) {
 
   const handleClearPlatter = () => {
     setSelectedItems([]);
+  };
+
+  const handleEmptySlotClick = () => {
+    // Scroll to the selection section when user clicks an empty slot
+    if (selectionSectionRef.current) {
+      selectionSectionRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   return (
@@ -69,6 +80,7 @@ export default function HomePage({ products, meals }: HomePageProps) {
             selectedItems={selectedItems}
             onRemoveItem={handleRemoveItem}
             onClearPlatter={handleClearPlatter}
+            onEmptySlotClick={handleEmptySlotClick}
           />
         </div>
 
@@ -84,7 +96,7 @@ export default function HomePage({ products, meals }: HomePageProps) {
       </section>
 
       {/* Platter Items Selection */}
-      <section className="platter-selection">
+      <section ref={selectionSectionRef} className="platter-selection">
         <div className="section-header">
           <h2 className="section-title">Curate Your Perfect Selection</h2>
           <p className="section-subtitle">
