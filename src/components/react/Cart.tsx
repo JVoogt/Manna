@@ -92,7 +92,7 @@ export default function Cart() {
             </span>
           </div>
 
-          <a href="/checkout" className="cart__checkout-button">
+          <a href="/checkout/" className="cart__checkout-button">
             Proceed to Checkout
           </a>
 
