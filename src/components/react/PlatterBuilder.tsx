@@ -19,14 +19,13 @@ export function PlatterBuilder({ selectedItems, onRemoveItem, onClearPlatter }: 
 
     // Calculate total platter price
     const totalPlatterPrice = selectedItems.reduce((sum, item) => sum + item.price, 0);
-    const pricePerItem = totalPlatterPrice / 6;
 
-    // Add platter as a bundle to cart with proportional pricing
+    // Add platter items to cart with their original individual prices
     selectedItems.forEach(item => {
       addItem({
         id: item.id,
         name: item.name,
-        price: pricePerItem, // Divide total platter price equally
+        price: item.price, // Keep original item price
         quantity: 1,
         type: 'product',
         imageUrl: item.imageUrl

@@ -303,10 +303,78 @@ curl -s http://localhost:4321/ | grep -o '<a href="[^"]*"'
 **Documentation Created:**
 - `docs/deployment-readiness-report.md` - Comprehensive deployment guide with test results
 
+### Cart Pricing Bug Fix (2026-01-29) ✅
+
+**Issue:** All platter items displayed the same price in cart and checkout, despite showing correct individual prices during selection.
+
+**User Report:** "the item prices reflect correctly when selecting them, however in the cart and the checkout all the item prices for the platter is exactly the same"
+
+**Root Cause:**
+- **Location:** PlatterBuilder.tsx lines 20-34
+- **Problem:** Code calculated average price and assigned it to ALL items
+- **Logic:**
+  ```typescript
+  const totalPlatterPrice = selectedItems.reduce((sum, item) => sum + item.price, 0);
+  const pricePerItem = totalPlatterPrice / 6; // ← BUG: Divided total by 6
+
+  selectedItems.forEach(item => {
+    addItem({
+      price: pricePerItem, // ← All items got R95.17 instead of individual prices
+      ...
+    });
+  });
+  ```
+
+**Investigation Process:**
+1. Read Cart.tsx - subtotal calculation correct, uses `item.price` from state
+2. Read CartItem.tsx - display correct, shows `item.price` at line 45
+3. Read PlatterBuilder.tsx - **BUG FOUND** at handleAddToCart function
+4. Read HomePage.tsx - confirmed items stored with correct individual prices
+
+**Fix Applied:**
+- **File:** PlatterBuilder.tsx
+- **Lines:** 14-38 (handleAddToCart function)
+- **Change:** Removed price averaging logic, use original `item.price`
+  ```typescript
+  // BEFORE (lines 21-22):
+  const totalPlatterPrice = selectedItems.reduce((sum, item) => sum + item.price, 0);
+  const pricePerItem = totalPlatterPrice / 6; // Divide by 6
+
+  // AFTER (line 21 only):
+  const totalPlatterPrice = selectedItems.reduce((sum, item) => sum + item.price, 0);
+  // Removed pricePerItem calculation
+
+  // BEFORE (line 29):
+  price: pricePerItem, // All items same price
+
+  // AFTER (line 28):
+  price: item.price, // Keep original item price
+  ```
+
+**Verification:**
+- ✅ Docker rebuild successful (7.2 seconds)
+- ✅ Container restarted with fix
+- Example prices from products.json:
+  - Ribblets: R151.74
+  - Chicken Wings: R80.33
+  - Meatballs: R40.77
+  - Cocktail Cheese Viennas: R46.55
+  - Cocktail Red Viennas: R34.16
+  - Prawn Tempura: R217.49
+
+**Expected Behavior After Fix:**
+- User selects 6 items with different prices
+- Each item retains its individual price when added to cart
+- Cart shows: Ribblets R151.74, Wings R80.33, Meatballs R40.77, etc.
+- Total calculates correctly as sum of individual prices
+
+**Commit:** Ready to commit fix
+
 ## Next Steps
 
 1. ✅ Navigation routing fixed and tested
-2. ⏳ User deploys to Raspberry Pi following deployment guide
-3. ⏳ User completes manual testing checklist (navigation, platter builder, cart, checkout)
-4. ⏳ User acceptance testing by owner
-5. ⏳ Production launch (DNS, SSL, monitoring)
+2. ✅ Cart pricing bug fixed - items now show individual prices
+3. ⏳ User tests platter builder pricing in browser
+4. ⏳ Deploy fix to Raspberry Pi production server
+5. ⏳ User acceptance testing by owner
+6. ⏳ Production launch (DNS, SSL, monitoring)
