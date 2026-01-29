@@ -41,21 +41,14 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
   return (
     <>
       <div className={`product-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}>
-        <div className="product-image">
-          {product.imageUrl ? (
-            <img src={product.imageUrl} alt={product.name} loading="lazy" />
-          ) : (
-            <div className="image-placeholder">No image</div>
-          )}
-          {isSelected && (
-            <div className="selected-badge">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" fill="#8b5a3c"/>
-                <path d="M7 12l3 3 7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          )}
-        </div>
+        {isSelected && (
+          <div className="selected-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#8b5a3c"/>
+              <path d="M7 12l3 3 7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        )}
 
         <div className="product-info">
           <h3 className="product-name">{product.name}</h3>
@@ -122,29 +115,11 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
           border-color: transparent;
         }
 
-        .product-image {
-          width: 100%;
-          height: 220px;
-          overflow: hidden;
-          background: linear-gradient(135deg, #f8f4ef 0%, #e8ddd0 100%);
-          position: relative;
-        }
-
-        .product-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .product-card:hover .product-image img {
-          transform: scale(1.05);
-        }
-
         .selected-badge {
           position: absolute;
           top: 1rem;
           right: 1rem;
+          z-index: 10;
           animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
         }
@@ -158,17 +133,6 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
             transform: scale(1) rotate(0deg);
             opacity: 1;
           }
-        }
-
-        .image-placeholder {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #8b7355;
-          font-family: 'Karla', sans-serif;
-          font-size: 0.875rem;
         }
 
         .product-info {
@@ -289,10 +253,6 @@ export function ProductCard({ product, onSelect, isSelected = false, isDisabled 
         }
 
         @media (max-width: 640px) {
-          .product-image {
-            height: 180px;
-          }
-
           .product-info {
             padding: 1.25rem;
           }
