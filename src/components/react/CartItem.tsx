@@ -30,16 +30,6 @@ export function CartItem({ item }: CartItemProps) {
 
   return (
     <div className="cart-item">
-      <div className="cart-item__image">
-        {item.imageUrl ? (
-          <img src={item.imageUrl} alt={item.name} width={64} height={64} />
-        ) : (
-          <div className="cart-item__image-placeholder">
-            <span>No image</span>
-          </div>
-        )}
-      </div>
-
       <div className="cart-item__details">
         <h3 className="cart-item__name">{item.name}</h3>
         <p className="cart-item__price">R{item.price.toFixed(2)}</p>
@@ -80,37 +70,13 @@ export function CartItem({ item }: CartItemProps) {
       <style>{`
         .cart-item {
           display: grid;
-          grid-template-columns: auto 1fr auto auto;
+          grid-template-columns: 1fr auto auto;
           gap: 1rem;
           align-items: center;
           padding: 1rem;
           border: 1px solid var(--color-border, #e5e5e5);
           border-radius: 8px;
           background: white;
-        }
-
-        .cart-item__image {
-          width: 64px;
-          height: 64px;
-          border-radius: 4px;
-          overflow: hidden;
-        }
-
-        .cart-item__image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .cart-item__image-placeholder {
-          width: 100%;
-          height: 100%;
-          background: var(--color-secondary, #d4a574);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.75rem;
-          color: var(--color-text-dark, #6b4423);
         }
 
         .cart-item__details {
@@ -214,33 +180,30 @@ export function CartItem({ item }: CartItemProps) {
         /* Mobile responsive - stack vertically on narrow screens */
         @media (max-width: 640px) {
           .cart-item {
-            grid-template-columns: auto 1fr;
-            grid-template-rows: auto auto;
-          }
-
-          .cart-item__image {
-            grid-row: 1 / 3;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 0.75rem;
           }
 
           .cart-item__details {
-            grid-column: 2;
+            grid-column: 1;
             grid-row: 1;
           }
 
           .cart-item__controls {
-            grid-column: 2;
+            grid-column: 1;
             grid-row: 2;
             justify-content: flex-start;
           }
 
           .cart-item__total {
-            grid-column: 1 / -1;
+            grid-column: 1;
             grid-row: 3;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1rem;
-            margin-top: 1rem;
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
             border-top: 1px solid var(--color-border, #e5e5e5);
           }
         }
