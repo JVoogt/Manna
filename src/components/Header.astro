@@ -1,161 +1,162 @@
 ---
-import { CartIcon } from '../components/react/CartIcon';
-
-// Get current path for active link highlighting
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="site-header">
-  <div class="header-container">
-    <div class="brand">
-      <a href="/" class="brand-link">
-        <span class="brand-name">Manna Kitchen</span>
-      </a>
-    </div>
-
-    <div class="header-right">
-      <nav class="nav">
-        <ul class="nav-list">
-          <li>
-            <a
-              href="/"
-              class:list={["nav-link", { active: currentPath === "/" }]}
-              aria-current={currentPath === "/" ? "page" : undefined}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="/about/"
-              class:list={["nav-link", { active: currentPath === "/about" || currentPath === "/about/" }]}
-              aria-current={currentPath === "/about" || currentPath === "/about/" ? "page" : undefined}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact/"
-              class:list={["nav-link", { active: currentPath === "/contact" || currentPath === "/contact/" }]}
-              aria-current={currentPath === "/about" || currentPath === "/contact/" ? "page" : undefined}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
+<header class="topbar" id="top">
+  <div class="tb-inner">
+    <a href="/" class="tb-brand">
+      <span class="tb-logo">M</span>
+      <span class="tb-name">Manna</span>
+      <span class="tb-place">Kitchen · Pretoria</span>
+    </a>
+    <nav class="tb-nav" aria-label="Primary">
+      <a href="/#pick" class={currentPath === '/' ? 'active' : ''}>Platter</a>
+      <a href="/#weekly-meals">Weekly meals</a>
+      <a href="/#about">Story</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/about/" class={currentPath.startsWith('/about') ? 'active' : ''}>About</a>
+      <a href="/contact/" class={currentPath.startsWith('/contact') ? 'active' : ''}>Contact</a>
+    </nav>
+    <div class="tb-right">
       <div id="cart-icon-root"></div>
+      <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp sm tb-wa">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.5 14.3c-.3-.15-1.7-.84-2-.94-.27-.1-.47-.15-.66.15-.2.3-.76.94-.93 1.13-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.9-2.18-.24-.58-.48-.5-.66-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.22 1.35.19 1.86.12.57-.08 1.74-.71 1.99-1.4.25-.69.25-1.28.17-1.4-.07-.13-.27-.2-.57-.35zM12 2C6.48 2 2 6.48 2 12c0 1.95.56 3.77 1.53 5.31L2 22l4.79-1.49A9.95 9.95 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+        </svg>
+        <span class="hide-sm">WhatsApp</span>
+      </a>
     </div>
   </div>
 </header>
 
 <style>
-  .site-header {
-    background: linear-gradient(135deg, #8b5a3c 0%, #6b4423 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .topbar {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 50;
+    background: color-mix(in oklch, var(--paper) 80%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-2);
   }
 
-  .header-container {
-    max-width: 1200px;
+  .tb-inner {
+    max-width: var(--content-w);
     margin: 0 auto;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .brand-link {
-    text-decoration: none;
-    display: block;
-  }
-
-  .brand-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: 0.5px;
-  }
-
-  .brand-link:hover .brand-name {
-    opacity: 0.9;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-list {
-    display: flex;
-    gap: 0.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-link {
-    display: block;
     padding: 0.75rem 1.25rem;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    border-radius: 6px;
-    transition: background 0.2s, transform 0.1s;
-    /* Minimum 44px tap target for mobile */
-    min-height: 44px;
     display: flex;
     align-items: center;
+    gap: 1.5rem;
   }
 
-  .nav-link:hover {
-    background: rgba(255, 255, 255, 0.15);
+  .tb-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .tb-logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .tb-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .tb-place {
+    font-size: 0.75rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .tb-nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+  }
+
+  .tb-nav a {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .tb-nav a:hover, .tb-nav a.active { color: var(--ink); }
+
+  .tb-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: right 180ms ease;
+  }
+
+  .tb-nav a:hover::after, .tb-nav a.active::after { right: 0; }
+
+  .tb-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: 999px;
+    transition: transform 120ms ease, background 200ms ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn.sm { padding: 0.55rem 0.9rem; font-size: 0.85rem; min-height: 38px; }
+
+  .btn-whatsapp {
+    background: var(--wa);
+    color: white;
+  }
+
+  .btn-whatsapp:hover {
+    background: var(--wa-strong);
     transform: translateY(-1px);
   }
 
-  .nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
-    font-weight: 600;
+  .hide-sm { display: inline; }
+
+  @media (max-width: 900px) {
+    .tb-nav { display: none; }
+    .tb-place { display: none; }
   }
 
-  /* Mobile responsive - stack navigation on small screens */
-  @media (max-width: 640px) {
-    .header-container {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-    }
-
-    .brand-name {
-      font-size: 1.25rem;
-    }
-
-    .nav-list {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.25rem;
-    }
-
-    .nav-link {
-      padding: 0.625rem 1rem;
-      font-size: 0.95rem;
-    }
-  }
-
-  /* Tablet responsive */
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .header-container {
-      padding: 1rem 1.25rem;
-    }
-
-    .brand-name {
-      font-size: 1.375rem;
-    }
+  @media (max-width: 520px) {
+    .hide-sm { display: none; }
   }
 </style>
