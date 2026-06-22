@@ -16,7 +16,7 @@
     "@astrojs/react": "^4.4.2",
     "@headlessui/react": "^2.2.9",
     "@hookform/resolvers": "^5.2.2",
-    "astro": "^5.16.15",
+    "astro": "^5.18.1",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
     "libphonenumber-js": "^1.12.35",
@@ -29,6 +29,6 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.714.0"
+    "@aws-sdk/client-s3": "^3.1032.0"
   }
 }
