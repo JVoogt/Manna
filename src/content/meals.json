@@ -2,10 +2,10 @@
   {
     "id": "beef-lasagne",
     "name": "Beef Lasagne",
-    "description": "Beef lasagne, frozen, 1 portion.",
-    "price": 105,
+    "description": "Beef Lasagne, frozen, 450 g.",
+    "price": 55,
     "category": "meal",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
@@ -13,10 +13,10 @@
   {
     "id": "spaghetti-en-meatballs",
     "name": "Spaghetti en Meatballs",
-    "description": "Spaghetti and meatballs, frozen, 1 portion.",
-    "price": 95,
+    "description": "Spaghetti en Meatballs, frozen, 450 g.",
+    "price": 55,
     "category": "meal",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
@@ -24,10 +24,10 @@
   {
     "id": "spaghetti-bolognaise",
     "name": "Spaghetti Bolognaise",
-    "description": "Spaghetti bolognaise, frozen, 1 portion.",
-    "price": 85,
+    "description": "Spaghetti Bolognaise, frozen, 450 g.",
+    "price": 55,
     "category": "meal",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
@@ -35,10 +35,10 @@
   {
     "id": "macaroni-and-cheese",
     "name": "Macaroni and Cheese",
-    "description": "Macaroni and cheese, frozen, 1 portion.",
-    "price": 80,
+    "description": "Macaroni and Cheese, frozen, 450 g.",
+    "price": 55,
     "category": "meal",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
@@ -46,10 +46,10 @@
   {
     "id": "macaroni-mince-cheese-bake",
     "name": "Macaroni and Mince Cheese Bake",
-    "description": "Macaroni and mince cheese bake, frozen, 1 portion.",
-    "price": 95,
+    "description": "Macaroni and Mince Cheese Bake, frozen, 450 g.",
+    "price": 55,
     "category": "meal",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
@@ -57,21 +57,32 @@
   {
     "id": "malva-pudding",
     "name": "Malva Pudding",
-    "description": "Malva pudding, frozen, 1 portion.",
-    "price": 45,
+    "description": "Malva Pudding, frozen, 450 g.",
+    "price": 50,
     "category": "dessert",
-    "servings": "1 portion",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
   },
   {
-    "id": "milk-tart",
-    "name": "Milk Tart",
-    "description": "Milk tart, frozen, 1 portion.",
-    "price": 40,
+    "id": "ginger-pudding",
+    "name": "Ginger Pudding",
+    "description": "Ginger Pudding, frozen, 450 g.",
+    "price": 50,
     "category": "dessert",
-    "servings": "1 portion",
+    "servings": "450 g",
+    "dietary": [],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "chocolate-pudding",
+    "name": "Chocolate Pudding",
+    "description": "Chocolate Pudding, frozen, 450 g.",
+    "price": 50,
+    "category": "dessert",
+    "servings": "450 g",
     "dietary": [],
     "allergens": [],
     "available": true
