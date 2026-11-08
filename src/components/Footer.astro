@@ -4,38 +4,32 @@
 <footer class="site-foot">
   <div class="sf-inner">
     <div class="sf-brand">
-      <span class="sf-logo">Manna</span>
-      <p>Fresh homemade platters and weekly meals. Pretoria North.</p>
+      <p class="sf-logo">Manna Kitchen</p>
+      <p>Home-cooked frozen meals, made by two sisters in Pretoria North and delivered to your door or collected from our kitchen.</p>
     </div>
-    <div class="sf-col">
-      <h4>Menu</h4>
-      <a href="/#pick">Build a platter</a>
-      <a href="/#weekly-meals">Weekly meals</a>
-    </div>
-    <div class="sf-col">
-      <h4>About</h4>
-      <a href="/#about">Our story</a>
+    <nav class="sf-col" aria-label="Footer">
+      <h2 class="sf-head">Order</h2>
+      <a href="/#menu">Menu</a>
       <a href="/#how">How it works</a>
       <a href="/#faq">FAQ</a>
-      <a href="/about/">About us</a>
-    </div>
+    </nav>
     <div class="sf-col">
-      <h4>Contact</h4>
+      <h2 class="sf-head">Contact</h2>
       <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a href="/contact/">Contact form</a>
-      <span>71 Springbok St, Theresapark</span>
+      <a href="/contact/">Contact</a>
+      <a href="/about/">Our story</a>
+      <address>Pickup: 71 Springbok St, Theresapark</address>
     </div>
   </div>
   <div class="sf-bot">
     <span>&copy; 2026 Manna Kitchen</span>
-    <span>Made with love in Theresapark</span>
   </div>
 </footer>
 
 <style>
   .site-foot {
-    background: var(--paper);
-    border-top: 1px solid var(--line-2);
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
     padding: 3rem 1.5rem 2rem;
   }
 
@@ -43,71 +37,74 @@
     max-width: var(--content-w);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: 2rem;
   }
 
-  .sf-brand { max-width: 320px; }
+  .sf-brand { max-width: 24rem; }
 
   .sf-logo {
     font-family: var(--font-display);
     font-weight: 700;
-    font-style: italic;
-    font-size: 2rem;
-    letter-spacing: -0.03em;
-    display: block;
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
   }
 
-  .sf-brand p {
-    color: var(--ink-mute);
-    font-size: 0.9rem;
-    margin: 0;
+  .sf-brand p:last-child {
+    color: var(--ink-soft);
+    font-size: 1rem;
   }
 
   .sf-col {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 
-  .sf-col h4 {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--ink-mute);
+  .sf-head {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
     margin: 0 0 0.5rem;
-    font-weight: 600;
   }
 
-  .sf-col a, .sf-col span {
-    font-size: 0.9rem;
+  .sf-col a {
+    display: flex;
+    align-items: center;
+    min-height: var(--tap);
+    font-size: 1rem;
     color: var(--ink-soft);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 0.25em;
   }
 
-  .sf-col a:hover { color: var(--ink); }
+  .sf-col a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+
+  .sf-col address {
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+  }
 
   .sf-bot {
     max-width: var(--content-w);
     margin: 2rem auto 0;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--line-2);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    font-size: 0.8rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
     color: var(--ink-mute);
-    gap: 0.5rem;
   }
 
   @media (max-width: 780px) {
-    .sf-inner { grid-template-columns: 1fr 1fr; }
+    .sf-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .sf-brand { grid-column: 1 / -1; }
   }
 
   @media (max-width: 480px) {
-    .sf-inner { grid-template-columns: 1fr; }
+    .sf-inner { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

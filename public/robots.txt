@@ -1,17 +1,10 @@
 # Manna Kitchen - robots.txt
-# Allow all search engines to crawl the site
+# Allow all search engines to crawl the site.
+# /cart/ and /checkout/ carry a noindex meta tag, so they must stay crawlable for it to be seen.
+# /_astro/ holds the CSS and JavaScript Google needs to render the page, so it is not blocked.
 
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://manna.voogt.co.za/sitemap.xml
-
-# Disallow crawling of administrative or unnecessary paths
-Disallow: /api/
-Disallow: /_astro/
-
-# Allow crawling of images and assets
-Allow: /images/
-Allow: /favicon.svg
-Allow: /favicon.ico

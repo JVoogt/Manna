@@ -13,54 +13,102 @@ export default function Cart() {
   if (items.length === 0) {
     return (
       <div className="cart-empty">
-        <div className="cart-empty__icon">🛒</div>
+        <svg
+          className="cart-empty__icon"
+          width="56"
+          height="56"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
         <h2 className="cart-empty__title">Your cart is empty</h2>
         <p className="cart-empty__text">
-          Looks like you haven't added any items to your cart yet.
+          Choose your meals from the menu and they will appear here.
         </p>
-        <a href="/" className="cart-empty__link">
-          Browse our menu
+        <a href="/#menu" className="cart-empty__link">
+          Browse the menu
         </a>
+        <p className="cart-empty__alt">
+          Prefer to order by message?{' '}
+          <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">
+            Chat with us on WhatsApp
+          </a>
+        </p>
 
         <style>{`
           .cart-empty {
             text-align: center;
-            padding: 4rem 2rem;
-            max-width: 500px;
+            padding: 3rem 1rem;
+            max-width: 32rem;
             margin: 0 auto;
           }
 
           .cart-empty__icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.25rem;
+            color: var(--ink-mute);
           }
 
           .cart-empty__title {
-            font-size: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
             font-weight: 600;
-            color: var(--color-text-dark, #333);
+            color: var(--ink);
             margin: 0 0 0.75rem 0;
           }
 
           .cart-empty__text {
-            font-size: 1rem;
-            color: var(--color-text-light, #666);
+            font-size: 1.125rem;
+            color: var(--ink-soft);
             margin: 0 0 2rem 0;
           }
 
           .cart-empty__link {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: var(--color-primary, #8b5a3c);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--tap, 48px);
+            padding: 0 2rem;
+            background: var(--accent-ink);
+            color: var(--on-dark);
+            border-radius: var(--radius);
+            font-size: 1.125rem;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background-color 200ms ease, transform 120ms ease;
           }
 
-          .cart-empty__link:hover {
-            background: var(--color-text-dark, #6b4423);
+          .cart-empty__link:hover { background: var(--ink); }
+          .cart-empty__link:active { transform: translateY(1px); }
+
+          .cart-empty__alt {
+            margin: 1.5rem 0 0;
+            font-size: 1rem;
+            color: var(--ink-soft);
+          }
+
+          .cart-empty__alt a {
+            color: var(--accent-ink);
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+            display: inline-block;
+            padding: 0.75rem 0;
+          }
+
+          .cart-empty__link:focus-visible,
+          .cart-empty__alt a:focus-visible {
+            outline: 3px solid var(--accent-ink);
+            outline-offset: 3px;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .cart-empty__link { transition: none; }
           }
         `}</style>
       </div>
@@ -76,36 +124,41 @@ export default function Cart() {
         ))}
       </div>
 
-      <div className="cart__summary">
-        <div className="cart__summary-card">
-          <h2 className="cart__summary-title">Order Summary</h2>
+      <aside className="cart__summary" aria-labelledby="cart-summary-title">
+        <h2 className="cart__summary-title" id="cart-summary-title">Order summary</h2>
 
-          <div className="cart__summary-row">
-            <span className="cart__summary-label">Items</span>
-            <span className="cart__summary-value">{itemCount}</span>
-          </div>
-
-          <div className="cart__summary-row cart__summary-row--total">
-            <span className="cart__summary-label">Subtotal</span>
-            <span className="cart__summary-value cart__summary-value--total">
-              R{subtotal.toFixed(2)}
-            </span>
-          </div>
-
-          <a href="/checkout/" className="cart__checkout-button">
-            Proceed to Checkout
-          </a>
-
-          <p className="cart__summary-note">
-            Having trouble? Contact us: +27 82 579 5210
-          </p>
+        <div className="cart__summary-row">
+          <span className="cart__summary-label">Items</span>
+          <span className="cart__summary-value">{itemCount}</span>
         </div>
-      </div>
+
+        <div className="cart__summary-row cart__summary-row--total">
+          <span className="cart__summary-label">Subtotal</span>
+          <span className="cart__summary-value cart__summary-value--total">
+            R{subtotal.toFixed(2)}
+          </span>
+        </div>
+
+        <p className="cart__summary-fee">
+          Delivery fee is not included. We quote it on WhatsApp.
+        </p>
+
+        <a href="/checkout/" className="cart__checkout-button">
+          Go to checkout
+        </a>
+
+        <p className="cart__summary-note">
+          Need a hand? Message us on WhatsApp:{' '}
+          <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">
+            +27 82 579 5210
+          </a>
+        </p>
+      </aside>
 
       <style>{`
         .cart {
           display: grid;
-          grid-template-columns: 1fr 400px;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
           gap: 2rem;
           align-items: start;
         }
@@ -118,23 +171,21 @@ export default function Cart() {
 
         .cart__summary {
           position: sticky;
-          top: 1rem;
-        }
-
-        .cart__summary-card {
-          background: white;
-          border: 1px solid var(--color-border, #e5e5e5);
-          border-radius: 8px;
+          top: calc(var(--header-h, 4.5rem) + 1rem);
+          background: var(--surface);
+          border: 1px solid var(--line);
+          border-radius: var(--radius);
           padding: 1.5rem;
         }
 
         .cart__summary-title {
-          font-size: 1.25rem;
+          font-family: var(--font-display);
+          font-size: 1.375rem;
           font-weight: 600;
-          color: var(--color-text-dark, #333);
-          margin: 0 0 1.5rem 0;
+          color: var(--ink);
+          margin: 0 0 1.25rem 0;
           padding-bottom: 1rem;
-          border-bottom: 1px solid var(--color-border, #e5e5e5);
+          border-bottom: 1px solid var(--line);
         }
 
         .cart__summary-row {
@@ -145,75 +196,89 @@ export default function Cart() {
         }
 
         .cart__summary-row--total {
-          margin-top: 1.5rem;
+          margin-top: 1.25rem;
           padding-top: 1rem;
-          border-top: 1px solid var(--color-border, #e5e5e5);
+          border-top: 1px solid var(--line);
         }
 
         .cart__summary-label {
-          font-size: 1rem;
-          color: var(--color-text-light, #666);
+          font-size: 1.0625rem;
+          color: var(--ink-soft);
         }
 
         .cart__summary-value {
-          font-size: 1rem;
+          font-size: 1.0625rem;
           font-weight: 600;
-          color: var(--color-text-dark, #333);
+          color: var(--ink);
+          font-variant-numeric: tabular-nums;
         }
 
         .cart__summary-value--total {
-          font-size: 1.5rem;
-          color: var(--color-primary, #8b5a3c);
+          font-size: 1.625rem;
+          font-weight: 700;
+        }
+
+        .cart__summary-fee {
+          font-size: 1rem;
+          color: var(--ink-soft);
+          margin: 0;
         }
 
         .cart__checkout-button {
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
-          padding: 1rem;
-          background: var(--color-primary, #8b5a3c);
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 1rem;
+          min-height: 3.25rem;
+          padding: 0 1rem;
+          background: var(--accent-ink);
+          color: var(--on-dark);
+          border-radius: var(--radius);
+          font-size: 1.125rem;
           font-weight: 600;
           text-align: center;
-          text-decoration: none;
-          cursor: pointer;
-          transition: background 0.2s, transform 0.1s;
           margin-top: 1.5rem;
-          min-height: 44px;
-          line-height: 1.5;
+          transition: background-color 200ms ease, transform 120ms ease;
         }
 
-        .cart__checkout-button:hover {
-          background: var(--color-text-dark, #6b4423);
-        }
-
-        .cart__checkout-button:active {
-          transform: scale(0.98);
-        }
+        .cart__checkout-button:hover { background: var(--ink); }
+        .cart__checkout-button:active { transform: translateY(1px); }
 
         .cart__summary-note {
-          font-size: 0.875rem;
-          color: var(--color-text-light, #666);
+          font-size: 1rem;
+          color: var(--ink-soft);
           text-align: center;
           margin: 1rem 0 0 0;
+        }
+
+        .cart__summary-note a {
+          color: var(--accent-ink);
+          font-weight: 600;
+          text-decoration: underline;
+          text-underline-offset: 0.25em;
+          display: inline-block;
+          padding: 0.75rem 0;
+        }
+
+        .cart__checkout-button:focus-visible,
+        .cart__summary-note a:focus-visible {
+          outline: 3px solid var(--accent-ink);
+          outline-offset: 3px;
         }
 
         /* Mobile responsive - stack vertically */
         @media (max-width: 768px) {
           .cart {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
           }
 
           .cart__summary {
             position: static;
-            order: 2;
           }
+        }
 
-          .cart__items {
-            order: 1;
-          }
+        @media (prefers-reduced-motion: reduce) {
+          .cart__checkout-button { transition: none; }
         }
       `}</style>
     </div>

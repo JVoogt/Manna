@@ -1,26 +1,79 @@
 [
   {
-    "id": "bobotie-with-rice",
-    "name": "Traditional Bobotie with Yellow Rice",
-    "description": "Cape Malay spiced mince with egg topping, served with fragrant yellow rice, chutney, and sambals. A true South African comfort meal.",
-    "price": 180,
-    "imageUrl": "https://images.manna.voogt.co.za/bobotie.webp",
-    "servings": "Serves 4",
-    "dietary": ["gluten-free"],
-    "allergens": ["eggs", "dairy"],
-    "available": true,
-    "weekOf": "2026-01-27"
+    "id": "beef-lasagne",
+    "name": "Beef Lasagne",
+    "description": "Beef lasagne, frozen, 1 portion.",
+    "price": 105,
+    "category": "meal",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
   },
   {
-    "id": "chicken-pie-salad",
-    "name": "Chicken Pie with Fresh Garden Salad",
-    "description": "Flaky pastry filled with tender chicken in creamy sauce, accompanied by crisp seasonal salad with homemade dressing.",
-    "price": 120,
-    "imageUrl": "https://images.manna.voogt.co.za/chicken-pie.webp",
-    "servings": "Serves 2-3",
+    "id": "spaghetti-en-meatballs",
+    "name": "Spaghetti en Meatballs",
+    "description": "Spaghetti and meatballs, frozen, 1 portion.",
+    "price": 95,
+    "category": "meal",
+    "servings": "1 portion",
     "dietary": [],
-    "allergens": ["gluten", "dairy", "eggs"],
-    "available": true,
-    "weekOf": "2026-01-27"
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "spaghetti-bolognaise",
+    "name": "Spaghetti Bolognaise",
+    "description": "Spaghetti bolognaise, frozen, 1 portion.",
+    "price": 85,
+    "category": "meal",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "macaroni-and-cheese",
+    "name": "Macaroni and Cheese",
+    "description": "Macaroni and cheese, frozen, 1 portion.",
+    "price": 80,
+    "category": "meal",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "macaroni-mince-cheese-bake",
+    "name": "Macaroni and Mince Cheese Bake",
+    "description": "Macaroni and mince cheese bake, frozen, 1 portion.",
+    "price": 95,
+    "category": "meal",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "malva-pudding",
+    "name": "Malva Pudding",
+    "description": "Malva pudding, frozen, 1 portion.",
+    "price": 45,
+    "category": "dessert",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
+  },
+  {
+    "id": "milk-tart",
+    "name": "Milk Tart",
+    "description": "Milk tart, frozen, 1 portion.",
+    "price": 40,
+    "category": "dessert",
+    "servings": "1 portion",
+    "dietary": [],
+    "allergens": [],
+    "available": true
   }
 ]

@@ -4,24 +4,45 @@ import AppProvider from '@/components/react/AppProvider';
 ---
 
 <BaseLayout
-  title="Checkout - Manna Kitchen | Complete Your Order"
-  description="Complete your Manna Kitchen order. Enter delivery details and submit via WhatsApp. Fresh homemade food ready for pickup in Theresapark, Pretoria.">
+  title="Checkout | Manna Kitchen"
+  description="Choose delivery or pickup, pick a preferred date and send your frozen meals order to Manna Kitchen on WhatsApp. Pay by EFT, or cash when you collect."
+  noindex>
 
   <AppProvider page="checkout" client:only="react" />
+  <noscript>
+    <p class="noscript-note">
+      Checkout needs JavaScript. You can still order by
+      <a href="https://wa.me/27825795210">WhatsApp on +27 82 579 5210</a>.
+    </p>
+  </noscript>
 </BaseLayout>
 
 <style>
   :global(.checkout-page) {
-    max-width: 1000px;
+    max-width: var(--content-w);
     padding: 2rem 1.5rem;
     margin: 0 auto;
   }
 
   :global(.checkout-page h1) {
-    font-size: 2rem;
+    font-family: var(--font-display);
+    font-size: 2.25rem;
     font-weight: 700;
-    color: var(--color-primary);
+    line-height: 1.15;
+    color: var(--ink);
     margin: 0 0 2rem 0;
+  }
+
+  .noscript-note {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .noscript-note a {
+    text-decoration: underline;
+    color: var(--accent-ink);
   }
 
   @media (max-width: 768px) {
@@ -30,7 +51,7 @@ import AppProvider from '@/components/react/AppProvider';
     }
 
     :global(.checkout-page h1) {
-      font-size: 1.75rem;
+      font-size: 1.9rem;
       margin-bottom: 1.5rem;
     }
   }

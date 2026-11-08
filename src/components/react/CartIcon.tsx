@@ -8,7 +8,7 @@ export function CartIcon() {
     <a
       href="/cart/"
       className="cart-icon-link"
-      aria-label={`Shopping cart with ${totalItems} items`}
+      aria-label={totalItems > 0 ? `Cart, ${totalItems} ${totalItems === 1 ? 'item' : 'items'}` : 'Cart, empty'}
     >
       <div className="cart-icon-container">
         <svg
@@ -26,7 +26,7 @@ export function CartIcon() {
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
         </svg>
         {totalItems > 0 && (
-          <span className="cart-badge" aria-label={`${totalItems} items in cart`}>
+          <span className="cart-badge" aria-hidden="true">
             {totalItems}
           </span>
         )}
@@ -36,18 +36,24 @@ export function CartIcon() {
           display: flex;
           align-items: center;
           justify-content: center;
-          text-decoration: none;
-          color: white;
-          /* Minimum 44x44px tap target */
-          min-width: 44px;
-          min-height: 44px;
-          padding: 0.5rem;
-          border-radius: 6px;
-          transition: background 0.2s;
+          color: var(--ink);
+          min-width: var(--tap, 48px);
+          min-height: var(--tap, 48px);
+          border-radius: 50%;
+          transition: background-color 200ms ease;
         }
 
         .cart-icon-link:hover {
-          background: rgba(255, 255, 255, 0.15);
+          background: var(--paper-2);
+        }
+
+        .cart-icon-link:active {
+          background: var(--paper-3);
+        }
+
+        .cart-icon-link:focus-visible {
+          outline: 3px solid var(--accent-ink);
+          outline-offset: 2px;
         }
 
         .cart-icon-container {
@@ -58,23 +64,28 @@ export function CartIcon() {
         }
 
         .cart-icon-svg {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
         }
 
         .cart-badge {
           position: absolute;
-          top: -8px;
-          right: -8px;
-          background: #d4a574;
-          color: #4a3728;
-          font-size: 0.75rem;
-          font-weight: 600;
+          top: -9px;
+          right: -11px;
+          background: var(--accent-ink);
+          color: var(--on-dark);
+          font-size: 0.8125rem;
+          font-weight: 700;
           line-height: 1;
+          font-variant-numeric: tabular-nums;
           padding: 0.25rem 0.4rem;
-          border-radius: 10px;
+          border-radius: 999px;
           min-width: 20px;
           text-align: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .cart-icon-link { transition: none; }
         }
       `}</style>
     </a>

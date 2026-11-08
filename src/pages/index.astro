@@ -1,12 +1,28 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getProducts, getMeals } from '@/lib/content';
+import { getMeals } from '@/lib/content';
 import AppProvider from '@/components/react/AppProvider';
 
-const products = getProducts();
 const meals = getMeals();
 ---
 
-<BaseLayout title="Manna Kitchen - Build Your Perfect Platter | Theresapark, Pretoria">
-  <AppProvider page="home" products={products} meals={meals} client:only="react" />
+<BaseLayout
+  title="Manna Kitchen - Frozen Meals Delivered in Pretoria"
+  description="Home-cooked frozen meals from two sisters in Pretoria North. Delivered to your door, ready when you are. Order on WhatsApp."
+>
+  <AppProvider page="home" meals={meals} client:only="react" />
+  <noscript>
+    <p class="noscript-note">
+      The menu needs JavaScript. Message us on WhatsApp +27 82 579 5210 to order.
+    </p>
+  </noscript>
 </BaseLayout>
+
+<style>
+  .noscript-note {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-size: 1.125rem;
+  }
+</style>

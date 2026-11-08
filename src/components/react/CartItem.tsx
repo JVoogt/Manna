@@ -13,7 +13,7 @@ export function CartItem({ item }: CartItemProps) {
     if (item.quantity > 1) {
       updateQuantity(item.id, item.quantity - 1);
     } else {
-      // When quantity is 1, decrease = remove
+      // At quantity 1 the minus button is disabled; removal is the explicit Remove button.
       removeItem(item.id);
     }
   };
@@ -32,24 +32,25 @@ export function CartItem({ item }: CartItemProps) {
     <div className="cart-item">
       <div className="cart-item__details">
         <h3 className="cart-item__name">{item.name}</h3>
-        <p className="cart-item__price">R{item.price.toFixed(2)}</p>
+        <p className="cart-item__price">R{item.price.toFixed(2)} each</p>
       </div>
 
-      <div className="cart-item__controls">
+      <div className="cart-item__controls" role="group" aria-label={`Quantity of ${item.name}`}>
         <button
           type="button"
           onClick={handleDecrease}
+          disabled={item.quantity <= 1}
           className="cart-item__button cart-item__button--minus"
-          aria-label="Decrease quantity"
+          aria-label={`Decrease quantity of ${item.name}`}
         >
           −
         </button>
-        <span className="cart-item__quantity">{item.quantity}</span>
+        <span className="cart-item__quantity" aria-live="polite">{item.quantity}</span>
         <button
           type="button"
           onClick={handleIncrease}
           className="cart-item__button cart-item__button--plus"
-          aria-label="Increase quantity"
+          aria-label={`Increase quantity of ${item.name}`}
         >
           +
         </button>
@@ -61,22 +62,20 @@ export function CartItem({ item }: CartItemProps) {
           type="button"
           onClick={handleRemove}
           className="cart-item__remove"
-          aria-label="Remove item"
+          aria-label={`Remove ${item.name} from cart`}
         >
-          ×
+          Remove
         </button>
       </div>
 
       <style>{`
         .cart-item {
           display: grid;
-          grid-template-columns: 1fr auto auto;
-          gap: 1rem;
+          grid-template-columns: minmax(0, 1fr) auto auto;
+          gap: 1rem 1.5rem;
           align-items: center;
-          padding: 1rem;
-          border: 1px solid var(--color-border, #e5e5e5);
-          border-radius: 8px;
-          background: white;
+          padding: 1rem 0;
+          border-bottom: 1px solid var(--line);
         }
 
         .cart-item__details {
@@ -84,19 +83,21 @@ export function CartItem({ item }: CartItemProps) {
         }
 
         .cart-item__name {
-          font-size: 1rem;
+          font-family: var(--font-display);
+          font-size: 1.25rem;
           font-weight: 600;
-          color: var(--color-text-dark, #333);
+          line-height: 1.25;
+          color: var(--ink);
           margin: 0 0 0.25rem 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          overflow-wrap: break-word;
+          min-width: 0;
         }
 
         .cart-item__price {
-          font-size: 0.875rem;
-          color: var(--color-text-light, #666);
+          font-size: 1rem;
+          color: var(--ink-soft);
           margin: 0;
+          font-variant-numeric: tabular-nums;
         }
 
         .cart-item__controls {
@@ -106,106 +107,105 @@ export function CartItem({ item }: CartItemProps) {
         }
 
         .cart-item__button {
-          width: 44px;
-          height: 44px;
-          border: 1px solid var(--color-border, #e5e5e5);
-          border-radius: 4px;
-          background: white;
-          color: var(--color-primary, #8b5a3c);
-          font-size: 1.25rem;
+          width: var(--tap, 48px);
+          height: var(--tap, 48px);
+          border: 2px solid var(--field-edge);
+          border-radius: var(--radius);
+          background: var(--surface);
+          color: var(--ink);
+          font-size: 1.5rem;
           font-weight: 600;
-          cursor: pointer;
+          line-height: 1;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.2s;
+          transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 120ms ease;
         }
 
-        .cart-item__button:hover {
-          background: var(--color-primary, #8b5a3c);
-          color: white;
-          border-color: var(--color-primary, #8b5a3c);
+        .cart-item__button:hover:not(:disabled) {
+          background: var(--accent-ink);
+          color: var(--on-dark);
+          border-color: var(--accent-ink);
         }
 
-        .cart-item__button:active {
-          transform: scale(0.95);
+        .cart-item__button:active:not(:disabled) {
+          transform: translateY(1px);
+        }
+
+        .cart-item__button:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
         }
 
         .cart-item__quantity {
-          min-width: 2ch;
+          min-width: 2.5ch;
           text-align: center;
-          font-weight: 600;
-          font-size: 1rem;
+          font-weight: 700;
+          font-size: 1.25rem;
+          font-variant-numeric: tabular-nums;
         }
 
         .cart-item__total {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          gap: 0.5rem;
+          gap: 0.25rem;
+          min-width: 6rem;
         }
 
         .cart-item__line-total {
-          font-size: 1.125rem;
-          font-weight: 600;
-          color: var(--color-primary, #8b5a3c);
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--ink);
           margin: 0;
+          font-variant-numeric: tabular-nums;
         }
 
         .cart-item__remove {
-          width: 44px;
-          height: 44px;
-          border: 1px solid #dc2626;
-          border-radius: 4px;
-          background: white;
-          color: #dc2626;
-          font-size: 1.5rem;
-          font-weight: 400;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s;
+          min-height: var(--tap, 48px);
+          padding: 0 0.75rem;
+          border-radius: var(--radius);
+          color: var(--danger);
+          font-size: 1rem;
+          font-weight: 600;
+          text-decoration: underline;
+          text-underline-offset: 0.25em;
+          transition: background-color 200ms ease;
         }
 
-        .cart-item__remove:hover {
-          background: #dc2626;
-          color: white;
-        }
+        .cart-item__remove:hover { background: var(--danger-wash); }
+        .cart-item__remove:active { background: var(--danger-wash); transform: translateY(1px); }
 
-        .cart-item__remove:active {
-          transform: scale(0.95);
+        .cart-item__button:focus-visible,
+        .cart-item__remove:focus-visible {
+          outline: 3px solid var(--accent-ink);
+          outline-offset: 2px;
         }
 
         /* Mobile responsive - stack vertically on narrow screens */
         @media (max-width: 640px) {
           .cart-item {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto auto;
-            gap: 0.75rem;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.75rem 1rem;
           }
 
           .cart-item__details {
-            grid-column: 1;
-            grid-row: 1;
+            grid-column: 1 / -1;
           }
 
           .cart-item__controls {
             grid-column: 1;
-            grid-row: 2;
-            justify-content: flex-start;
           }
 
           .cart-item__total {
-            grid-column: 1;
-            grid-row: 3;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 0.75rem;
-            margin-top: 0.75rem;
-            border-top: 1px solid var(--color-border, #e5e5e5);
+            grid-column: 2;
+            align-items: flex-end;
           }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .cart-item__button,
+          .cart-item__remove { transition: none; }
         }
       `}</style>
     </div>

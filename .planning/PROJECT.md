@@ -1,5 +1,8 @@
 # Manna Kitchen Website
 
+> **Direction change (2026-11-08):** Manna now sells ONLY frozen meals for delivery, to help the elderly, disabled people and busy people with meal planning. Launch range: 5 meals + 2 desserts. The platter builder, weekly-meals model and "pickup only" scope below are historical. Current rules: local Pretoria delivery (fee quoted on WhatsApp), pickup at 71 Springbok St still available, 2 business days lead time, orders via WhatsApp. Draft prices/desserts await owner confirmation. See docs/market-research-frozen-meals.md.
+
+
 ## What This Is
 
 A mobile-first ordering website for Manna Kitchen, a Pretoria-based home cooking business. Customers can build custom 6-item snack platters from available inventory or order weekly home-cooked meals. Orders are sent via WhatsApp to initiate conversation and payment arrangements.

@@ -1,286 +1,213 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ContactForm from '@/components/ContactForm.astro';
 ---
 
 <BaseLayout
-  title="Contact Us - Manna Kitchen | WhatsApp Orders"
-  description="Contact Manna Kitchen for orders and inquiries. WhatsApp: +27 82 579 5210. Pickup at 71 Springbok St, Theresapark, Pretoria. Fast, friendly service.">
+  title="Contact | Manna Kitchen, Pretoria"
+  description="Order frozen meals from Manna Kitchen on WhatsApp, +27 82 579 5210. We deliver in Pretoria, or you can collect at 71 Springbok St, Theresapark.">
 
-  <article class="contact-page">
-    <section class="hero">
-      <h1>Get in Touch</h1>
-      <p class="hero-subtitle">
-        We'd love to hear from you! Reach out to place an order or ask questions.
-      </p>
-    </section>
+  <main class="contact-page">
+    <header class="hero">
+      <h1>Get in touch</h1>
+      <p class="hero-subtitle">Order, ask a question, or tell us what you need.</p>
+    </header>
 
-    <section class="contact-methods">
-      <div class="primary-contact">
-        <div class="contact-card whatsapp-card">
-          <div class="contact-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0C10.745 0 0 10.745 0 24c0 4.243 1.105 8.228 3.043 11.686L0.5 47.5l12.282-2.486C16.069 46.886 19.934 48 24 48c13.255 0 24-10.745 24-24S37.255 0 24 0z" fill="#25D366"/>
-              <path d="M35.5 12.375C32.831 9.704 29.189 8.188 25.313 8.188c-7.986 0-14.484 6.498-14.484 14.484 0 2.553.664 5.042 1.93 7.237L10.5 37.5l7.791-2.241c2.084 1.137 4.429 1.741 6.824 1.741h.006c7.986 0 14.484-6.498 14.484-14.484 0-3.876-1.513-7.521-4.105-10.141zM25.313 34.688c-2.16 0-4.277-.58-6.13-1.676l-.44-.261-4.557 1.194 1.216-4.448-.286-.457c-1.203-1.913-1.838-4.124-1.838-6.415 0-6.638 5.402-12.04 12.04-12.04 3.216 0 6.237 1.254 8.509 3.529s3.529 5.293 3.529 8.509c-.005 6.641-5.405 12.065-12.043 12.065zm6.602-9.008c-.362-.181-2.143-1.057-2.475-1.178-.331-.121-.572-.181-.814.181-.242.362-.936 1.178-1.147 1.42-.211.242-.422.271-.784.09-.362-.181-1.527-.563-2.908-1.795-1.075-.959-1.801-2.143-2.012-2.505-.211-.362-.022-.558.159-.738.163-.163.362-.422.543-.633.181-.211.241-.362.362-.603.121-.242.06-.453-.03-.633-.09-.181-.814-1.962-1.115-2.686-.293-.705-.592-.609-.814-.62-.211-.011-.453-.013-.694-.013s-.633.09-0.965.453c-.331.362-1.266 1.238-1.266 3.019s1.296 3.502 1.477 3.744c.181.242 2.553 3.898 6.184 5.467.864.373 1.539.596 2.065.763.867.275 1.656.236 2.281.143.696-.104 2.143-.876 2.445-1.721.302-.846.302-1.571.211-1.721-.09-.15-.331-.242-.694-.422z" fill="white"/>
-            </svg>
-          </div>
-          <h2>WhatsApp Us</h2>
-          <p class="contact-intro">
-            Our favorite way to connect! Quick responses, easy ordering, and friendly chats.
-          </p>
-          <a href="https://wa.me/27825795210" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
-            <span class="phone-number">+27 82 579 5210</span>
-            <span class="link-text">Chat on WhatsApp</span>
-          </a>
-          <p class="contact-note">
-            We love chatting with our customers! Message us anytime for orders or questions.
-          </p>
-        </div>
-      </div>
-
-      <div class="secondary-contacts">
-        <div class="contact-card">
-          <h3>Phone</h3>
-          <p>
-            Prefer a call? You can reach us at:
-          </p>
-          <a href="tel:+27825795210" class="phone-link">
-            +27 82 579 5210
-          </a>
-        </div>
-
-        <div class="contact-card">
-          <h3>Pickup Location</h3>
-          <p>
-            All orders are available for pickup at our location in Theresapark:
-          </p>
-          <address class="address">
-            71 Springbok St<br>
-            Theresapark<br>
-            Pretoria, 0182
-          </address>
-          <p class="address-note">
-            We'll confirm the exact pickup time and details when you order.
-          </p>
-        </div>
+    <section class="contact-methods" aria-labelledby="wa-h">
+      <div class="contact-card whatsapp-card">
+        <svg class="wa-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.5 14.3c-.3-.15-1.7-.84-2-.94-.27-.1-.47-.15-.66.15-.2.3-.76.94-.93 1.13-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.9-2.18-.24-.58-.48-.5-.66-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.22 1.35.19 1.86.12.57-.08 1.74-.71 1.99-1.4.25-.69.25-1.28.17-1.4-.07-.13-.27-.2-.57-.35zM12 2C6.48 2 2 6.48 2 12c0 1.95.56 3.77 1.53 5.31L2 22l4.79-1.49A9.95 9.95 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+        </svg>
+        <h2 id="wa-h">WhatsApp us</h2>
+        <p class="contact-intro">
+          The quickest way to order. We reply, confirm your meals, and quote the delivery fee.
+        </p>
+        <a href="https://wa.me/27825795210" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
+          <span class="phone-number">+27 82 579 5210</span>
+          <span class="link-text">Chat on WhatsApp</span>
+        </a>
       </div>
     </section>
 
-    <section class="web-inquiry">
-      <h2>Send Us a Message</h2>
-      <p class="section-intro">
-        Have a question or special request? Fill out the form below and we'll get back to you.
-      </p>
-      <ContactForm />
+    <section class="secondary-contacts" aria-label="Other ways to reach us">
+      <div class="contact-card">
+        <h2>Phone</h2>
+        <p>Prefer a call? You can reach us on:</p>
+        <a href="tel:+27825795210" class="phone-link">+27 82 579 5210</a>
+      </div>
+
+      <div class="contact-card">
+        <h2>Delivery and pickup</h2>
+        <p>
+          We deliver in Pretoria. The delivery fee is quoted on WhatsApp when you order.
+        </p>
+        <p>Or collect your order from our kitchen:</p>
+        <address class="address">
+          71 Springbok St<br>
+          Theresapark<br>
+          Pretoria, 0182
+        </address>
+        <p class="address-note">
+          We confirm the date and time with you when you order. Please give us at least 2
+          business days.
+        </p>
+      </div>
     </section>
-  </article>
+  </main>
 </BaseLayout>
 
 <style>
   .contact-page {
-    max-width: 1000px;
+    max-width: 62rem;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    overflow-wrap: break-word;
+    min-width: 0;
   }
 
   .hero {
-    text-align: center;
-    padding: 2rem 0 3rem;
-    border-bottom: 3px solid #8b5a3c;
-    margin-bottom: 3rem;
+    padding: 2rem 0 2.5rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5rem;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
-    color: #6b4423;
+    font-size: 2.75rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
   }
 
   .hero-subtitle {
     font-size: 1.25rem;
-    color: #8b5a3c;
+    color: var(--ink-soft);
   }
 
-  .contact-methods {
-    margin-bottom: 4rem;
-  }
-
-  .primary-contact {
-    margin-bottom: 2rem;
-  }
+  .contact-methods { margin-bottom: 1.5rem; }
 
   .contact-card {
-    background: #fdf8f3;
-    border: 2px solid #e8d4bc;
-    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
     padding: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   .whatsapp-card {
-    background: linear-gradient(135deg, #fdf8f3 0%, #f5efe6 100%);
-    border: 3px solid #25D366;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .contact-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+  .wa-icon {
+    color: var(--wa-deep);
+    margin-bottom: 0.75rem;
   }
 
   .contact-card h2 {
-    font-size: 2rem;
-    color: #6b4423;
-    margin-bottom: 1rem;
-  }
-
-  .contact-card h3 {
-    font-size: 1.5rem;
-    color: #8b5a3c;
+    font-size: 1.75rem;
+    line-height: 1.2;
     margin-bottom: 0.75rem;
   }
 
   .contact-card p {
-    font-size: 1rem;
-    color: #4a3728;
+    font-size: 1.0625rem;
+    color: var(--ink-soft);
     line-height: 1.6;
     margin-bottom: 1rem;
+    max-width: 65ch;
   }
 
-  .contact-intro {
-    font-size: 1.125rem;
-    color: #6b4423;
-    margin-bottom: 1.5rem;
-  }
+  .contact-intro { margin-bottom: 1.5rem; }
 
   .whatsapp-link {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    background: #25D366;
-    color: white;
-    padding: 1.25rem 2rem;
-    border-radius: 12px;
-    text-decoration: none;
+    gap: 0.25rem;
+    background: var(--wa-deep);
+    color: var(--on-dark);
+    padding: 1.1rem 2rem;
+    min-height: var(--tap);
+    border-radius: var(--radius);
     font-weight: 600;
-    transition: background 0.2s, transform 0.1s;
-    margin: 1rem 0;
+    transition: background-color 200ms ease, transform 120ms ease;
   }
 
-  .whatsapp-link:hover {
-    background: #20ba56;
-    transform: scale(1.02);
-  }
+  .whatsapp-link:hover { background: var(--wa-deeper); }
+  .whatsapp-link:active { transform: translateY(1px); }
 
   .phone-number {
     font-size: 1.5rem;
-    letter-spacing: 0.5px;
+    font-variant-numeric: tabular-nums;
   }
 
-  .link-text {
-    font-size: 1.125rem;
-  }
-
-  .contact-note {
-    font-size: 0.95rem;
-    font-style: italic;
-    color: #8b5a3c;
-    margin-top: 1rem;
-  }
+  .link-text { font-size: 1.125rem; }
 
   .secondary-contacts {
     display: grid;
     gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 3rem;
   }
 
   .phone-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
     font-size: 1.25rem;
     font-weight: 600;
-    color: #8b5a3c;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 2px solid #d4a574;
-    border-radius: 8px;
-    transition: background 0.2s;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-ink);
+    padding: 0 1.25rem;
+    border: 2px solid var(--field-edge);
+    border-radius: var(--radius);
+    transition: background-color 200ms ease;
   }
 
-  .phone-link:hover {
-    background: #fef6ed;
-  }
+  .phone-link:hover { background: var(--paper-2); }
+  .phone-link:active { background: var(--paper-3); }
 
   .address {
     font-style: normal;
     font-size: 1.125rem;
-    line-height: 1.8;
-    color: #6b4423;
+    line-height: 1.7;
+    color: var(--ink);
     font-weight: 500;
-    margin: 1rem 0;
+    margin: 0 0 1rem;
   }
 
   .address-note {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #8b7355;
+    font-size: 1rem;
+    color: var(--ink-mute);
+    margin-bottom: 0;
   }
 
-  .web-inquiry {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 2px solid #e8d4bc;
+  .whatsapp-link:focus-visible,
+  .phone-link:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
   }
 
-  .web-inquiry h2 {
-    font-size: 2rem;
-    color: #6b4423;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+  .hero h1, .contact-card h2 { text-wrap: balance; }
 
-  .section-intro {
-    text-align: center;
-    font-size: 1.125rem;
-    color: #8b5a3c;
-    margin-bottom: 2rem;
-  }
-
-  /* Mobile responsive */
   @media (max-width: 640px) {
-    .contact-page {
-      padding: 0.75rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.125rem;
-    }
-
-    .contact-card {
-      padding: 1.5rem;
-    }
-
-    .contact-card h2 {
-      font-size: 1.75rem;
-    }
-
-    .phone-number {
-      font-size: 1.25rem;
-    }
-
-    .link-text {
-      font-size: 1rem;
-    }
+    .contact-page { padding: 0.75rem 1rem 2.5rem; }
+    .hero h1 { font-size: 2.25rem; }
+    .contact-card { padding: 1.5rem; }
+    .contact-card h2 { font-size: 1.5rem; }
+    .phone-number { font-size: 1.25rem; }
   }
 
   @media (min-width: 641px) {
-    .secondary-contacts {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .secondary-contacts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-link, .phone-link { transition: none; }
   }
 </style>

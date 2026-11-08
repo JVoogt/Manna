@@ -6,16 +6,14 @@ import CartPage from './CartPage';
 import CheckoutPage from './CheckoutPage';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import type { Product } from '@/schemas/product.schema';
 import type { Meal } from '@/schemas/meal.schema';
 
 interface AppProviderProps {
   page: 'home' | 'cart' | 'checkout';
-  products?: Product[];
   meals?: Meal[];
 }
 
-export default function AppProvider({ page, products, meals }: AppProviderProps) {
+export default function AppProvider({ page, meals }: AppProviderProps) {
   const [cartIconMountPoint, setCartIconMountPoint] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -25,8 +23,8 @@ export default function AppProvider({ page, products, meals }: AppProviderProps)
   }, []);
 
   let PageComponent;
-  if (page === 'home' && products && meals) {
-    PageComponent = <HomePage products={products} meals={meals} />;
+  if (page === 'home' && meals) {
+    PageComponent = <HomePage meals={meals} />;
   } else if (page === 'cart') {
     PageComponent = <CartPage />;
   } else if (page === 'checkout') {

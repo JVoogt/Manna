@@ -3,203 +3,197 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About Us - Manna Kitchen | Our Story"
-  description="Learn about Manna Kitchen's heartwarming story. Two sisters from Theresapark, Pretoria creating homemade food with love and dedication. Fresh ingredients, traditional recipes, family business.">
+  title="Our story | Manna Kitchen, Pretoria"
+  description="The story of Manna Kitchen: two sisters in Theresapark, Pretoria, cooking frozen meals at home for seniors, people with disabilities and busy people.">
 
-  <article class="about-page">
-    <section class="hero">
-      <h1>Our Story</h1>
-    </section>
+  <main class="about-page">
+    <header class="hero">
+      <h1>Our story</h1>
+    </header>
 
-    <section class="story">
-      <h2>From Hardship to Hope</h2>
+    <section class="story" aria-labelledby="story-h">
+      <h2 id="story-h">From hardship to hope</h2>
       <p>
         Manna Kitchen was born from both love and necessity. Two sisters, bound by family and
         faith, found themselves facing an unexpected challenge when one was diagnosed with
-        Guillain-Barre syndrome -- a rare neurological condition that required extensive medical
+        Guillain-Barré syndrome, a rare neurological condition that required extensive medical
         treatment and ongoing care.
       </p>
       <p>
         What started as a way to generate revenue for medical expenses has blossomed into
         something far greater. From their home kitchen in Theresapark, Pretoria, these sisters began
-        creating the wholesome, homemade foods they grew up with -- dishes made with love,
-        patience, and the finest ingredients they could find.
+        cooking the food they grew up with, made with care.
       </p>
       <p>
-        Word spread quickly among neighbors and friends. People didn't just come back for the
+        Word spread quickly among neighbours and friends. People did not just come back for the
         food; they came back for the care woven into every dish, the personal touch in every
         interaction, and the knowledge that their purchase was helping a family in need.
       </p>
       <p>
-        Today, Manna Kitchen is a thriving family business, but we haven't forgotten our roots.
-        Every platter we prepare, every meal we pack, carries that same dedication and personal
-        attention that started it all.
+        Today the kitchen cooks one thing: frozen meals, for people who would rather not cook
+        every day. That includes older people, people living with a disability, and busy people
+        who want help with meal planning. We have not forgotten our roots, and every meal still
+        comes from that same home kitchen.
       </p>
     </section>
 
-    <section class="what-makes-us-special">
-      <h2>What Makes Manna Special</h2>
-      <div class="special-points">
-        <div class="point">
-          <h3>Made with Love</h3>
+    <section class="special" aria-labelledby="special-h">
+      <h2 id="special-h">What makes Manna special</h2>
+      <ul class="special-points">
+        <li>
+          <h3>Cooked by hand at home</h3>
           <p>
-            Every item is prepared by hand, with the same care we'd give to feeding our own
-            family. No shortcuts, no compromises.
+            Every meal is made in our own kitchen in Theresapark, with the same care we would
+            give to feeding our own family.
           </p>
-        </div>
-        <div class="point">
-          <h3>Fresh & Pure</h3>
+        </li>
+        <li>
+          <h3>Made for easy days</h3>
           <p>
-            We use only fresh ingredients with no preservatives or artificial additives. What
-            you taste is real food, made the old-fashioned way.
+            Stock the freezer once and heat a meal when you need one. It takes the daily
+            question of what to cook off your plate, or off a carer’s.
           </p>
-        </div>
-        <div class="point">
-          <h3>Supporting Family</h3>
+        </li>
+        <li>
+          <h3>Supporting family</h3>
           <p>
-            When you order from Manna Kitchen, you're not just getting great food -- you're
-            supporting a family business with a heartfelt story.
+            When you order from Manna Kitchen, you are supporting a family business with a
+            heartfelt story.
           </p>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
-    <section class="how-it-works">
-      <h2>How Ordering Works</h2>
+    <section class="how" aria-labelledby="how-h">
+      <h2 id="how-h">How ordering works</h2>
       <ol class="steps">
         <li>
-          <strong>Browse our menu</strong> of products and ready-made meals
+          <strong>Choose your meals</strong> from the menu and add them to your cart.
         </li>
         <li>
-          <strong>Build your custom platter</strong> or select a weekly meal
+          <strong>Choose delivery or pickup</strong> and a preferred date at least 2 business
+          days ahead.
         </li>
         <li>
-          <strong>Order via WhatsApp</strong> for personal service and quick response
+          <strong>Send the order on WhatsApp.</strong> We confirm it with you, and quote the
+          delivery fee if you chose delivery.
         </li>
         <li>
-          <strong>Pick up fresh and ready</strong> at our Theresapark location
+          <strong>Pay by EFT or, when you collect, cash.</strong> We deliver in Pretoria, or you
+          collect at 71 Springbok St, Theresapark.
         </li>
       </ol>
       <p class="cta">
-        We love chatting with our customers! Reach out anytime on WhatsApp.
+        Questions? <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>.
       </p>
     </section>
-  </article>
+  </main>
 </BaseLayout>
 
 <style>
   .about-page {
-    max-width: 800px;
+    max-width: 46rem;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1rem 1.25rem 3rem;
   }
 
   .hero {
-    text-align: center;
-    padding: 2rem 0 3rem;
-    border-bottom: 3px solid #8b5a3c;
-    margin-bottom: 2rem;
+    padding: 2rem 0 2rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5rem;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    overflow-wrap: break-word;
+    min-width: 0;
+    text-wrap: balance;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
-    color: #6b4423;
+    font-size: 2.75rem;
     font-weight: 700;
+    line-height: 1.1;
   }
 
   section {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
   }
 
   h2 {
-    font-size: 1.75rem;
-    color: #8b5a3c;
+    font-size: 1.9rem;
+    line-height: 1.2;
     margin-bottom: 1rem;
     font-weight: 600;
   }
 
   h3 {
     font-size: 1.25rem;
-    color: #6b4423;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     font-weight: 600;
   }
 
   p {
     font-size: 1.125rem;
-    line-height: 1.8;
-    color: #4a3728;
+    line-height: 1.75;
+    color: var(--ink-soft);
     margin-bottom: 1rem;
+    max-width: 65ch;
   }
 
   .special-points {
-    display: grid;
-    gap: 2rem;
+    list-style: none;
     margin-top: 1.5rem;
   }
 
-  .point {
-    background: #fdf8f3;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #d4a574;
+  .special-points li {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--line);
   }
 
-  .point p {
-    margin-bottom: 0;
-  }
+  .special-points li:last-child { border-bottom: 1px solid var(--line); }
+
+  .special-points p { margin-bottom: 0; }
 
   .steps {
+    margin: 0 0 1.5rem 1.5rem;
+    color: var(--ink-soft);
     font-size: 1.125rem;
-    line-height: 1.8;
-    color: #4a3728;
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    max-width: 65ch;
   }
 
   .steps li {
     margin-bottom: 1rem;
+    padding-left: 0.5rem;
   }
 
-  .steps strong {
-    color: #8b5a3c;
-  }
+  .steps strong { color: var(--ink); }
 
   .cta {
-    text-align: center;
-    font-size: 1.25rem;
-    color: #8b5a3c;
-    font-weight: 600;
     margin-top: 2rem;
+    font-weight: 600;
+    color: var(--ink);
   }
 
-  /* Mobile-first responsive design */
+  .cta a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    color: var(--accent-ink);
+    padding: 0.75rem 0;
+  }
+
+  .cta a:hover { color: var(--ink); }
+  .cta a:active { color: var(--ink-soft); }
+  .cta a:focus-visible {
+    outline: 3px solid var(--accent-ink);
+    outline-offset: 3px;
+  }
+
   @media (max-width: 640px) {
-    .about-page {
-      padding: 0.75rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    p,
-    .steps {
-      font-size: 1rem;
-    }
-
-    .point {
-      padding: 1rem;
-    }
-  }
-
-  @media (min-width: 641px) {
-    .special-points {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+    .about-page { padding: 0.75rem 1rem 2.5rem; }
+    .hero h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.6rem; }
   }
 </style>

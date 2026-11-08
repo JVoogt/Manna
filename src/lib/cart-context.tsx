@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, type ReactNode } from 'react';
+import { toast } from 'sonner';
 import type { CartItem } from '../types/cart';
+import { getMeals } from './content';
 
 // Separated contexts for performance
 const CartStateContext = createContext<CartItem[] | undefined>(undefined);
@@ -16,7 +18,37 @@ interface CartProviderProps {
   children: ReactNode;
 }
 
-const STORAGE_KEY = 'manna-cart';
+const STORAGE_KEY = 'manna-cart-v2';
+const LEGACY_STORAGE_KEY = 'manna-cart';
+const MAX_QUANTITY = 20;
+
+const clampQuantity = (q: unknown): number => {
+  const n = Math.floor(Number(q));
+  return Number.isFinite(n) ? Math.min(MAX_QUANTITY, Math.max(1, n)) : 1;
+};
+
+/**
+ * Reconcile a stored cart against the current catalogue: drop ids that are not
+ * an available meal, take name and price from the catalogue, clamp quantity.
+ * Only 'meal' items are ever created; the 'product' type is kept in the CartItem union only.
+ */
+function reconcileCart(stored: unknown[]): { items: CartItem[]; changed: boolean } {
+  const catalogue = new Map(getMeals().map(m => [m.id, m]));
+  const items: CartItem[] = [];
+  let changed = false;
+  for (const raw of stored) {
+    const entry = raw as Partial<CartItem> | null;
+    const meal = entry && typeof entry.id === 'string' ? catalogue.get(entry.id) : undefined;
+    if (!entry || !meal) {
+      changed = true;
+      continue;
+    }
+    const quantity = clampQuantity(entry.quantity);
+    if (entry.name !== meal.name || entry.price !== meal.price || entry.quantity !== quantity) changed = true;
+    items.push({ id: meal.id, name: meal.name, price: meal.price, quantity, imageUrl: meal.imageUrl, type: 'meal' });
+  }
+  return { items, changed };
+}
 
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -26,11 +58,16 @@ export function CartProvider({ children }: CartProviderProps) {
     if (typeof window === 'undefined') return;
 
     try {
+      // The old key held carts priced against the previous catalogue: discard it once
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed)) {
-          setItems(parsed);
+          const { items: reconciled, changed } = reconcileCart(parsed);
+          setItems(reconciled);
+          if (changed) toast('Some items in your order changed or are no longer available');
         }
       }
     } catch (error) {
@@ -62,7 +99,7 @@ export function CartProvider({ children }: CartProviderProps) {
           // Update quantity if item exists
           return prev.map(i =>
             i.id === item.id
-              ? { ...i, quantity: i.quantity + item.quantity }
+              ? { ...i, quantity: Math.min(MAX_QUANTITY, i.quantity + item.quantity) }
               : i
           );
         }
@@ -76,6 +113,7 @@ export function CartProvider({ children }: CartProviderProps) {
     },
 
     updateQuantity: (id: string, quantity: number) => {
+      if (!Number.isInteger(quantity) || quantity > MAX_QUANTITY) return;
       if (quantity <= 0) {
         setItems(prev => prev.filter(i => i.id !== id));
       } else {

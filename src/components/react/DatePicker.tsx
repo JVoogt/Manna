@@ -1,23 +1,25 @@
 import React from 'react';
 import { DayPicker } from 'react-day-picker';
-import { getMinimumPickupDate, SA_HOLIDAYS_2026 } from '../../lib/date-utils';
+import { getMinimumPickupDate, SA_HOLIDAYS } from '../../lib/date-utils';
 import 'react-day-picker/style.css';
 
 interface DatePickerProps {
   value: Date | undefined;
   onChange: (date: Date | undefined) => void;
   error?: string;
+  /** id of the element that holds this picker's error, for aria-describedby */
+  errorId?: string;
 }
 
-export function DatePicker({ value, onChange, error }: DatePickerProps) {
-  // Calculate minimum pickup date (2 business days ahead)
+export function DatePicker({ value, onChange, error, errorId = 'preferred-date-error' }: DatePickerProps) {
+  // Calculate the earliest preferred date (2 business days ahead)
   const minDate = getMinimumPickupDate();
 
   // Disable weekends, dates before minimum, and SA public holidays
   const disabledDates = [
     { dayOfWeek: [0, 6] },  // Weekends (Sunday=0, Saturday=6)
-    { before: minDate },     // Past dates and dates within 48 hours
-    ...SA_HOLIDAYS_2026.map(holiday => ({ from: holiday, to: holiday }))
+    { before: minDate },     // Past dates and dates inside the notice period
+    ...SA_HOLIDAYS.map(holiday => ({ from: holiday, to: holiday }))
   ];
 
   return (
@@ -30,10 +32,15 @@ export function DatePicker({ value, onChange, error }: DatePickerProps) {
         className="date-picker__calendar"
       />
       <p className="date-picker__help">
-        Orders require 48 hours notice (excluding weekends and public holidays)
+        We need at least 2 business days' notice. Weekends and public holidays do not count.
       </p>
+      {value && (
+        <p className="date-picker__chosen" role="status">
+          Chosen: {value.toLocaleDateString('en-ZA', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+        </p>
+      )}
       {error && (
-        <p className="date-picker__error">{error}</p>
+        <p className="date-picker__error" id={errorId} role="alert">{error}</p>
       )}
 
       <style>{`
@@ -42,29 +49,41 @@ export function DatePicker({ value, onChange, error }: DatePickerProps) {
         }
 
         .date-picker__calendar {
-          --rdp-accent-color: var(--color-primary, #8b5a3c);
-          --rdp-background-color: rgba(139, 90, 60, 0.1);
-          --rdp-accent-color-dark: var(--color-text-dark, #6b4423);
+          --rdp-accent-color: var(--accent-ink);
+          --rdp-accent-background-color: var(--accent-wash);
+          --rdp-day-height: 48px;
+          --rdp-day-width: 48px;
+          --rdp-day_button-height: 46px;
+          --rdp-day_button-width: 46px;
           --rdp-font-family: inherit;
 
-          background: white;
-          border: 1px solid var(--color-border, #e5e5e5);
-          border-radius: 8px;
-          padding: 1rem;
+          display: inline-block;
+          max-width: 100%;
+          background: var(--surface);
+          border: 1px solid var(--line);
+          border-radius: var(--radius);
+          padding: 0.75rem;
+          overflow-x: auto;
         }
 
         .date-picker__help {
-          font-size: 0.875rem;
-          color: var(--color-text-light, #666);
+          font-size: 1rem;
+          color: var(--ink-soft);
+          margin: 0.75rem 0 0 0;
+        }
+
+        .date-picker__chosen {
+          font-size: 1.0625rem;
+          font-weight: 600;
+          color: var(--ink);
           margin: 0.5rem 0 0 0;
-          font-style: italic;
         }
 
         .date-picker__error {
-          font-size: 0.875rem;
-          color: #dc2626;
+          font-size: 1rem;
+          color: var(--danger);
           margin: 0.5rem 0 0 0;
-          font-weight: 500;
+          font-weight: 600;
         }
       `}</style>
     </div>

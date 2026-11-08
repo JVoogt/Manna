@@ -1,44 +1,68 @@
-import { formatSAST } from './date-utils';
+import { formatLocalDate } from './date-utils';
 import type { CartItem } from '../types/cart';
 
 export const WHATSAPP_NUMBER = '+27825795210';
+export const WHATSAPP_DISPLAY = '+27 82 579 5210';
+export const PICKUP_ADDRESS = '71 Springbok St, Theresapark';
 
 /**
  * Generate WhatsApp click-to-chat link with pre-filled order message
  * @param name Customer name
  * @param phone Customer phone (E.164 format)
- * @param pickupDate Selected pickup date
+ * @param preferredDate Selected preferred date (delivery or pickup)
  * @param items Cart items
  * @param notes Optional special instructions
+ * @param fulfilment 'delivery' (address required) or 'pickup' at the kitchen
+ * @param address Delivery address (ignored for pickup)
  * @returns WhatsApp URL with encoded message
  */
 export function generateWhatsAppLink(
   name: string,
   phone: string,
-  pickupDate: Date,
+  preferredDate: Date,
   items: CartItem[],
-  notes?: string
+  notes?: string,
+  fulfilment: 'delivery' | 'pickup' = 'pickup',
+  address?: string
 ): string {
   // Calculate total from cart items
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-  // Format pickup date in SAST
-  const formattedDate = formatSAST(pickupDate);
+  // Format the chosen calendar day (the picker returns local midnight)
+  const formattedDate = formatLocalDate(preferredDate);
 
   // Build structured message
   const itemsList = items
     .map(item => `- ${item.name} x ${item.quantity} - R${(item.price * item.quantity).toFixed(2)}`)
     .join('\n');
 
-  let message = `**New Order**
+  // Collapse a multi-line address onto one line so the message stays readable
+  const addressLine = (address ?? '')
+    .split(/\r?\n/)
+    .map(part => part.trim().replace(/,+$/, ''))
+    .filter(Boolean)
+    .join(', ');
+
+  const fulfilmentLine =
+    fulfilment === 'delivery'
+      ? `Delivery to: ${addressLine} (fee confirmed on WhatsApp)`
+      : `Pickup: ${PICKUP_ADDRESS}`;
+
+  const totalLine =
+    fulfilment === 'delivery'
+      ? `Total: R${total.toFixed(2)} (excludes delivery fee)`
+      : `Total: R${total.toFixed(2)}`;
+
+  let message = `*New Order*
 Name: ${name}
 Phone: ${phone}
-Pickup: ${formattedDate}
+${fulfilmentLine}
+Preferred date: ${formattedDate}
 
 Items:
 ${itemsList}
 
-Total: R${total.toFixed(2)}`;
+${totalLine}`;
 
   // Add notes if provided
   if (notes && notes.trim()) {

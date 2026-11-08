@@ -4,15 +4,22 @@ import AppProvider from '@/components/react/AppProvider';
 ---
 
 <BaseLayout
-  title="Shopping Cart - Manna Kitchen"
-  description="Review your custom platter and weekly meal selections. Complete your order via WhatsApp for quick pickup in Theresapark, Pretoria.">
+  title="Your cart | Manna Kitchen"
+  description="Review the frozen meals in your cart, then go to checkout. We deliver in Pretoria, or you can collect from our kitchen in Theresapark."
+  noindex>
 
   <AppProvider page="cart" client:only="react" />
+  <noscript>
+    <p class="noscript-note">
+      The cart needs JavaScript. You can still order by
+      <a href="https://wa.me/27825795210">WhatsApp on +27 82 579 5210</a>.
+    </p>
+  </noscript>
 </BaseLayout>
 
 <style>
   :global(.cart-page) {
-    max-width: 1200px;
+    max-width: var(--content-w);
     padding: 2rem 1.5rem;
     margin: 0 auto;
   }
@@ -24,35 +31,51 @@ import AppProvider from '@/components/react/AppProvider';
   :global(.breadcrumb) {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
+    gap: 0.25rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   :global(.breadcrumb a) {
-    color: var(--color-primary, #8b5a3c);
-    text-decoration: none;
-    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
   }
 
   :global(.breadcrumb a:hover) {
-    color: var(--color-text-dark, #6b4423);
-    text-decoration: underline;
+    color: var(--ink);
   }
 
   :global(.breadcrumb__separator) {
-    color: var(--color-text-light, #999);
+    color: var(--ink-mute);
   }
 
   :global(.breadcrumb__current) {
-    color: var(--color-text-light, #666);
+    color: var(--ink-soft);
   }
 
   :global(.cart-page h1) {
-    font-size: 2rem;
+    font-family: var(--font-display);
+    font-size: 2.25rem;
     font-weight: 700;
-    color: var(--color-primary, #8b5a3c);
+    line-height: 1.15;
+    color: var(--ink);
     margin: 0;
+  }
+
+  .noscript-note {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .noscript-note a {
+    text-decoration: underline;
+    color: var(--accent-ink);
   }
 
   @media (max-width: 640px) {
@@ -61,7 +84,7 @@ import AppProvider from '@/components/react/AppProvider';
     }
 
     :global(.cart-page h1) {
-      font-size: 1.75rem;
+      font-size: 1.9rem;
     }
   }
 </style>
