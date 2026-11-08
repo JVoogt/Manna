@@ -45,9 +45,11 @@ const links = [
 <style>
   .nav {
     position: sticky;
-    top: var(--space-sm);
+    top: 0;
     z-index: var(--z-sticky-nav);
-    padding-block: var(--space-sm) var(--space-sm);
+    padding-block: var(--space-sm);
+    /* solid band behind the pill so scrolled content never shows above or around it */
+    background: var(--color-paper);
   }
   .nav__pill {
     position: relative;

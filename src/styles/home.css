@@ -1,7 +1,7 @@
 /* Home page. Tokens come from tokens.css; nothing here declares a colour or a face. */
 
 /* hero: the offer is the visual */
-.hero { min-height: calc(100svh - var(--header-h)); display: grid; align-content: center; padding-block: var(--space-xl); }
+.hero { min-height: min(calc(100svh - var(--header-h)), 46rem); display: grid; align-content: center; padding-block: var(--space-xl); }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--space-2xl); align-items: center; }
 .hero__copy { min-width: 0; }
 .hero__copy h1 { max-width: 100%; }
