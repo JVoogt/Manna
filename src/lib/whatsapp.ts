@@ -1,5 +1,6 @@
 import { formatLocalDate } from './date-utils';
 import type { CartItem } from '../types/cart';
+import { priceCart, COMBO_SIZE } from './pricing';
 
 export const WHATSAPP_NUMBER = '+27633510528';
 export const WHATSAPP_DISPLAY = '+27 63 351 0528';
@@ -26,7 +27,7 @@ export function generateWhatsAppLink(
   address?: string
 ): string {
   // Calculate total from cart items
-  const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const { subtotal, discount, total, combos } = priceCart(items);
 
   // Format the chosen calendar day (the picker returns local midnight)
   const formattedDate = formatLocalDate(preferredDate);
@@ -48,6 +49,11 @@ export function generateWhatsAppLink(
       ? `Delivery to: ${addressLine} (fee confirmed on WhatsApp)`
       : `Pickup: ${PICKUP_ADDRESS}`;
 
+  const discountLines =
+    discount > 0
+      ? `\nSubtotal: R${subtotal.toFixed(2)}\nCombo discount (${combos} x ${COMBO_SIZE} meals): -R${discount.toFixed(2)}`
+      : '';
+
   const totalLine =
     fulfilment === 'delivery'
       ? `Total: R${total.toFixed(2)} (excludes delivery fee)`
@@ -60,7 +66,7 @@ ${fulfilmentLine}
 Preferred date: ${formattedDate}
 
 Items:
-${itemsList}
+${itemsList}${discountLines}
 
 ${totalLine}`;
 

@@ -7,6 +7,7 @@ import { useCartState, useCartActions } from '../../lib/cart-context';
 import { generateWhatsAppLink, WHATSAPP_DISPLAY, PICKUP_ADDRESS } from '../../lib/whatsapp';
 import { DatePicker } from './DatePicker';
 import { WA_BASE } from '../../lib/site';
+import { priceCart, COMBO_SIZE } from '../../lib/pricing';
 import '../../styles/checkout.css';
 
 export default function CheckoutForm() {
@@ -24,7 +25,7 @@ export default function CheckoutForm() {
   }, [blocked]);
 
   // Calculate order summary
-  const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const { subtotal, discount, total, combos } = priceCart(items);
 
   // Initialize form with react-hook-form + zod
   const {
@@ -147,6 +148,19 @@ export default function CheckoutForm() {
             </div>
           ))}
         </div>
+
+        {discount > 0 && (
+          <div className="checkout-form__items">
+            <div className="checkout-form__item">
+              <span className="checkout-form__item-name">Subtotal</span>
+              <span className="checkout-form__item-price">R{subtotal.toFixed(2)}</span>
+            </div>
+            <div className="checkout-form__item checkout-form__item--saving">
+              <span className="checkout-form__item-name">{COMBO_SIZE} meal combo{combos > 1 ? ` (x${combos})` : ''}</span>
+              <span className="checkout-form__item-price">-R{discount.toFixed(2)}</span>
+            </div>
+          </div>
+        )}
 
         <div className="checkout-form__summary-total">
           <span className="checkout-form__summary-label">Total</span>

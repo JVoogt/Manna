@@ -133,3 +133,8 @@
 
 /* keep the focused control clear of the fixed order bar */
 html:has(.home--bar) { scroll-padding-bottom: 7rem; }
+
+/* combo promo, and its hint in the order bar */
+.menu__combo { font-size: var(--text-lg); color: var(--color-ink); max-width: 40ch; padding: var(--space-md) var(--space-lg); background: var(--color-paper); border-radius: var(--radius-card); }
+.menu__combo strong { font-weight: 600; }
+.orderbar__hint { font-size: var(--text-sm); color: var(--color-paper); opacity: 0.9; }

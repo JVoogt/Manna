@@ -1,3 +1,10 @@
+import { comboOffer, COMBO_SIZE } from './pricing';
+
+const offer = comboOffer();
+const comboAnswer = offer
+  ? `Yes. Any ${COMBO_SIZE} meals together cost R${offer.combo} instead of R${offer.full}. Every full set of ${COMBO_SIZE} in your order gets this price. Puddings are not part of the combo.`
+  : `Yes. Every full set of ${COMBO_SIZE} meals in your order gets a combo price. Puddings are not part of the combo.`;
+
 // Single source for the FAQ: the home page renders it and index.astro turns it into FAQPage JSON-LD.
 export const FAQ_ITEMS = [
   {
@@ -11,6 +18,10 @@ export const FAQ_ITEMS = [
   {
     q: 'How far ahead must I order?',
     a: 'At least 2 business days ahead. We confirm the exact date with you on WhatsApp.',
+  },
+  {
+    q: 'Is there a discount for ordering more?',
+    a: comboAnswer,
   },
   {
     q: 'How do I pay?',

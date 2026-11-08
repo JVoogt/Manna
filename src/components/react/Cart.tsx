@@ -2,6 +2,7 @@ import React from 'react';
 import { useCartState } from '../../lib/cart-context';
 import { CartItem } from './CartItem';
 import { WA_BASE, WA_DISPLAY } from '../../lib/site';
+import { priceCart, comboOffer, COMBO_SIZE } from '../../lib/pricing';
 import '../../styles/cart.css';
 
 export default function Cart() {
@@ -9,7 +10,8 @@ export default function Cart() {
 
   // Calculate totals
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const { subtotal, discount, total, mealCount, combos, toNextCombo } = priceCart(items);
+  const offer = comboOffer();
 
   // Empty cart state
   if (items.length === 0) {
@@ -65,12 +67,31 @@ export default function Cart() {
           <span className="cart__summary-value">{itemCount}</span>
         </div>
 
+        {discount > 0 && (
+          <>
+            <div className="cart__summary-row">
+              <span className="cart__summary-label">Subtotal</span>
+              <span className="cart__summary-value">R{subtotal.toFixed(2)}</span>
+            </div>
+            <div className="cart__summary-row cart__summary-row--saving">
+              <span className="cart__summary-label">{COMBO_SIZE} meal combo{combos > 1 ? ` (x${combos})` : ''}</span>
+              <span className="cart__summary-value">-R{discount.toFixed(2)}</span>
+            </div>
+          </>
+        )}
+
         <div className="cart__summary-row cart__summary-row--total">
-          <span className="cart__summary-label">Subtotal</span>
+          <span className="cart__summary-label">{discount > 0 ? 'Total' : 'Subtotal'}</span>
           <span className="cart__summary-value cart__summary-value--total">
-            R{subtotal.toFixed(2)}
+            R{total.toFixed(2)}
           </span>
         </div>
+
+        {mealCount > 0 && toNextCombo < COMBO_SIZE && (
+          <p className="cart__summary-hint">
+            Add {toNextCombo} more {toNextCombo === 1 ? 'meal' : 'meals'} for the {COMBO_SIZE} meal combo{offer ? `, ${COMBO_SIZE} for R${offer.combo}` : ''}.
+          </p>
+        )}
 
         <p className="cart__summary-fee">
           Delivery fee is not included. We quote it on WhatsApp.

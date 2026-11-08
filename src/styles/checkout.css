@@ -497,3 +497,5 @@
 @media (prefers-reduced-motion: reduce) {
   .checkout-form__submit { transition: none; }
 }
+
+.checkout-form__item--saving .checkout-form__item-name, .checkout-form__item--saving .checkout-form__item-price { color: var(--color-accent); font-weight: 600; }

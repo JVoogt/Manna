@@ -3,10 +3,11 @@ import { useCartActions, useCartState } from '@/lib/cart-context';
 import type { Meal } from '@/schemas/meal.schema';
 import { toast } from 'sonner';
 import { FAQ_ITEMS } from '@/lib/faq';
+import { priceCart, comboOffer, COMBO_SIZE } from '@/lib/pricing';
 import { WA_HELLO, WA_ALLERGY, WA_DISPLAY } from '@/lib/site';
 import '../../styles/home.css';
 
-const fmtZAR = (n: number) => `R${n}`;
+const fmtZAR = (n: number) => (Number.isInteger(n) ? `R${n}` : `R${n.toFixed(2)}`);
 
 const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 const countWord = (n: number) => NUMBER_WORDS[n] ?? String(n);
@@ -105,7 +106,8 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
 
   const cart = useCartState();
   const count = cart.reduce((n, i) => n + i.quantity, 0);
-  const total = cart.reduce((n, i) => n + i.quantity * i.price, 0);
+  const { total, discount, mealCount, toNextCombo } = priceCart(cart);
+  const example = comboOffer();
 
   return (
     <main className={count > 0 ? 'home home--bar' : 'home'}>
@@ -171,6 +173,12 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
         <div className="container">
           <header className="menu__head">
             <h2 id="menu-title">{menuTitle}</h2>
+            {mains.length > 0 && (
+              <p className="menu__combo">
+                <strong>{example ? `Any ${COMBO_SIZE} meals for ${fmtZAR(example.combo)}.` : `Any ${COMBO_SIZE} meals, a combo price.`}</strong>
+                {example ? ` Normally ${fmtZAR(example.full)}.` : ''} Puddings are not part of the combo.
+              </p>
+            )}
             <p className="menu__terms">Order at least 2 business days ahead. We quote the delivery fee on WhatsApp.</p>
             <p className="lead">
               Allergies? <a href={WA_ALLERGY} target="_blank" rel="noopener noreferrer">Ask us on WhatsApp</a> before you order.
@@ -261,6 +269,11 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
           <p className="orderbar__sum">
             <span className="orderbar__count">{count} {count === 1 ? 'item' : 'items'}</span>
             <span className="orderbar__total">{fmtZAR(total)}</span>
+            {discount > 0 ? (
+              <span className="orderbar__hint">You save {fmtZAR(discount)} with the combo</span>
+            ) : mealCount > 0 && toNextCombo < COMBO_SIZE ? (
+              <span className="orderbar__hint">Add {toNextCombo} more {toNextCombo === 1 ? 'meal' : 'meals'} for the combo{example ? `, ${COMBO_SIZE} for ${fmtZAR(example.combo)}` : ''}</span>
+            ) : null}
           </p>
           <a href="/cart" className="btn btn--primary">Review order</a>
         </div>
