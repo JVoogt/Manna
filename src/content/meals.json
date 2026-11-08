@@ -66,7 +66,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/malva-pudding.jpg"
   },
   {
     "id": "ginger-pudding",
@@ -77,7 +78,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/ginger-pudding.jpg"
   },
   {
     "id": "chocolate-pudding",
