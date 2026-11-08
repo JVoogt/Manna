@@ -1,74 +1,114 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getMeals } from '../lib/content';
+import { SITE_URL, BUSINESS_NAME, WA_BASE, WA_DIGITS, ADDRESS, FOUNDERS, MAPS_SEARCH } from '../lib/site';
 
 interface Props {
   title?: string;
   description?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
-  title = "Frozen meals delivery in Pretoria | Manna Kitchen",
-  description = "Home-cooked frozen meals, delivered in Pretoria or collected in Theresapark. Ready meals for seniors, people with disabilities and busy people.",
+  title = "Frozen Meals Delivered in Pretoria North | Manna Kitchen",
+  description = "Home-cooked frozen meals from two sisters in Theresapark, Pretoria North. Pasta and puddings from R50, delivered in Pretoria or collected.",
   type = "website",
-  noindex = false
+  noindex = false,
+  jsonLd = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteUrl = "https://manna.voogt.co.za";
 
-// Structured Data for LocalBusiness.
-// Only facts JP supplied: name, telephone, address, url, area served.
-// No opening hours, geo, image, priceRange, rating or review: none has been supplied.
+// Menu comes from meals.json, the same source the home page renders.
+const meals = getMeals();
+const menuItem = (m: (typeof meals)[number]) => ({
+  "@type": "MenuItem",
+  "name": m.name,
+  "description": m.description,
+  "offers": { "@type": "Offer", "price": String(m.price), "priceCurrency": "ZAR" },
+});
+const menuSections = [
+  { name: 'Frozen meals', items: meals.filter((m) => m.category === 'meal') },
+  { name: 'Puddings', items: meals.filter((m) => m.category === 'dessert') },
+].filter((s) => s.items.length > 0);
+
+// Structured data for LocalBusiness. Only facts JP supplied: no opening hours, geo, image,
+// priceRange, rating or review. sameAs is omitted because no profile URLs were supplied.
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Manna Kitchen",
-  "description": description,
-  "@id": siteUrl,
-  "url": siteUrl,
-  "telephone": "+27825795210",
+  "@type": ["LocalBusiness", "FoodEstablishment"],
+  "@id": `${SITE_URL}/#business`,
+  "name": BUSINESS_NAME,
+  "description": "Home-cooked frozen meals and puddings from two sisters in Theresapark, Pretoria North, delivered in Pretoria or collected from the kitchen.",
+  "url": SITE_URL,
+  "telephone": `+${WA_DIGITS}`,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "71 Springbok St",
-    "addressLocality": "Theresapark",
-    "addressRegion": "Gauteng",
-    "postalCode": "0182",
-    "addressCountry": "ZA"
+    "streetAddress": ADDRESS.street,
+    "addressLocality": `${ADDRESS.suburb}, ${ADDRESS.area}`,
+    "addressRegion": ADDRESS.region,
+    "postalCode": ADDRESS.postalCode,
+    "addressCountry": ADDRESS.country,
   },
-  "areaServed": "Pretoria"
+  "areaServed": [
+    { "@type": "City", "name": "Pretoria" },
+    { "@type": "Place", "name": "Pretoria North" },
+  ],
+  "founder": FOUNDERS.map((name) => ({ "@type": "Person", name })),
+  "hasMap": MAPS_SEARCH,
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "Frozen meals and puddings",
+    "hasMenuSection": menuSections.map((s) => ({
+      "@type": "MenuSection",
+      "name": s.name,
+      "hasMenuItem": s.items.map(menuItem),
+    })),
+  },
+  "potentialAction": {
+    "@type": "OrderAction",
+    "name": "Order on WhatsApp",
+    "target": { "@type": "EntryPoint", "urlTemplate": WA_BASE },
+  },
 };
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
   <head>
     <!-- Basic Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Fonts -->
+    <!-- Hallmark stamp, kept as plain text in every page so a render can read it; waivers live in src/styles/global.css -->
+    <style is:inline>
+/* Hallmark · shape: Letter · genre: editorial · theme: Garden (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
+ * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: none (dish slots wait for the user's photographs) · signature: the R55 and R50 offer set at display size beside the head
+ * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+    </style>
+
+    <!-- Fonts: three families, display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" />
 
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="frozen meals delivery Pretoria, ready meals for seniors, meals for elderly Pretoria, frozen meals for the disabled, meals for carers, home-cooked frozen meals, meal planning help, Pretoria North, Theresapark" />
-    <meta name="author" content="Manna Kitchen" />
+    <meta name="author" content={BUSINESS_NAME} />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook (no og:image: none supplied yet) -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Manna Kitchen" />
+    <meta property="og:site_name" content={BUSINESS_NAME} />
     <meta property="og:locale" content="en_ZA" />
 
     <!-- Twitter -->
@@ -84,10 +124,11 @@ const structuredData = {
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    {jsonLd.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#8b5a3c" />
-    <meta name="msapplication-TileColor" content="#8b5a3c" />
+    <!-- Theme Color: the Garden paper -->
+    <meta name="theme-color" content="#f7f1df" />
+    <meta name="msapplication-TileColor" content="#f7f1df" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -99,115 +140,12 @@ const structuredData = {
     </div>
 
     <Footer />
+
+    <script is:inline>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+    document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
   </body>
 </html>
 
 <style is:global>
-  /* Hallmark · redesign: polish · theme: custom · frozen meals · tokens at :root · nav: wordmark left, five anchor links, WhatsApp and cart right, menu drawer on small screens · footer: three short link columns, no social row */
-  /* Hallmark · pre-emit critique: P3 H4 E4 S3 R4 V3 · weakest: P, polish keeps the existing look so it argues little; spent the pass on contrast, tap targets and honest delivery copy instead */
-  /* Hallmark · waive 39b · buttons stand 57px · the audience is older adults and people with limited dexterity, 48px+ targets are a requirement */
-  /* Hallmark · waive 44c · hero is short on purpose · plain headline, one sentence and two actions, no decorative filler for readers who want the menu fast */
-  /* Hallmark · waive 77 · closing section is a single prompt to chat on WhatsApp · it is the page's last action, not content */
-  /* Hallmark · waive 71 · group titles sit 3rem under the section head and 1rem above their cards · measured gap includes the tonal image slot, not empty space */
-  :root {
-    --hue: 45;
-    --paper: oklch(0.97 0.018 80);
-    --paper-2: oklch(0.94 0.028 75);
-    --paper-3: oklch(0.90 0.035 70);
-    --surface: oklch(0.99 0.008 80);
-    --ink: oklch(0.24 0.03 50);
-    --ink-soft: oklch(0.38 0.025 50);
-    --ink-mute: oklch(0.49 0.02 50);
-    --line: oklch(0.82 0.025 70);
-    --line-2: oklch(0.88 0.02 70);
-    --field-edge: oklch(0.60 0.03 65);
-    --accent: oklch(0.68 0.18 var(--hue));
-    --accent-strong: oklch(0.58 0.19 var(--hue));
-    --accent-ink: oklch(0.30 0.12 var(--hue));
-    --accent-wash: oklch(0.95 0.06 var(--hue));
-    --on-dark: oklch(0.99 0.008 80);
-    --wa: oklch(0.64 0.17 150);
-    --wa-strong: oklch(0.54 0.18 150);
-    --wa-deep: oklch(0.46 0.13 150);
-    --wa-deeper: oklch(0.38 0.11 150);
-    --danger: oklch(0.50 0.19 27);
-    --danger-wash: oklch(0.96 0.03 27);
-    --success: oklch(0.45 0.11 150);
-    --radius: 14px;
-    --radius-lg: 22px;
-    --shadow-sm: 0 1px 0 rgba(80,45,15,0.06), 0 1px 2px rgba(80,45,15,0.04);
-    --shadow-md: 0 2px 4px rgba(80,45,15,0.05), 0 8px 24px -8px rgba(80,45,15,0.18);
-    --shadow-lg: 0 30px 80px -20px rgba(80,45,15,0.35);
-    --font-display: "Fraunces", "Playfair Display", Georgia, serif;
-    --font-body: "Inter", system-ui, -apple-system, sans-serif;
-    --content-w: 1240px;
-    --density-pad: 5rem;
-    --density-gap: 1.25rem;
-    --tap: 48px;
-    --header-h: 4.5rem;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html {
-    scroll-behavior: smooth;
-    overflow-x: clip;
-    scrollbar-color: var(--line) var(--paper);
-  }
-  body {
-    font-family: var(--font-body);
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 18px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: clip;
-    caret-color: var(--accent-ink);
-  }
-  #main { flex: 1; min-width: 0; }
-  #main:focus { outline: none; }
-  [id] { scroll-margin-top: calc(var(--header-h) + 0.5rem); }
-  ::selection { background: var(--accent-wash); color: var(--ink); }
-  img, svg { display: block; max-width: 100%; }
-  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-  a { color: inherit; text-decoration: none; }
-  h1, h2, h3 { overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
-  button:active:not(:disabled) { transform: translateY(1px); }
-
-  :focus-visible {
-    outline: 3px solid var(--accent-ink);
-    outline-offset: 3px;
-  }
-
-  .skip-link {
-    position: absolute;
-    left: 1rem;
-    top: 0;
-    z-index: 9999;
-    transform: translateY(-200%);
-    background: var(--ink);
-    color: var(--on-dark);
-    padding: 0.75rem 1.25rem;
-    min-height: var(--tap);
-    display: inline-flex;
-    align-items: center;
-    border-radius: 0 0 var(--radius) var(--radius);
-    font-weight: 600;
-  }
-  .skip-link:focus-visible {
-    transform: translateY(0);
-    outline-color: var(--ink);
-    outline-offset: 3px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-    }
-  }
+  @import url("../styles/global.css");
 </style>

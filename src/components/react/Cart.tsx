@@ -1,6 +1,8 @@
 import React from 'react';
 import { useCartState } from '../../lib/cart-context';
 import { CartItem } from './CartItem';
+import { WA_BASE, WA_DISPLAY } from '../../lib/site';
+import '../../styles/cart.css';
 
 export default function Cart() {
   const items = useCartState();
@@ -38,79 +40,10 @@ export default function Cart() {
         </a>
         <p className="cart-empty__alt">
           Prefer to order by message?{' '}
-          <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">
+          <a href={WA_BASE} target="_blank" rel="noopener noreferrer">
             Chat with us on WhatsApp
           </a>
         </p>
-
-        <style>{`
-          .cart-empty {
-            text-align: center;
-            padding: 3rem 1rem;
-            max-width: 32rem;
-            margin: 0 auto;
-          }
-
-          .cart-empty__icon {
-            margin: 0 auto 1.25rem;
-            color: var(--ink-mute);
-          }
-
-          .cart-empty__title {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 0 0 0.75rem 0;
-          }
-
-          .cart-empty__text {
-            font-size: 1.125rem;
-            color: var(--ink-soft);
-            margin: 0 0 2rem 0;
-          }
-
-          .cart-empty__link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: var(--tap, 48px);
-            padding: 0 2rem;
-            background: var(--accent-ink);
-            color: var(--on-dark);
-            border-radius: var(--radius);
-            font-size: 1.125rem;
-            font-weight: 600;
-            transition: background-color 200ms ease, transform 120ms ease;
-          }
-
-          .cart-empty__link:hover { background: var(--ink); }
-          .cart-empty__link:active { transform: translateY(1px); }
-
-          .cart-empty__alt {
-            margin: 1.5rem 0 0;
-            font-size: 1rem;
-            color: var(--ink-soft);
-          }
-
-          .cart-empty__alt a {
-            color: var(--accent-ink);
-            text-decoration: underline;
-            text-underline-offset: 0.25em;
-            display: inline-block;
-            padding: 0.75rem 0;
-          }
-
-          .cart-empty__link:focus-visible,
-          .cart-empty__alt a:focus-visible {
-            outline: 3px solid var(--accent-ink);
-            outline-offset: 3px;
-          }
-
-          @media (prefers-reduced-motion: reduce) {
-            .cart-empty__link { transition: none; }
-          }
-        `}</style>
       </div>
     );
   }
@@ -149,138 +82,12 @@ export default function Cart() {
 
         <p className="cart__summary-note">
           Need a hand? Message us on WhatsApp:{' '}
-          <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">
-            +27 82 579 5210
+          <a href={WA_BASE} target="_blank" rel="noopener noreferrer">
+            {WA_DISPLAY}
           </a>
         </p>
       </aside>
 
-      <style>{`
-        .cart {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
-          gap: 2rem;
-          align-items: start;
-        }
-
-        .cart__items {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .cart__summary {
-          position: sticky;
-          top: calc(var(--header-h, 4.5rem) + 1rem);
-          background: var(--surface);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 1.5rem;
-        }
-
-        .cart__summary-title {
-          font-family: var(--font-display);
-          font-size: 1.375rem;
-          font-weight: 600;
-          color: var(--ink);
-          margin: 0 0 1.25rem 0;
-          padding-bottom: 1rem;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .cart__summary-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-
-        .cart__summary-row--total {
-          margin-top: 1.25rem;
-          padding-top: 1rem;
-          border-top: 1px solid var(--line);
-        }
-
-        .cart__summary-label {
-          font-size: 1.0625rem;
-          color: var(--ink-soft);
-        }
-
-        .cart__summary-value {
-          font-size: 1.0625rem;
-          font-weight: 600;
-          color: var(--ink);
-          font-variant-numeric: tabular-nums;
-        }
-
-        .cart__summary-value--total {
-          font-size: 1.625rem;
-          font-weight: 700;
-        }
-
-        .cart__summary-fee {
-          font-size: 1rem;
-          color: var(--ink-soft);
-          margin: 0;
-        }
-
-        .cart__checkout-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          min-height: 3.25rem;
-          padding: 0 1rem;
-          background: var(--accent-ink);
-          color: var(--on-dark);
-          border-radius: var(--radius);
-          font-size: 1.125rem;
-          font-weight: 600;
-          text-align: center;
-          margin-top: 1.5rem;
-          transition: background-color 200ms ease, transform 120ms ease;
-        }
-
-        .cart__checkout-button:hover { background: var(--ink); }
-        .cart__checkout-button:active { transform: translateY(1px); }
-
-        .cart__summary-note {
-          font-size: 1rem;
-          color: var(--ink-soft);
-          text-align: center;
-          margin: 1rem 0 0 0;
-        }
-
-        .cart__summary-note a {
-          color: var(--accent-ink);
-          font-weight: 600;
-          text-decoration: underline;
-          text-underline-offset: 0.25em;
-          display: inline-block;
-          padding: 0.75rem 0;
-        }
-
-        .cart__checkout-button:focus-visible,
-        .cart__summary-note a:focus-visible {
-          outline: 3px solid var(--accent-ink);
-          outline-offset: 3px;
-        }
-
-        /* Mobile responsive - stack vertically */
-        @media (max-width: 768px) {
-          .cart {
-            grid-template-columns: minmax(0, 1fr);
-          }
-
-          .cart__summary {
-            position: static;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .cart__checkout-button { transition: none; }
-        }
-      `}</style>
     </div>
   );
 }

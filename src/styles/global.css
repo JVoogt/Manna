@@ -1,0 +1,30 @@
+/* Hallmark · shape: Letter · genre: editorial · theme: Garden (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
+ * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: none (dish slots wait for the user's photographs) · signature: the R55 and R50 offer set at display size beside the head
+ * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, a dish well without a photograph can read as a blank label; set each as a freezer label with the dish name large and the category in a Newsreader caption, and a real photo replaces it through one field */
+/* Hallmark · waive 81 · eight dish wells hold a typeset freezer label (dish name, category) until the owner's photographs arrive · each well is replaced by one imageUrl field in meals.json and falls back to the label if the file fails to load */
+/* Hallmark · answered F4 · the leaf-green pill is one button recipe; the same pill reads on the green ink band in a pale leaf so it keeps its contrast there */
+/* Hallmark · dismissed 23 · the pale-leaf button on the ink band is one 52px pill, far under a twentieth of the viewport */
+/* Hallmark · dismissed 25 · a dish line is one sentence under a dish name, so the 28ch lede allowance applies */
+/* Hallmark · dismissed 28a · the dish photographs sit in the menu far below the fold, so none is the LCP element and lazy loading is right */
+/* Hallmark · answered F7 · the pill radius on the cart and checkout links belongs to buttons that are links, so every one of them is a control */
+/* Hallmark · dismissed 42 · the nav is the floating pill the stamp names: a rounded wordmark, links, cart and action in one bar, no hairline under it */
+/* Hallmark · dismissed 77 · the contact page is a lookup page of four short sections, a head, an address with a map, the delivery facts and the footer */
+/* Hallmark · dropped tel:+2782, wa.me/2782, +2782 · JP replaced the number with a new dedicated WhatsApp line, so every old link, the old call link and the old figure are gone */
+/* Hallmark · reworded "Home-cooked meals, ready when you are." to "Pasta and pudding, ready when you are." · copywriting brief: a head with the dish nouns */
+/* Hallmark · reworded "The menu" to "Five meals, three puddings." · copywriting brief: section heads say what the visitor will see */
+/* Hallmark · reworded "Desserts" to "Puddings" · the dishes are puddings */
+/* Hallmark · reworded "How ordering works" to "Frozen meals delivered in Pretoria" · local search wording on the delivery section */
+/* Hallmark · dropped "Good food, without the cooking.", "Older adults at home", "People with a disability or limited mobility", "Busy people and carers" · the who-it-is-for list is one statement now */
+/* Hallmark · reworded "Our story" to "Two sisters and a home kitchen." · the about head names the subject */
+/* Hallmark · reworded "From hardship to hope" to "How Manna began" · plain label over a figurative head */
+/* Hallmark · reworded "Cooked by hand at home" to "Cooked at home" · 19 names the tightened claim */
+/* Hallmark · reworded "Get in touch" to "Contact Manna Kitchen" · the contact page H1 names the business */
+/* Hallmark · dropped "WhatsApp us", "Phone", "Delivery and pickup", "Order", "Contact" · the contact cards are now ruled facts and the footer is a colophon without link-column heads */
+/* Hallmark · reworded "Questions" to "Before you order" · a head that says what the visitor does, not a category label */
+/* Hallmark · hero-review: in-thread · judged by the builder against the 1280, 1440, 1920 and 375 first screens · 3 findings · 3 resolved */
+/* Hallmark · finish-review: subagent · 8 findings · 5 resolved 3 declined (the money path was captured, the founder names are the owner's, the audience statement stays one statement) · gap: none */
+@import url("./tokens.css");
+@import url("./base.css");
+@import url("./aliases.css");
+@import url("./site.css");

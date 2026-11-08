@@ -1,8 +1,8 @@
 import { formatLocalDate } from './date-utils';
 import type { CartItem } from '../types/cart';
 
-export const WHATSAPP_NUMBER = '+27825795210';
-export const WHATSAPP_DISPLAY = '+27 82 579 5210';
+export const WHATSAPP_NUMBER = '+27633510528';
+export const WHATSAPP_DISPLAY = '+27 63 351 0528';
 export const PICKUP_ADDRESS = '71 Springbok St, Theresapark';
 
 /**

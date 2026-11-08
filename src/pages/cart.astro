@@ -1,90 +1,74 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AppProvider from '@/components/react/AppProvider';
+import { WA_BASE, WA_DISPLAY } from '@/lib/site';
 ---
 
 <BaseLayout
-  title="Your cart | Manna Kitchen"
-  description="Review the frozen meals in your cart, then go to checkout. We deliver in Pretoria, or you can collect from our kitchen in Theresapark."
+  title="Your Order | Manna Kitchen, Pretoria North"
+  description="Review the frozen meals in your order, then go to checkout. We deliver locally in Pretoria, or you can collect from our kitchen in Theresapark."
   noindex>
 
   <AppProvider page="cart" client:only="react" />
   <noscript>
     <p class="noscript-note">
       The cart needs JavaScript. You can still order by
-      <a href="https://wa.me/27825795210">WhatsApp on +27 82 579 5210</a>.
+      <a href={WA_BASE}>WhatsApp on {WA_DISPLAY}</a>.
     </p>
   </noscript>
 </BaseLayout>
 
 <style>
   :global(.cart-page) {
-    max-width: var(--content-w);
-    padding: 2rem 1.5rem;
+    max-width: var(--container);
     margin: 0 auto;
+    padding: var(--space-xl) var(--gutter) var(--space-3xl);
   }
 
   :global(.cart-page__header) {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
   }
 
   :global(.breadcrumb) {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-xs);
   }
 
   :global(.breadcrumb a) {
     display: inline-flex;
     align-items: center;
     min-height: var(--tap);
-    color: var(--accent-ink);
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
+    color: var(--color-ink);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
   }
 
-  :global(.breadcrumb a:hover) {
-    color: var(--ink);
-  }
-
-  :global(.breadcrumb__separator) {
-    color: var(--ink-mute);
-  }
-
-  :global(.breadcrumb__current) {
-    color: var(--ink-soft);
-  }
+  :global(.breadcrumb__separator) { color: var(--color-muted); }
+  :global(.breadcrumb__current) { color: var(--color-ink-2); }
 
   :global(.cart-page h1) {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--ink);
+    font-size: var(--text-section);
+    max-width: none;
     margin: 0;
+    text-wrap: balance;
   }
 
   .noscript-note {
     max-width: 40rem;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-    font-size: 1.125rem;
+    margin: var(--space-xl) auto;
+    padding-inline: var(--gutter);
+    font-size: var(--text-lg);
   }
 
   .noscript-note a {
-    text-decoration: underline;
-    color: var(--accent-ink);
+    color: var(--color-ink);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
   }
 
-  @media (max-width: 640px) {
-    :global(.cart-page) {
-      padding: 1.5rem 1rem;
-    }
-
-    :global(.cart-page h1) {
-      font-size: 1.9rem;
-    }
+  @media (max-width: 40rem) {
+    :global(.cart-page) { padding-top: var(--space-xl); }
   }
 </style>

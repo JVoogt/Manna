@@ -1,4 +1,5 @@
 import { useCartState } from '../../lib/cart-context';
+import '../../styles/cart-icon.css';
 
 export function CartIcon() {
   const items = useCartState();
@@ -31,63 +32,6 @@ export function CartIcon() {
           </span>
         )}
       </div>
-      <style>{`
-        .cart-icon-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--ink);
-          min-width: var(--tap, 48px);
-          min-height: var(--tap, 48px);
-          border-radius: 50%;
-          transition: background-color 200ms ease;
-        }
-
-        .cart-icon-link:hover {
-          background: var(--paper-2);
-        }
-
-        .cart-icon-link:active {
-          background: var(--paper-3);
-        }
-
-        .cart-icon-link:focus-visible {
-          outline: 3px solid var(--accent-ink);
-          outline-offset: 2px;
-        }
-
-        .cart-icon-container {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .cart-icon-svg {
-          width: 26px;
-          height: 26px;
-        }
-
-        .cart-badge {
-          position: absolute;
-          top: -9px;
-          right: -11px;
-          background: var(--accent-ink);
-          color: var(--on-dark);
-          font-size: 0.8125rem;
-          font-weight: 700;
-          line-height: 1;
-          font-variant-numeric: tabular-nums;
-          padding: 0.25rem 0.4rem;
-          border-radius: 999px;
-          min-width: 20px;
-          text-align: center;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .cart-icon-link { transition: none; }
-        }
-      `}</style>
     </a>
   );
 }

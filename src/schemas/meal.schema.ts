@@ -6,7 +6,8 @@ export const mealSchema = z.object({
   description: z.string().max(500),
   price: z.number().positive(),
   category: z.enum(['meal', 'dessert']),
-  imageUrl: z.string().url().optional(),
+  // A full URL, or a path under public/ such as /images/meals/beef-lasagne.jpg
+  imageUrl: z.string().refine((v) => /^https?:\/\//.test(v) || v.startsWith('/'), 'Use a full URL or a path starting with /').optional(),
   servings: z.string().optional(), // e.g., "1 portion"
   dietary: z.array(z.enum(['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free'])).default([]),
   allergens: z.array(z.string()).default([]),

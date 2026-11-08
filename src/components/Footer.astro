@@ -1,110 +1,42 @@
 ---
+import { WA_BASE, WA_DISPLAY, ADDRESS, FOUNDERS } from '../lib/site';
 ---
 
-<footer class="site-foot">
-  <div class="sf-inner">
-    <div class="sf-brand">
-      <p class="sf-logo">Manna Kitchen</p>
-      <p>Home-cooked frozen meals, made by two sisters in Pretoria North and delivered to your door or collected from our kitchen.</p>
+<footer class="foot">
+  <div class="container foot__wrap">
+    <p class="foot__name">Manna Kitchen</p>
+    <div class="foot__colophon">
+      <address>
+        {ADDRESS.street}, {ADDRESS.suburb}, {ADDRESS.area}, {ADDRESS.postalCode}.
+        WhatsApp <a href={WA_BASE} target="_blank" rel="noopener noreferrer">{WA_DISPLAY}</a>.
+        Cooked by {FOUNDERS[0]} and {FOUNDERS[1]}.
+      </address>
     </div>
-    <nav class="sf-col" aria-label="Footer">
-      <h2 class="sf-head">Order</h2>
-      <a href="/#menu">Menu</a>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="/#menu">Frozen meals menu</a>
       <a href="/#how">How it works</a>
       <a href="/#faq">FAQ</a>
-    </nav>
-    <div class="sf-col">
-      <h2 class="sf-head">Contact</h2>
-      <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a href="/contact/">Contact</a>
       <a href="/about/">Our story</a>
-      <address>Pickup: 71 Springbok St, Theresapark</address>
-    </div>
-  </div>
-  <div class="sf-bot">
-    <span>&copy; 2026 Manna Kitchen</span>
+      <a href="/contact/">Contact</a>
+      <a href={WA_BASE} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </nav>
+    <small class="foot__legal">&copy; 2026 Manna Kitchen</small>
   </div>
 </footer>
 
 <style>
-  .site-foot {
-    background: var(--paper-2);
-    border-top: 1px solid var(--line);
-    padding: 3rem 1.5rem 2rem;
-  }
-
-  .sf-inner {
-    max-width: var(--content-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
-    gap: 2rem;
-  }
-
-  .sf-brand { max-width: 24rem; }
-
-  .sf-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.75rem;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-
-  .sf-brand p:last-child {
-    color: var(--ink-soft);
-    font-size: 1rem;
-  }
-
-  .sf-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .sf-head {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 0.5rem;
-  }
-
-  .sf-col a {
-    display: flex;
-    align-items: center;
-    min-height: var(--tap);
-    font-size: 1rem;
-    color: var(--ink-soft);
-    text-decoration: underline;
-    text-decoration-color: var(--line);
-    text-underline-offset: 0.25em;
-  }
-
-  .sf-col a:hover { color: var(--ink); text-decoration-color: var(--ink); }
-
-  .sf-col address {
-    font-style: normal;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin-top: 0.5rem;
-  }
-
-  .sf-bot {
-    max-width: var(--content-w);
-    margin: 2rem auto 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-    font-size: 0.95rem;
-    color: var(--ink-mute);
-  }
-
-  @media (max-width: 780px) {
-    .sf-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .sf-brand { grid-column: 1 / -1; }
-  }
-
-  @media (max-width: 480px) {
-    .sf-inner { grid-template-columns: minmax(0, 1fr); }
+  .foot { border-top: 1px solid var(--color-rule-2); padding-block: var(--space-2xl) var(--space-xl); }
+  .foot__wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--gap-columns); row-gap: var(--space-lg); align-items: start; }
+  .foot__name { font: var(--display-weight) var(--text-xl)/1.1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+  .foot__colophon { display: grid; gap: var(--space-sm); color: var(--color-ink-2); max-width: 60ch; }
+  .foot__colophon address { font-style: normal; }
+  .foot__colophon a { display: inline-block; padding-block: var(--space-xs); color: var(--color-ink); }
+  .foot__links { grid-column: 2; display: flex; flex-wrap: wrap; gap: 0 var(--space-lg); }
+  .foot__links a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-rule-2); }
+  .foot__links a:hover { text-decoration-color: var(--color-accent); }
+  .foot__legal { grid-column: 2; font-size: var(--text-sm); color: var(--color-muted); }
+  @media (max-width: 60rem) {
+    .foot__wrap { grid-template-columns: minmax(0, 1fr); }
+    .foot__links, .foot__legal { grid-column: 1; }
   }
 </style>

@@ -1,199 +1,69 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { WA_BASE, FOUNDERS } from '@/lib/site';
+import '../styles/pages.css';
 ---
 
 <BaseLayout
-  title="Our story | Manna Kitchen, Pretoria"
-  description="The story of Manna Kitchen: two sisters in Theresapark, Pretoria, cooking frozen meals at home for seniors, people with disabilities and busy people.">
+  title="Our Story | Manna Kitchen, Pretoria North"
+  description="Two sisters, Cornelia Voogt and Edith Hawks, cook frozen meals in their home kitchen in Theresapark, Pretoria North. Read how Manna Kitchen began.">
 
-  <main class="about-page">
-    <header class="hero">
-      <h1>Our story</h1>
-    </header>
-
-    <section class="story" aria-labelledby="story-h">
-      <h2 id="story-h">From hardship to hope</h2>
-      <p>
-        Manna Kitchen was born from both love and necessity. Two sisters, bound by family and
-        faith, found themselves facing an unexpected challenge when one was diagnosed with
-        Guillain-Barré syndrome, a rare neurological condition that required extensive medical
-        treatment and ongoing care.
-      </p>
-      <p>
-        What started as a way to generate revenue for medical expenses has blossomed into
-        something far greater. From their home kitchen in Theresapark, Pretoria, these sisters began
-        cooking the food they grew up with, made with care.
-      </p>
-      <p>
-        Word spread quickly among neighbours and friends. People did not just come back for the
-        food; they came back for the care woven into every dish, the personal touch in every
-        interaction, and the knowledge that their purchase was helping a family in need.
-      </p>
-      <p>
-        Today the kitchen cooks one thing: frozen meals, for people who would rather not cook
-        every day. That includes older people, people living with a disability, and busy people
-        who want help with meal planning. We have not forgotten our roots, and every meal still
-        comes from that same home kitchen.
-      </p>
+  <main class="page">
+    <section class="page-hero" aria-labelledby="about-title">
+      <div class="container">
+        <h1 id="about-title">Two sisters and a home kitchen.</h1>
+        <p class="lead">Manna Kitchen cooks frozen meals in Theresapark, Pretoria North.</p>
+      </div>
     </section>
 
-    <section class="special" aria-labelledby="special-h">
-      <h2 id="special-h">What makes Manna special</h2>
-      <ul class="special-points">
-        <li>
-          <h3>Cooked by hand at home</h3>
-          <p>
-            Every meal is made in our own kitchen in Theresapark, with the same care we would
-            give to feeding our own family.
-          </p>
-        </li>
-        <li>
-          <h3>Made for easy days</h3>
-          <p>
-            Stock the freezer once and heat a meal when you need one. It takes the daily
-            question of what to cook off your plate, or off a carer’s.
-          </p>
-        </li>
-        <li>
-          <h3>Supporting family</h3>
-          <p>
-            When you order from Manna Kitchen, you are supporting a family business with a
-            heartfelt story.
-          </p>
-        </li>
-      </ul>
+    <section class="section--l began-section" aria-labelledby="began-h">
+      <div class="container">
+        <h2 id="began-h" class="began-title">How Manna began</h2>
+        <ol class="began">
+          <li>
+            <h3>A hard season</h3>
+            <p>Edith was diagnosed with Guillain-Barré syndrome, a rare neurological condition that needed long treatment and ongoing care. We needed a way to pay the medical bills.</p>
+          </li>
+          <li>
+            <h3>So we cooked</h3>
+            <p>We cooked the food we grew up with, in our home kitchen in Theresapark, Pretoria North.</p>
+          </li>
+          <li>
+            <h3>The kitchen today</h3>
+            <p>Word spread among neighbours and friends. People came back for the food and the care in every dish. Today we cook one thing: frozen meals for people who would rather not cook every day.</p>
+          </li>
+        </ol>
+        <p class="began__sign">{FOUNDERS[0]} and {FOUNDERS[1]}</p>
+      </div>
     </section>
 
-    <section class="how" aria-labelledby="how-h">
-      <h2 id="how-h">How ordering works</h2>
-      <ol class="steps">
-        <li>
-          <strong>Choose your meals</strong> from the menu and add them to your cart.
-        </li>
-        <li>
-          <strong>Choose delivery or pickup</strong> and a preferred date at least 2 business
-          days ahead.
-        </li>
-        <li>
-          <strong>Send the order on WhatsApp.</strong> We confirm it with you, and quote the
-          delivery fee if you chose delivery.
-        </li>
-        <li>
-          <strong>Pay by EFT or, when you collect, cash.</strong> We deliver in Pretoria, or you
-          collect at 71 Springbok St, Theresapark.
-        </li>
-      </ol>
-      <p class="cta">
-        Questions? <a href="https://wa.me/27825795210" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>.
-      </p>
+    <section class="section--l" aria-labelledby="special-h">
+      <div class="container split-rows">
+        <h2 id="special-h">What makes Manna special</h2>
+        <ul class="rows">
+          <li><h3>Cooked at home</h3><p>Every meal is made in our own kitchen in Theresapark, with the same care we would give our own family.</p></li>
+          <li><h3>Made for easy days</h3><p>Stock the freezer once and heat a meal when you need one. It takes the daily question of what to cook off your plate, or a carer’s.</p></li>
+          <li><h3>Supporting family</h3><p>Ordering from Manna Kitchen supports a family business.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="order-h">
+      <div class="container split-rows">
+        <h2 id="order-h">How ordering works</h2>
+        <div>
+          <ol class="rows rows--steps">
+            <li><h3>Choose your meals</h3><p>Pick from the menu and add them to your order.</p></li>
+            <li><h3>Delivery or pickup</h3><p>Choose a preferred date at least 2 business days ahead.</p></li>
+            <li><h3>Send it on WhatsApp</h3><p>We confirm the order with you, and quote the delivery fee if you chose delivery.</p></li>
+            <li><h3>Pay by EFT or cash</h3><p>Cash when you collect. We deliver in Pretoria, or you collect at 71 Springbok St, Theresapark.</p></li>
+          </ol>
+          <p class="more">
+            Questions? <a href={WA_BASE} target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>,
+            or see the <a href="/#menu">frozen meals menu</a> and <a href="/contact/">how to find the kitchen</a>.
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 </BaseLayout>
-
-<style>
-  .about-page {
-    max-width: 46rem;
-    margin: 0 auto;
-    padding: 1rem 1.25rem 3rem;
-  }
-
-  .hero {
-    padding: 2rem 0 2rem;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 2.5rem;
-  }
-
-  h1, h2, h3 {
-    font-family: var(--font-display);
-    color: var(--ink);
-    overflow-wrap: break-word;
-    min-width: 0;
-    text-wrap: balance;
-  }
-
-  .hero h1 {
-    font-size: 2.75rem;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  section {
-    margin-bottom: 3.5rem;
-  }
-
-  h2 {
-    font-size: 1.9rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.75;
-    color: var(--ink-soft);
-    margin-bottom: 1rem;
-    max-width: 65ch;
-  }
-
-  .special-points {
-    list-style: none;
-    margin-top: 1.5rem;
-  }
-
-  .special-points li {
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .special-points li:last-child { border-bottom: 1px solid var(--line); }
-
-  .special-points p { margin-bottom: 0; }
-
-  .steps {
-    margin: 0 0 1.5rem 1.5rem;
-    color: var(--ink-soft);
-    font-size: 1.125rem;
-    line-height: 1.75;
-    max-width: 65ch;
-  }
-
-  .steps li {
-    margin-bottom: 1rem;
-    padding-left: 0.5rem;
-  }
-
-  .steps strong { color: var(--ink); }
-
-  .cta {
-    margin-top: 2rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .cta a {
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-    color: var(--accent-ink);
-    padding: 0.75rem 0;
-  }
-
-  .cta a:hover { color: var(--ink); }
-  .cta a:active { color: var(--ink-soft); }
-  .cta a:focus-visible {
-    outline: 3px solid var(--accent-ink);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 640px) {
-    .about-page { padding: 0.75rem 1rem 2.5rem; }
-    .hero h1 { font-size: 2.25rem; }
-    h2 { font-size: 1.6rem; }
-  }
-</style>

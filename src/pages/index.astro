@@ -1,19 +1,33 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getMeals } from '@/lib/content';
+import { FAQ_ITEMS } from '@/lib/faq';
+import { WA_DISPLAY } from '@/lib/site';
 import AppProvider from '@/components/react/AppProvider';
 
 const meals = getMeals();
+
+// FAQPage JSON-LD from the same list the page renders.
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
 ---
 
 <BaseLayout
-  title="Manna Kitchen - Frozen Meals Delivered in Pretoria"
-  description="Home-cooked frozen meals from two sisters in Pretoria North. Delivered to your door, ready when you are. Order on WhatsApp."
+  title="Frozen Meals Delivered in Pretoria North | Manna Kitchen"
+  description="Home-cooked frozen meals from two sisters in Theresapark, Pretoria North. Pasta and puddings from R50, delivered in Pretoria or collected."
+  jsonLd={[faqLd]}
 >
-  <AppProvider page="home" meals={meals} client:only="react" />
+  <AppProvider page="home" meals={meals} client:load />
   <noscript>
     <p class="noscript-note">
-      The menu needs JavaScript. Message us on WhatsApp +27 82 579 5210 to order.
+      Adding meals to your order needs JavaScript. Message us on WhatsApp {WA_DISPLAY} to order.
     </p>
   </noscript>
 </BaseLayout>
@@ -21,8 +35,8 @@ const meals = getMeals();
 <style>
   .noscript-note {
     max-width: 40rem;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-    font-size: 1.125rem;
+    margin: var(--space-xl) auto;
+    padding-inline: var(--gutter);
+    font-size: var(--text-lg);
   }
 </style>

@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AppProvider from '@/components/react/AppProvider';
+import { WA_BASE, WA_DISPLAY } from '@/lib/site';
 ---
 
 <BaseLayout
-  title="Checkout | Manna Kitchen"
+  title="Checkout | Manna Kitchen, Pretoria North"
   description="Choose delivery or pickup, pick a preferred date and send your frozen meals order to Manna Kitchen on WhatsApp. Pay by EFT, or cash when you collect."
   noindex>
 
@@ -12,47 +13,39 @@ import AppProvider from '@/components/react/AppProvider';
   <noscript>
     <p class="noscript-note">
       Checkout needs JavaScript. You can still order by
-      <a href="https://wa.me/27825795210">WhatsApp on +27 82 579 5210</a>.
+      <a href={WA_BASE}>WhatsApp on {WA_DISPLAY}</a>.
     </p>
   </noscript>
 </BaseLayout>
 
 <style>
   :global(.checkout-page) {
-    max-width: var(--content-w);
-    padding: 2rem 1.5rem;
+    max-width: var(--container);
     margin: 0 auto;
+    padding: var(--space-xl) var(--gutter) var(--space-3xl);
   }
 
   :global(.checkout-page h1) {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--ink);
-    margin: 0 0 2rem 0;
+    font-size: var(--text-section);
+    max-width: none;
+    margin: 0 0 var(--space-xl) 0;
+    text-wrap: balance;
   }
 
   .noscript-note {
     max-width: 40rem;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-    font-size: 1.125rem;
+    margin: var(--space-xl) auto;
+    padding-inline: var(--gutter);
+    font-size: var(--text-lg);
   }
 
   .noscript-note a {
-    text-decoration: underline;
-    color: var(--accent-ink);
+    color: var(--color-ink);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
   }
 
-  @media (max-width: 768px) {
-    :global(.checkout-page) {
-      padding: 1.5rem 1rem;
-    }
-
-    :global(.checkout-page h1) {
-      font-size: 1.9rem;
-      margin-bottom: 1.5rem;
-    }
+  @media (max-width: 40rem) {
+    :global(.checkout-page) { padding-top: var(--space-xl); }
   }
 </style>

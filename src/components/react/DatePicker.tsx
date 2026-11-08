@@ -2,6 +2,7 @@ import React from 'react';
 import { DayPicker } from 'react-day-picker';
 import { getMinimumPickupDate, SA_HOLIDAYS } from '../../lib/date-utils';
 import 'react-day-picker/style.css';
+import '../../styles/date-picker.css';
 
 interface DatePickerProps {
   value: Date | undefined;
@@ -43,49 +44,6 @@ export function DatePicker({ value, onChange, error, errorId = 'preferred-date-e
         <p className="date-picker__error" id={errorId} role="alert">{error}</p>
       )}
 
-      <style>{`
-        .date-picker {
-          margin-bottom: 1rem;
-        }
-
-        .date-picker__calendar {
-          --rdp-accent-color: var(--accent-ink);
-          --rdp-accent-background-color: var(--accent-wash);
-          --rdp-day-height: 48px;
-          --rdp-day-width: 48px;
-          --rdp-day_button-height: 46px;
-          --rdp-day_button-width: 46px;
-          --rdp-font-family: inherit;
-
-          display: inline-block;
-          max-width: 100%;
-          background: var(--surface);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 0.75rem;
-          overflow-x: auto;
-        }
-
-        .date-picker__help {
-          font-size: 1rem;
-          color: var(--ink-soft);
-          margin: 0.75rem 0 0 0;
-        }
-
-        .date-picker__chosen {
-          font-size: 1.0625rem;
-          font-weight: 600;
-          color: var(--ink);
-          margin: 0.5rem 0 0 0;
-        }
-
-        .date-picker__error {
-          font-size: 1rem;
-          color: var(--danger);
-          margin: 0.5rem 0 0 0;
-          font-weight: 600;
-        }
-      `}</style>
     </div>
   );
 }

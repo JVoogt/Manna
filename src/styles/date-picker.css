@@ -1,0 +1,54 @@
+.date-picker {
+  margin-bottom: var(--space-md);
+}
+
+.date-picker__calendar {
+  --rdp-accent-color: var(--accent-ink);
+  --rdp-accent-background-color: var(--accent-wash);
+  --rdp-day-height: 48px;
+  --rdp-day-width: 48px;
+  --rdp-day_button-height: 46px;
+  --rdp-day_button-width: 46px;
+  --rdp-font-family: inherit;
+
+  display: inline-block;
+  max-width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+  overflow-x: auto;
+}
+
+.date-picker__help {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: var(--space-sm) 0 0 0;
+}
+
+.date-picker__chosen {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: var(--space-xs) 0 0 0;
+}
+
+.date-picker__error {
+  font-size: 1rem;
+  color: var(--danger);
+  margin: var(--space-xs) 0 0 0;
+  font-weight: 600;
+}
+
+@media (max-width: 26rem) {
+  .date-picker__calendar { padding-inline: 0; }
+}
+
+@media (max-width: 22.5rem) {
+  .date-picker__calendar {
+    --rdp-day-height: 40px;
+    --rdp-day-width: 40px;
+    --rdp-day_button-height: 38px;
+    --rdp-day_button-width: 38px;
+  }
+}
