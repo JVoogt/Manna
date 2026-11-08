@@ -1,0 +1,24 @@
+/* Manna Kitchen WhatsApp Status system: 1080 x 1920. Same Garden tokens as the website.
+   Safe zone: WhatsApp covers about 220px at the top and 260px at the bottom, so keep text between them. */
+@font-face { font-family: 'Vollkorn'; font-weight: 600; src: url('../../public/fonts/vollkorn-600.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 400 600; src: url('../../public/fonts/hanken-grotesk.woff2') format('woff2'); }
+@font-face { font-family: 'Newsreader'; font-weight: 400; src: url('../../public/fonts/newsreader-400.woff2') format('woff2'); }
+:root {
+  --paper: oklch(95.8% 0.024 90); --paper-2: oklch(92.6% 0.030 90); --clay: oklch(87% 0.045 70);
+  --ink: oklch(23% 0.050 152); --ink-2: oklch(33% 0.048 150); --accent: oklch(46% 0.135 142);
+  --leaf: oklch(86% 0.075 128); --on-ink: oklch(97% 0.015 95);
+  --display: 'Vollkorn', Georgia, serif; --body: 'Hanken Grotesk', system-ui, sans-serif; --serif: 'Newsreader', Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; }
+body { position: relative; background: var(--paper); color: var(--ink); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+.h, .num { font-variant-numeric: lining-nums; }
+.h { font-family: var(--display); font-weight: 600; letter-spacing: -0.012em; line-height: 1.02; }
+.wordmark { font-family: var(--display); font-weight: 600; font-size: 46px; letter-spacing: -0.012em; }
+.safe { position: absolute; left: 84px; right: 84px; top: 240px; bottom: 270px; }
+.pill { display: inline-flex; align-items: center; height: 104px; padding: 0 48px; border-radius: 999px; background: var(--accent); color: var(--on-ink); font: 600 44px/1 var(--body); }
+.pill--leaf { background: var(--leaf); color: var(--ink); }
+.pill--ghost { background: transparent; border: 3px solid currentColor; color: inherit; }
+.photo { display: block; width: 100%; object-fit: cover; border-radius: 6px; }
+.small { font: 400 36px/1.3 var(--body); }
+.kicker-free { }
