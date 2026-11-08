@@ -55,7 +55,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/macaroni-mince-cheese-bake.jpg"
   },
   {
     "id": "malva-pudding",
