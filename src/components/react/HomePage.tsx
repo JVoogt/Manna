@@ -57,9 +57,9 @@ function MealItem({ meal }: { meal: Meal }) {
           />
         ) : null}
         <figcaption className="dish__label">{meal.category === 'dessert' ? 'Frozen pudding' : 'Frozen meal'}</figcaption>
-        {hasImage ? null : <h3 className="dish__name dish__name--well">{meal.name}</h3>}
+        {hasImage ? null : <span className="dish__name dish__name--well" aria-hidden="true">{meal.name}</span>}
       </figure>
-      {hasImage ? <h3 className="dish__name">{meal.name}</h3> : null}
+      <h4 className={hasImage ? 'dish__name' : 'dish__name visually-hidden'}>{meal.name}</h4>
       <p className="dish__desc">{meal.description}</p>
       {meal.allergens.length > 0 && (
         <p className="dish__allergens">Contains: {meal.allergens.join(', ')}</p>
@@ -142,6 +142,16 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
       <section className="story section" id="story" aria-labelledby="story-title">
         <div className="container story__grid">
           <h2 id="story-title">Born at a kitchen table.</h2>
+          <figure className="story__photo">
+            <img
+              src="/images/story/sisters.jpg"
+              alt="Cornelia Voogt and Edith Hawks, the two sisters behind Manna Kitchen, smiling together at a market stall."
+              width={1200}
+              height={900}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
           <div className="story__letter">
             <p>
               Manna started in a hard season. Edith was diagnosed with Guillain-Barré syndrome, and we

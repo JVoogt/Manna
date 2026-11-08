@@ -2,11 +2,13 @@ import { CartProvider } from '@/lib/cart-context';
 import { ToastProvider } from './ToastProvider';
 import { CartIcon } from './CartIcon';
 import HomePage from './HomePage';
-import CartPage from './CartPage';
-import CheckoutPage from './CheckoutPage';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Meal } from '@/schemas/meal.schema';
+
+// Cart and checkout code (forms, phone and date libraries) loads only on its own route.
+const CartPage = lazy(() => import('./CartPage'));
+const CheckoutPage = lazy(() => import('./CheckoutPage'));
 
 interface AppProviderProps {
   page: 'home' | 'cart' | 'checkout';
@@ -26,9 +28,9 @@ export default function AppProvider({ page, meals }: AppProviderProps) {
   if (page === 'home' && meals) {
     PageComponent = <HomePage meals={meals} />;
   } else if (page === 'cart') {
-    PageComponent = <CartPage />;
+    PageComponent = <Suspense fallback={null}><CartPage /></Suspense>;
   } else if (page === 'checkout') {
-    PageComponent = <CheckoutPage />;
+    PageComponent = <Suspense fallback={null}><CheckoutPage /></Suspense>;
   } else {
     PageComponent = null;
   }

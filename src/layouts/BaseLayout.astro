@@ -87,14 +87,14 @@ const structuredData = {
     <!-- Hallmark stamp, kept as plain text in every page so a render can read it; waivers live in src/styles/global.css -->
     <style is:inline>
 /* Hallmark · shape: Letter · genre: editorial · theme: Garden (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
- * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: none (dish slots wait for the user's photographs) · signature: the R55 and R50 offer set at display size beside the head
+ * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: one photograph (the sisters, in the story); dish slots wait for the user's photographs · signature: the R55 and R50 offer set at display size beside the head
  * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
     </style>
 
-    <!-- Fonts: three families, display=swap -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" />
+    <!-- Fonts: three families, self-hosted, display=swap -->
+    <link rel="preload" href="/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/vollkorn-600.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="color-scheme" content="light" />
 
     <!-- SEO Meta Tags -->
     <title>{title}</title>
