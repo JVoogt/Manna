@@ -10,10 +10,10 @@
   --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
   --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
   --color-paper: oklch(95.8% 0.024 90); --color-paper-2: oklch(92.6% 0.030 90); --color-paper-3: oklch(89% 0.034 90);
-  --color-ink: oklch(23% 0.050 152); --color-ink-2: oklch(33% 0.048 150); --color-muted: oklch(46% 0.034 142);
-  --color-rule: oklch(83% 0.024 112); --color-rule-2: oklch(68% 0.042 138);
-  --color-accent: oklch(46% 0.135 142); --color-accent-2: oklch(86% 0.075 128); --color-accent-ink: oklch(97% 0.015 95);
-  --color-focus: oklch(46% 0.135 142); --tint-moss: oklch(46% 0.135 142 / 0.11); --tint-clay: oklch(54% 0.140 46 / 0.10);
+  --color-ink: oklch(23.9% 0.070 331); --color-ink-2: oklch(34.1% 0.090 332); --color-muted: oklch(46% 0.100 331);
+  --color-rule: oklch(83% 0.035 331); --color-rule-2: oklch(68% 0.085 331);
+  --color-accent: #aa1fa0; --color-accent-2: oklch(88.1% 0.060 331); --color-accent-ink: oklch(97% 0.015 95);
+  --color-focus: #aa1fa0; --tint-moss: oklch(52.3% 0.216 332 / 0.11); --tint-clay: oklch(54% 0.140 46 / 0.10);
   --font-display: "Vollkorn", ui-serif, Georgia, serif; --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-outlier: "Newsreader", ui-serif, Georgia, serif;
   --radius-card: 4px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;

@@ -1,0 +1,24 @@
+/* Manna Kitchen colour tokens, derived from the logo purple #AA1FA0 */
+:root {
+  --manna-manna-purple: #AA1FA0;
+  --manna-plum: #31102e;
+  --manna-plum-soft: #52244d;
+  --manna-berry-hover: #7d1775;
+  --manna-orchid: #d782cc;
+  --manna-lilac: #f0caea;
+  --manna-blush: #f7eaf5;
+  --manna-oat-paper: #F7F1DF;
+  --manna-clay: #e8d0b5;
+  --manna-logo-black: #000000;
+  --manna-purple-50: #fff0fc;
+  --manna-purple-100: #f4e1f1;
+  --manna-purple-200: #f4c1ec;
+  --manna-purple-300: #f88eeb;
+  --manna-purple-400: #d66fca;
+  --manna-purple-500: #b14da7;
+  --manna-purple-600: #97338e;
+  --manna-purple-700: #7d1775;
+  --manna-purple-800: #5c0057;
+  --manna-purple-900: #3e003a;
+  --manna-purple-950: #250022;
+}

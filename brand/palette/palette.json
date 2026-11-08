@@ -1,0 +1,120 @@
+{
+  "brandOklch": "oklch(52.3% 0.216 332)",
+  "roles": {
+    "Manna purple": {
+      "hex": "#AA1FA0",
+      "use": "The logo colour. Buttons, links, prices, the cupcake mark."
+    },
+    "Plum": {
+      "hex": "#31102e",
+      "use": "Headlines and body text. Deep purple that reads as near-black."
+    },
+    "Plum soft": {
+      "hex": "#52244d",
+      "use": "Secondary text and captions."
+    },
+    "Berry hover": {
+      "hex": "#7d1775",
+      "use": "Hover and pressed state of purple buttons."
+    },
+    "Orchid": {
+      "hex": "#d782cc",
+      "use": "Accents on dark backgrounds, illustrations."
+    },
+    "Lilac": {
+      "hex": "#f0caea",
+      "use": "Soft fills, highlights, tags on plum."
+    },
+    "Blush": {
+      "hex": "#f7eaf5",
+      "use": "Very light purple tint for panels."
+    },
+    "Oat paper": {
+      "hex": "#F7F1DF",
+      "use": "Page background. Keeps the kitchen feeling warm."
+    },
+    "Clay": {
+      "hex": "#e8d0b5",
+      "use": "Warm panels behind food photography."
+    },
+    "Logo black": {
+      "hex": "#000000",
+      "use": "Only the logo outline. Do not use for text."
+    }
+  },
+  "scale": {
+    "50": "#fff0fc",
+    "100": "#f4e1f1",
+    "200": "#f4c1ec",
+    "300": "#f88eeb",
+    "400": "#d66fca",
+    "500": "#b14da7",
+    "600": "#97338e",
+    "700": "#7d1775",
+    "800": "#5c0057",
+    "900": "#3e003a",
+    "950": "#250022"
+  },
+  "contrast": [
+    {
+      "text": "Plum",
+      "on": "Oat paper",
+      "ratio": 14.95,
+      "AA": "pass"
+    },
+    {
+      "text": "Plum soft",
+      "on": "Oat paper",
+      "ratio": 10.83,
+      "AA": "pass"
+    },
+    {
+      "text": "Manna purple",
+      "on": "Oat paper",
+      "ratio": 5.45,
+      "AA": "pass"
+    },
+    {
+      "text": "Manna purple",
+      "on": "Clay",
+      "ratio": 4.14,
+      "AA": "large text only"
+    },
+    {
+      "text": "Oat paper",
+      "on": "Manna purple",
+      "ratio": 5.45,
+      "AA": "pass"
+    },
+    {
+      "text": "Oat paper",
+      "on": "Plum",
+      "ratio": 14.95,
+      "AA": "pass"
+    },
+    {
+      "text": "Lilac",
+      "on": "Plum",
+      "ratio": 11.53,
+      "AA": "pass"
+    },
+    {
+      "text": "Orchid",
+      "on": "Plum",
+      "ratio": 6.39,
+      "AA": "pass"
+    },
+    {
+      "text": "Plum",
+      "on": "Clay",
+      "ratio": 11.35,
+      "AA": "pass"
+    },
+    {
+      "text": "Plum soft",
+      "on": "Clay",
+      "ratio": 8.22,
+      "AA": "pass"
+    }
+  ]
+}

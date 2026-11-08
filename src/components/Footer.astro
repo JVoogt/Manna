@@ -4,7 +4,7 @@ import { WA_BASE, WA_DISPLAY, ADDRESS, FOUNDERS } from '../lib/site';
 
 <footer class="foot">
   <div class="container foot__wrap">
-    <p class="foot__name">Manna Kitchen</p>
+    <p class="foot__name"><img src="/images/brand/logo-badge.svg" width="120" height="120" alt="" loading="lazy" />Manna Kitchen</p>
     <div class="foot__colophon">
       <address>
         {ADDRESS.street}, {ADDRESS.suburb}, {ADDRESS.area}, {ADDRESS.postalCode}.
@@ -27,7 +27,7 @@ import { WA_BASE, WA_DISPLAY, ADDRESS, FOUNDERS } from '../lib/site';
 <style>
   .foot { border-top: 1px solid var(--color-rule-2); padding-block: var(--space-2xl) var(--space-xl); }
   .foot__wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--gap-columns); row-gap: var(--space-lg); align-items: start; }
-  .foot__name { font: var(--display-weight) var(--text-xl)/1.1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+  .foot__name { display: grid; gap: var(--space-md); justify-items: start; font: var(--display-weight) var(--text-xl)/1.1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
   .foot__colophon { display: grid; gap: var(--space-sm); color: var(--color-ink-2); max-width: 60ch; }
   .foot__colophon address { font-style: normal; }
   .foot__colophon a { display: inline-block; padding-block: var(--space-xs); color: var(--color-ink); }

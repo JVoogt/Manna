@@ -14,7 +14,7 @@ const links = [
 <header class="nav" id="top">
   <div class="container nav__wrap">
     <div class="nav__pill">
-      <a href="/" class="nav__brand" aria-label="Manna Kitchen, home">Manna Kitchen</a>
+      <a href="/" class="nav__brand" aria-label="Manna Kitchen, home"><img src="/images/brand/logo-mark.svg" width="40" height="40" alt="" />Manna Kitchen</a>
       <nav class="nav__links" aria-label="Primary">
         {links.map((l) => (
           <a href={l.href} class={l.active ? 'is-active' : ''} aria-current={l.active ? 'page' : undefined}>{l.label}</a>
@@ -62,7 +62,9 @@ const links = [
     border: 1px solid var(--color-rule-2);
     border-radius: var(--radius-pill);
   }
+  .nav__brand img { display: block; width: 40px; height: 40px; flex: none; }
   .nav__brand {
+    gap: var(--space-sm);
     display: inline-flex;
     align-items: center;
     min-height: var(--tap);

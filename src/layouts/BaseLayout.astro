@@ -35,7 +35,7 @@ const menuSections = [
   { name: 'Puddings', items: meals.filter((m) => m.category === 'dessert') },
 ].filter((s) => s.items.length > 0);
 
-// Structured data for LocalBusiness. Only facts JP supplied: no opening hours, geo, image,
+// Structured data for LocalBusiness. Only facts JP supplied: no opening hours, geo,
 // priceRange, rating or review. sameAs is omitted because no profile URLs were supplied.
 const structuredData = {
   "@context": "https://schema.org",
@@ -44,6 +44,8 @@ const structuredData = {
   "name": BUSINESS_NAME,
   "description": "Home-cooked frozen meals and puddings from two sisters in Theresapark, Pretoria North, delivered in Pretoria or collected from the kitchen.",
   "url": SITE_URL,
+  "logo": `${SITE_URL}/images/brand/logo-badge.svg`,
+  "image": `${SITE_URL}/og-image.png`,
   "telephone": `+${WA_DIGITS}`,
   "address": {
     "@type": "PostalAddress",
@@ -86,9 +88,9 @@ const structuredData = {
 
     <!-- Hallmark stamp, kept as plain text in every page so a render can read it; waivers live in src/styles/global.css -->
     <style is:inline>
-/* Hallmark · shape: Letter · genre: editorial · theme: Garden (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
+/* Hallmark · shape: Letter · genre: editorial · theme: Garden recoloured to the logo purple (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
  * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: one photograph (the sisters, in the story); dish slots wait for the user's photographs · signature: the R55 and R50 offer set at display size beside the head
- * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+ * axes: light/roman-serif/chromatic-purple · posture: committed · contrast: pass · fold: pass · v2.0.0 */
     </style>
 
     <!-- Fonts: three families, self-hosted, display=swap -->
@@ -103,24 +105,30 @@ const structuredData = {
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph / Facebook (no og:image: none supplied yet) -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={BUSINESS_NAME} />
     <meta property="og:locale" content="en_ZA" />
+    <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Manna Kitchen: frozen home-cooked meals delivered in Pretoria" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content={`${SITE_URL}/og-image.png`} />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

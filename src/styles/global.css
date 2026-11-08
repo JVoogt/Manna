@@ -1,6 +1,6 @@
-/* Hallmark · shape: Letter · genre: editorial · theme: Garden (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
+/* Hallmark · shape: Letter · genre: editorial · theme: Garden recoloured to the logo purple (deal 1/3, seed frozen-home-cooked-comfort-meals-1b3c·ffd63b7c·2026-11-08·r0) · redesign: full · draw: 5b7302 · job: buy
  * hero: Counter (/), Banner (/about), Banner (/contact) · nav: floating pill · footer: colophon block · imagery: one photograph (the sisters, in the story); dish slots wait for the user's photographs · signature: the R55 and R50 offer set at display size beside the head
- * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+ * axes: light/roman-serif/chromatic-purple · posture: committed · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, a dish well without a photograph can read as a blank label; set each as a freezer label with the dish name large and the category in a Newsreader caption, and a real photo replaces it through one field */
 /* Hallmark · waive 81 · eight dish wells hold a typeset freezer label (dish name, category) until the owner's photographs arrive · each well is replaced by one imageUrl field in meals.json and falls back to the label if the file fails to load */
 /* Hallmark · answered F4 · the leaf-green pill is one button recipe; the same pill reads on the green ink band in a pale leaf so it keeps its contrast there */

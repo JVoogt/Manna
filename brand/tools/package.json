@@ -1,0 +1,7 @@
+{
+  "name": "manna-brand-tools",
+  "private": true,
+  "description": "Rebuilds the Manna Kitchen logo pack from brand/source/logo-original.png",
+  "scripts": { "build": "node 01-vectorize.mjs && node 02-pack.mjs" },
+  "dependencies": { "potrace": "^2.1.8" }
+}

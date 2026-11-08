@@ -272,7 +272,7 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
             {discount > 0 ? (
               <span className="orderbar__hint">You save {fmtZAR(discount)} with the combo</span>
             ) : mealCount > 0 && toNextCombo < COMBO_SIZE ? (
-              <span className="orderbar__hint">Add {toNextCombo} more {toNextCombo === 1 ? 'meal' : 'meals'} for the combo{example ? `, ${COMBO_SIZE} for ${fmtZAR(example.combo)}` : ''}</span>
+              <span className="orderbar__hint">Add {toNextCombo} more: {COMBO_SIZE} meals{example ? ` for ${fmtZAR(example.combo)}` : ' at the combo price'}</span>
             ) : null}
           </p>
           <a href="/cart" className="btn btn--primary">Review order</a>
