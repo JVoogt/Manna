@@ -29,7 +29,7 @@
 .dish { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 10fr) minmax(0, 7fr); grid-template-rows: 1fr auto auto 1fr; grid-template-areas: "media . buy" "media name buy" "media desc buy" "media . buy"; column-gap: var(--gap-columns); align-items: center; padding-block: var(--space-lg); border-bottom: 1px solid var(--color-rule-2); }
 .dish__slot { grid-area: media; position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: var(--radius-card); background: var(--tint-clay-deep); outline: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); outline-offset: -1px; min-width: 0; }
 .dish__label { position: absolute; top: var(--space-lg); left: var(--space-lg); font: 400 var(--text-sm)/1.4 var(--font-outlier); color: var(--color-ink-2); }
-.dish__name { grid-area: name; align-self: end; max-width: none; font-size: var(--text-2xl); line-height: 1.1; }
+.dish__name { font-family: var(--font-display); font-weight: var(--display-weight); color: var(--color-ink); grid-area: name; align-self: end; max-width: none; font-size: var(--text-2xl); line-height: 1.1; }
 .dish__name--well { font-family: var(--font-display); font-weight: var(--display-weight); position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-lg); font-size: var(--text-3xl); max-width: 14ch; }
 .dish__slot::before { content: ""; position: absolute; left: var(--space-lg); right: var(--space-lg); top: calc(var(--space-lg) + 1.75rem); border-top: 1px solid var(--color-rule-2); }
 .dish__desc { grid-area: desc; align-self: start; margin-top: var(--space-sm); max-width: 32ch; font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink); }

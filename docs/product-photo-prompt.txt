@@ -1,0 +1,18 @@
+You are retouching a phone photo of a real home-cooked frozen meal for a small family food business's website. Use your image generation/editing tool on the attached photo and save the final image as ./out/NAME.png (landscape 4:3, 1600x1200 or as close as the tool allows). Then reply with just the saved path.
+
+THE FOOD MUST STAY TRUE. This is the actual product customers will receive. Do NOT add, remove, move, restyle or "improve" any food: same pasta shapes, same meatballs/mince, same cheese, same browning, same herbs, same foil tray and its crimped edges. No added garnish, steam, sauce drips, props or ingredients. Do not make the food look richer, glossier or bigger than it is. Fix only the photograph.
+
+THE LOOK ("Home-kitchen daylight"):
+- Replace the busy or dark background with a calm, plain, warm-oat linen or pale unvarnished wood surface, in a tone close to #f1e6cd. No patterns, no cactus print, no tablecloth print, no plates, no cutlery, no other trays.
+- Shoot top-down (flat lay), tray centred, filling about 65 to 70 percent of the frame width, with even breathing room on every side.
+- Soft natural window light from the upper left, gentle and diffused, with a soft natural contact shadow under the tray falling to the lower right. No harsh highlights, no flash look.
+- Colour: warm and honest. Correct white balance so the cheese looks creamy-yellow, not grey or orange. Lift shadows slightly so the browned cheese and sauce show their texture. Keep saturation natural; do not oversaturate reds and oranges.
+- Keep the foil realistic: clean its dark reflections and fingerprints only; it should still read as aluminium foil.
+- Sharp detail on the food surface, very slightly softer at the far edges. No text, no watermark, no border.
+
+STRICT TEXTURE RULES (they apply to every photo; cheese-topped dishes broke them without these):
+- Phone photos are low resolution. Do NOT invent or smooth texture. The cheese surface must stay uneven, slightly bubbled and lightly browned in patches, exactly like the source, never smooth, creamy-paste, waxy or mashed-potato-like.
+- Keep every parsley flake and dark pepper fleck where it is. Keep the pasta tubes visible at the tray edges, as in the source.
+- Keep the same tray orientation and the same crimped foil corners as the source; show the whole tray with a little space around it.
+- When in doubt, change less: colour and light first, background second, and never reshape the food.
+

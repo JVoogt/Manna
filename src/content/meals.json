@@ -19,7 +19,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/spaghetti-en-meatballs.jpg"
   },
   {
     "id": "spaghetti-bolognaise",
@@ -41,7 +42,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/macaroni-and-cheese.jpg"
   },
   {
     "id": "macaroni-mince-cheese-bake",
@@ -52,7 +54,8 @@
     "servings": "450 g",
     "dietary": [],
     "allergens": [],
-    "available": true
+    "available": true,
+    "imageUrl": "/images/meals/macaroni-mince-cheese-bake.jpg"
   },
   {
     "id": "malva-pudding",

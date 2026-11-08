@@ -49,7 +49,7 @@ function MealItem({ meal }: { meal: Meal }) {
         {hasImage ? (
           <img
             src={meal.imageUrl}
-            alt={meal.name}
+            alt={`${meal.name} in its foil tray`}
             width={1200}
             height={900}
             loading="lazy"
