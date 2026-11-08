@@ -4,6 +4,7 @@
 #   meal-id   an id from src/content/meals.json, e.g. beef-lasagne
 #   crop      optional pixel crop around ONE tray, e.g. 180,380,860,860
 # Output: public/images/meals/<meal-id>.jpg and .webp (1200x900). Review before use.
+# Puddings and other non-foil dishes: PROMPT_FILE=docs/product-photo-prompt-pudding.txt scripts/edit-meal-photo.sh ...
 # Full guide: docs/product-photo-guide.md
 set -euo pipefail
 SRC="${1:?photo path}"; ID="${2:?meal id}"; CROP="${3:-}"
@@ -18,7 +19,7 @@ const sharp=require("sharp");const [src,dst,crop]=process.argv.slice(1);
  // low-resolution sources make Codex invent texture, so give it a larger, gently sharpened input
  const out=m.width<1000?sharp(buf).resize({width:1110,kernel:"lanczos3"}).sharpen({sigma:0.8}):sharp(buf);
  await out.png().toFile(dst);})()' "$SRC" "$WORK/in/$ID.png" "$CROP"
-sed "s/NAME/$ID/g" docs/product-photo-prompt.txt | codex exec --skip-git-repo-check -s workspace-write -C "$WORK" -i "$WORK/in/$ID.png" - > "$WORK/codex.log" 2>&1
+sed "s/NAME/$ID/g" "${PROMPT_FILE:-docs/product-photo-prompt.txt}" | codex exec --skip-git-repo-check -s workspace-write -C "$WORK" -i "$WORK/in/$ID.png" - > "$WORK/codex.log" 2>&1
 [ -f "$WORK/out/$ID.png" ] || { echo "Codex did not write the image. Log: $WORK/codex.log"; exit 1; }
 mkdir -p public/images/meals
 node -e '

@@ -1,0 +1,13 @@
+You are retouching a phone photo of a real home-made pudding in its black plastic tub, for a small family food business's website. Use your image generation/editing tool on the attached photo and save the final image as ./out/NAME.png (landscape 4:3, 1600x1200 or as close as the tool allows). Then reply with just the saved path.
+
+THE FOOD MUST STAY TRUE. This is the actual product customers will receive. Do NOT add, remove, move, restyle or "improve" any food: same pudding sponge, same surface texture and browning, same custard with the same shape and pools, same black tub and its rim. No added garnish, mint, cream, berries, steam, sauce drips or extra ingredients. Do not make the pudding look richer, glossier or bigger than it is. Fix only the photograph.
+
+THE LOOK ("Home-kitchen daylight"):
+- Show ONE tub only, the one centred in the attached crop. Remove everything else: other tubs, lids, spoons, labels, trays and the printed patterned mat or cloth. Replace the background with a calm, plain, warm-oat linen or pale unvarnished wood surface close to #f1e6cd, no patterns, no props.
+- Shoot top-down (flat lay), the tub centred, filling about 60 to 65 percent of the frame width, with even breathing room.
+- Soft natural window light from the upper left, gentle and diffused, with a soft natural contact shadow under the tub falling to the lower right. Remove harsh phone-flash glare and hot spots from the custard and the sponge, but keep the custard's natural soft sheen.
+- Colour: warm and honest. Correct white balance so the custard is a soft creamy yellow and the sponge keeps its real colour. Open the shadows a little so the dark pudding shows its texture instead of a black blob. Natural saturation.
+- Keep the black tub realistic: a clean black plastic rim, no scuffs or fingerprints.
+- Sharp detail on the food surface. No text, no watermark, no border.
+
+STRICT TEXTURE RULES: do not invent or smooth texture. Phone photos are low resolution, so keep the real surface exactly as it is.

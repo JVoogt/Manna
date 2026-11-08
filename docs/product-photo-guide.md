@@ -1,6 +1,6 @@
 # Product photo guide: "Home-kitchen daylight"
 
-How to turn a phone photo of a prepacked, not-yet-frozen meal into a site photo that is appetising and still honest. Written 2026-11-08 from the first three dishes (Macaroni and Mince Cheese Bake, Macaroni and Cheese, Spaghetti and Meatballs).
+How to turn a phone photo of a prepacked, not-yet-frozen meal into a site photo that is appetising and still honest. Written 2026-11-08 from the first dishes. Note: the baked tray first filed as "Macaroni en Mince" turned out to be the Beef Lasagne (same photo), so check a dish against the real tray before filing it.
 
 ## The rule
 The photograph is retouched, the food is not. Customers receive exactly this tray. Nothing is added, removed, moved or "improved": same pasta, meatballs, cheese, browning, herbs and foil tray. We change the light, the colour and the background only.
@@ -46,4 +46,4 @@ It crops, gives Codex the prompt in `docs/product-photo-prompt.txt`, then writes
 - Wipe the tray rim. Take two or three shots and keep the sharpest.
 
 ## Still to photograph
-Beef Lasagne, Spaghetti Bolognaise, Malva Pudding, Ginger Pudding, Chocolate Pudding. For puddings use the same look from above or at a slight angle, with the same rules.
+Spaghetti Bolognaise, Macaroni and Mince Cheese Bake, and any pudding not yet done. Puddings use their own prompt: `PROMPT_FILE=docs/product-photo-prompt-pudding.txt scripts/edit-meal-photo.sh <photo> <meal-id> <crop>`. It keeps one tub, removes lids, spoons and patterned mats, and opens the shadows so a dark pudding shows texture.

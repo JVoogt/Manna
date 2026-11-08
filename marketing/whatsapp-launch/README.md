@@ -7,7 +7,7 @@ Five 1080 x 1920 statuses for the website, frozen meals and combo launch. Built 
 | 1 | `png/01-online.png` | Website launch | "We are now online." with the sisters |
 | 2 | `png/02-frozen-meals.png` | Frozen meals launch | "Pasta, ready when you are." Spaghetti en Meatballs, R55 |
 | 3 | `png/03-combo.png` | Combo | "Any 5 meals for R250" (normally R275) |
-| 4 | `png/04-baked.png` | Appetite | "Baked until golden. Frozen until you are ready." |
+| 4 | `png/04-baked.png` | Appetite | "Baked until golden. Frozen until you are ready." (the Beef Lasagne photo) |
 | 5 | `png/05-for-you.png` | Reach and how to order | "For mom, dad and busy weeks." three steps and the WhatsApp number |
 
 Safe zone: WhatsApp covers about 220 px at the top and 260 px at the bottom, so all text sits between y 230 and y 1670.
