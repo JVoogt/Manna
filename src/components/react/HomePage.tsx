@@ -19,7 +19,7 @@ const STEPS = [
 ];
 
 function MealItem({ meal }: { meal: Meal }) {
-  const { addItem } = useCartActions();
+  const { addItem, updateQuantity, removeItem } = useCartActions();
   const cart = useCartState();
   const inOrder = cart.find(i => i.id === meal.id)?.quantity ?? 0;
   const [imgFailed, setImgFailed] = useState(false);
@@ -36,6 +36,8 @@ function MealItem({ meal }: { meal: Meal }) {
     });
     toast.success(`${meal.name} added to your order`);
   };
+
+  const change = (q: number) => (q <= 0 ? removeItem(meal.id) : updateQuantity(meal.id, Math.min(q, 20)));
 
   return (
     <li className={hasImage ? 'dish' : 'dish dish--noimg'}>
@@ -67,10 +69,17 @@ function MealItem({ meal }: { meal: Meal }) {
           <span className="numeral">{fmtZAR(meal.price)}</span>
           {meal.servings ? <span className="dish__size">{meal.servings}</span> : null}
         </p>
-        <button type="button" className="btn btn--primary" onClick={add} aria-label={`Add to order: ${meal.name}`}>
-          Add to order
-        </button>
-        {inOrder > 0 && <p className="dish__count" role="status">In your order: {inOrder}</p>}
+        {inOrder === 0 ? (
+          <button type="button" className="btn btn--primary" onClick={add} aria-label={`Add to order: ${meal.name}`}>
+            Add to order
+          </button>
+        ) : (
+          <div className="stepper" role="group" aria-label={`${meal.name} quantity`}>
+            <button type="button" className="stepper__btn" onClick={() => change(inOrder - 1)} aria-label={`Remove one ${meal.name}`}>−</button>
+            <span className="stepper__qty" role="status" aria-label={`${inOrder} in your order`}>{inOrder}</span>
+            <button type="button" className="stepper__btn" onClick={() => change(inOrder + 1)} disabled={inOrder >= 20} aria-label={`Add one more ${meal.name}`}>+</button>
+          </div>
+        )}
       </div>
     </li>
   );
@@ -94,16 +103,20 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
       ? `${countWord(mains.length)} ${mains.length === 1 ? 'meal' : 'meals'}, ${countWord(desserts.length).toLowerCase()} ${desserts.length === 1 ? 'pudding' : 'puddings'}.`
       : 'The menu';
 
+  const cart = useCartState();
+  const count = cart.reduce((n, i) => n + i.quantity, 0);
+  const total = cart.reduce((n, i) => n + i.quantity * i.price, 0);
+
   return (
-    <main className="home">
+    <main className={count > 0 ? 'home home--bar' : 'home'}>
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero__grid">
           <div className="hero__copy">
             <h1 id="hero-title">Pasta and pudding, ready when you are.</h1>
             <p className="lead hero__lead">Frozen home-cooked meals delivered in Pretoria North, Theresapark and across Pretoria.</p>
             <div className="actions">
-              <a href={WA_HELLO} target="_blank" rel="noopener noreferrer" className="btn btn--primary">Order on WhatsApp</a>
-              <a href="#menu" className="btn">See the menu</a>
+              <a href="#menu" className="btn btn--primary">See the menu</a>
+              <a href={WA_HELLO} target="_blank" rel="noopener noreferrer" className="btn">Order on WhatsApp</a>
             </div>
           </div>
           <div className="offer" role="group" aria-label="Prices">
@@ -126,10 +139,29 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
         </div>
       </section>
 
+      <section className="story section" id="story" aria-labelledby="story-title">
+        <div className="container story__grid">
+          <h2 id="story-title">Born at a kitchen table.</h2>
+          <div className="story__letter">
+            <p>
+              Manna started in a hard season. Edith was diagnosed with Guillain-Barré syndrome, and we
+              needed a way through the medical bills. So we cooked the food our gran made us.
+            </p>
+            <p>
+              Word got around. People kept coming back, for the food and for the care in it. Today every
+              meal still leaves our home kitchen in Theresapark, Pretoria North. Frozen means it is ready
+              when you are, on the days cooking is too much.
+            </p>
+            <p className="story__sign">Cornelia Voogt and Edith Hawks</p>
+          </div>
+        </div>
+      </section>
+
       <section className="menu band band--clay" id="menu" aria-labelledby="menu-title">
         <div className="container">
           <header className="menu__head">
             <h2 id="menu-title">{menuTitle}</h2>
+            <p className="menu__terms">Order at least 2 business days ahead. We quote the delivery fee on WhatsApp.</p>
             <p className="lead">
               Allergies? <a href={WA_ALLERGY} target="_blank" rel="noopener noreferrer">Ask us on WhatsApp</a> before you order.
             </p>
@@ -164,24 +196,6 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
           <h2 id="who-title" className="visually-hidden">Who it is for</h2>
           <p className="statement">Ready-made meals for older adults at home, people with limited mobility, carers and busy families.</p>
           <p className="lead who__lead">Meals come to your door, so there is no trip to the shops and no full meal to cook.</p>
-        </div>
-      </section>
-
-      <section className="story section" id="story" aria-labelledby="story-title">
-        <div className="container story__grid">
-          <h2 id="story-title">Born at a kitchen table.</h2>
-          <div className="story__letter">
-            <p>
-              Manna started in a hard season. Edith was diagnosed with Guillain-Barré syndrome, and we
-              needed a way through the medical bills. So we cooked the food our gran made us.
-            </p>
-            <p>
-              Word got around. People kept coming back, for the food and for the care in it. Today every
-              meal still leaves our home kitchen in Theresapark, Pretoria North. Frozen means it is ready
-              when you are, on the days cooking is too much.
-            </p>
-            <p className="story__sign">Cornelia Voogt and Edith Hawks</p>
-          </div>
         </div>
       </section>
 
@@ -231,6 +245,16 @@ export default function HomePage({ meals }: { meals: Meal[] }) {
           </div>
         </div>
       </section>
+
+      {count > 0 && (
+        <div className="orderbar" role="region" aria-label="Your order">
+          <p className="orderbar__sum">
+            <span className="orderbar__count">{count} {count === 1 ? 'item' : 'items'}</span>
+            <span className="orderbar__total">{fmtZAR(total)}</span>
+          </p>
+          <a href="/cart" className="btn btn--primary">Review order</a>
+        </div>
+      )}
     </main>
   );
 }

@@ -2,7 +2,7 @@
   {
     "id": "beef-lasagne",
     "name": "Beef Lasagne",
-    "description": "Pasta layered with beef mince and sauce, topped with cheese and baked.",
+    "description": "Layers of pasta and beef mince in sauce, finished with a baked cheese top.",
     "price": 55,
     "category": "meal",
     "servings": "450 g",
@@ -13,7 +13,7 @@
   {
     "id": "spaghetti-en-meatballs",
     "name": "Spaghetti en Meatballs",
-    "description": "Spaghetti with meatballs in a tomato sauce.",
+    "description": "Soft spaghetti and tender meatballs in a tomato sauce. A full, hot plate.",
     "price": 55,
     "category": "meal",
     "servings": "450 g",
@@ -24,7 +24,7 @@
   {
     "id": "spaghetti-bolognaise",
     "name": "Spaghetti Bolognaise",
-    "description": "Spaghetti with a rich mince and tomato sauce.",
+    "description": "Spaghetti in a rich, saucy mince and tomato sauce. Simple and filling.",
     "price": 55,
     "category": "meal",
     "servings": "450 g",
@@ -35,7 +35,7 @@
   {
     "id": "macaroni-and-cheese",
     "name": "Macaroni and Cheese",
-    "description": "Macaroni in a creamy cheese sauce.",
+    "description": "Macaroni in a creamy cheese sauce. Soft, warm comfort in a bowl.",
     "price": 55,
     "category": "meal",
     "servings": "450 g",
@@ -46,7 +46,7 @@
   {
     "id": "macaroni-mince-cheese-bake",
     "name": "Macaroni and Mince Cheese Bake",
-    "description": "Macaroni and mince in a cheesy sauce, baked.",
+    "description": "Macaroni and mince in a cheesy sauce, baked until golden on top.",
     "price": 55,
     "category": "meal",
     "servings": "450 g",
@@ -57,7 +57,7 @@
   {
     "id": "malva-pudding",
     "name": "Malva Pudding",
-    "description": "A soft South African sponge pudding, soaked in a sweet sauce.",
+    "description": "A soft, syrupy South African sponge, soaked in sweet sauce. Warm and comforting.",
     "price": 50,
     "category": "dessert",
     "servings": "450 g",
@@ -68,7 +68,7 @@
   {
     "id": "ginger-pudding",
     "name": "Ginger Pudding",
-    "description": "A soft sponge pudding flavoured with ginger.",
+    "description": "A soft sponge pudding with a warm ginger spice.",
     "price": 50,
     "category": "dessert",
     "servings": "450 g",
@@ -79,7 +79,7 @@
   {
     "id": "chocolate-pudding",
     "name": "Chocolate Pudding",
-    "description": "A rich, soft chocolate pudding.",
+    "description": "A rich, soft chocolate pudding for the end of a warm meal.",
     "price": 50,
     "category": "dessert",
     "servings": "450 g",

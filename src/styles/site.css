@@ -42,7 +42,7 @@ a:hover { text-decoration-color: var(--color-accent); }
 .rows > li { border-bottom: 1px solid var(--color-rule); }
 
 /* captions under photographs and the freezer-label text */
-.caption { font: 400 var(--text-sm)/1.4 var(--font-outlier); color: var(--color-muted); }
+.caption { font: 400 var(--text-md)/1.4 var(--font-outlier); color: var(--color-ink-2); }
 
 .band--ink .lead { color: var(--color-paper); }
 .band--ink a { color: var(--color-paper); text-decoration-color: var(--color-accent-2); }
